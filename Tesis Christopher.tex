@@ -1,0 +1,3900 @@
+\documentclass[11pt,twoside,openright,spanish]{report}
+%\documentclass[runningheads,a4paper]{llncs}
+%\documentclass{article}
+\usepackage{array}
+\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla,mexico]{babel}
+\usepackage{UNAMThesis}
+\usepackage{titlesec, blindtext, color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}   
+\usepackage{tensor}
+\usepackage{multirow} 
+\usepackage{tabu}
+\usepackage[style]{fncychap}
+\usepackage{makeidx}
+\usepackage{emptypage}
+\usepackage{floatrow}
+%\usepackage{\tiny }{mathrsfs}
+\usepackage[font=footnotesize,labelfont=bf]{caption} % Pie de figura
+\usepackage{tabulary}
+\usepackage[top=0.8in]{geometry} % Margen superior más adecuado
+\usepackage{makeidx}
+\usepackage{verbatim}
+\usepackage{float} % Permite poner las imágenes en donde queramos
+\usepackage{amssymb}
+\usepackage{subfig}
+\usepackage{layout}
+\usepackage{calligra} 
+\usepackage[dvipsnames,table,xcdraw]{xcolor}
+\usepackage{graphicx} % Nos permite utilizar imágenes.
+\usepackage{graphics}
+\usepackage{caption}
+\usepackage{mwe}
+\usepackage{hyperref}
+\usepackage{framed}
+\usepackage{leftidx}
+\usepackage{dsfont}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{chngcntr} % Para no resetear notas de pie de página
+\usepackage{setspace}
+\usepackage{epstopdf}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{calc}  
+\usepackage{calrsfs}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage{etoolbox}
+% code listing settings
+\usepackage{listings}
+\usepackage{wrapfig,lipsum,booktabs}
+\usepackage[customcolors,shade]{hf-tikz}
+\usepackage[authoryear,round]{natbib}
+
+
+\DeclareFloatVCode{myrowsep}{\vskip 4ex}
+
+\newcounter{bibcount}
+\makeatletter
+\patchcmd{\@lbibitem}{\item[}{\item[\hfil\stepcounter{bibcount}{\thebibcount.}}{}{}
+\setlength{\bibhang}{2\parindent}
+\renewcommand\NAT@bibsetup%
+[1]{\setlength{\leftmargin}{\bibhang}\setlength{\itemindent}{-\parindent}%
+	\setlength{\itemsep}{\bibsep}\setlength{\parsep}{\z@}}
+\makeatother
+
+
+\bibliographystyle{apalike2mod}
+
+\hfsetbordercolor{blue}
+
+\captionsetup[table]{position=bottom}
+
+\lstset{
+	language=Fortran,
+	basicstyle=\ttfamily\tiny,
+	aboveskip={1.0\baselineskip},
+	belowskip={1.0\baselineskip},
+	columns=fixed,
+	extendedchars=true,
+	breaklines=true,
+	tabsize=3,
+	prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	frame=lines,
+	showtabs=false,
+	showspaces=false,
+	showstringspaces=false,
+	keywordstyle=\color[rgb]{0.57,0.36,0.51},
+	commentstyle=\color[rgb]{0.36,0.54,0.66},
+	stringstyle=\color[rgb]{0.59,0.29,0},
+	numberstyle=\scriptsize,
+	stepnumber=1,
+	numbersep=10pt,
+	captionpos=t,
+	escapeinside={\%*}{*)}
+}
+
+
+\apptocmd{\thebibliography}{\csname cleardoublepage phantomsection\endcsname\addcontentsline{toc} {chapter}{Bibliografía}}{}{}
+
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\doublespacing}{}{}{}
+\makeatother
+
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+\counterwithout{footnote}{chapter}
+
+\renewcommand{\arraystretch}{1.2}
+
+%Interlineado
+\renewcommand{\baselinestretch}{1.5}
+
+\setlength{\headheight}{15pt} 
+
+\logounam{Imagenes/Escudo-UNAM}
+\logoinstitute{Imagenes/Escudo-IBT}
+\pagenumbering{roman}
+\flushbottom
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notat}[theorem]{Notat}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\newcommand{\grad}{\hspace{-2mm}$\phantom{a}^{\circ}$}
+
+
+
+\renewcommand{\sin}{\operatorname{\sen}}
+
+\lfoot[]{}
+\cfoot[]{}
+\rfoot[]{}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0.1pt}
+
+%%%%%%%%%%%%%%%%%%%% Reemplazamos l con elle %%%%%%%%%%%%%%%%%%%%%%
+\mathcode`l="8000
+\begingroup
+\makeatletter
+\lccode`\~=`\l
+\DeclareMathSymbol{\lsb@l}{\mathalpha}{letters}{`l}
+\lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \ell \else \lsb@l \fi}}%
+\endgroup
+
+%%%%%%%%%%%%%%%%%%%%% Norma y valor absoluto %%%%%%%%%%%%%%%%%%%%%%
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Change Colors https://en.wikibooks.org/wiki/LaTeX/Colors
+\hypersetup{
+	bookmarks=true,         % show bookmarks bar?
+	unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar=true,        % show Acrobat’s toolbar?
+	pdfmenubar=true,        % show Acrobat’s menu?
+	pdffitwindow=false,     % window fit to page when opened
+	pdfstartview={FitH},    % fits the width of the page to the window
+	pdftitle={Tesis Uzmar},    % title
+	pdfauthor={Uzmar Gómez},     % author
+	pdfsubject={Subject},   % subject of the document
+	pdfcreator={Uzmar Gómez},   % creator of the document
+	pdfproducer={Uzmar Gómez}, % producer of the document
+	pdfkeywords={}, % list of keywords
+	pdfnewwindow=true,      % links in new PDF window
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=BlueViolet,          % color of internal links (change box color with linkbordercolor)
+	citecolor=BrickRed,        % color of links to bibliography
+	filecolor=NavyBlue,      % color of file links
+	urlcolor=NavyBlue           % color of external links
+}
+
+
+\newenvironment{changemargin}[3]{
+	\begin{list}{}{
+			\setlength{\topsep}{#3}
+			\setlength{\leftmargin}{#1}
+			\setlength{\rightmargin}{#2}
+			\setlength{\listparindent}{\parindent}
+			\setlength{\itemindent}{\parindent}
+			\setlength{\parsep}{\parskip}
+		}
+		\item[]}{\end{list}}
+
+\begin{document}
+	
+	\renewcommand{\baselinestretch}{1}
+	
+	\graphicspath{{./Imagenes/}}
+	
+	\title{Reporte Experiencia Profesional: Metodología y Cálculo de la Reserva de Riesgos en Curso de una Compañía Aseguradora}
+	\author{Christopher Gómez Yáñez}
+	\institute{Facultad de Ciencias}
+	\degree{Actuario}
+	\supervisor{Mtro. Alfonso Parrao Guzmán}
+	\city{Ciudad Universitaria, CD. MX.}
+	\degreemonth{Abril}
+	\degreeyear{2020}
+	\maketitle
+	
+	\newpage
+	$\ $
+	\thispagestyle{empty} % para que no se numere esta pagina
+	
+	\begin{changemargin}{1cm}{0cm}{1cm}
+		
+		\vspace{30cm} 
+		\begin{center}
+			\textit{\textbf{\Large JURADO ASIGNADO}}
+		\end{center}
+		\vspace{1cm}
+		\doublespacing
+		\begin{description}
+			\item[]\textbf{Datos del alumno:}\\
+			Gómez Yáñez, Christopher\\
+			\textit{Número de cuenta:} 307228305\\
+			\textit{Institución de adscripción:} Facultad de Ciencias, UNAM\\
+			\textit{Carrera:} Actuaria\\
+			\textit{Correo:} chris.gomez@ciencias.unam.mx\\
+			\textit{Teléfono:} 5532358625
+			\vspace{1cm}
+			
+			\item[]\textbf{Presidente:}\\
+			Dr. Núñez Zúñiga, Darío\\
+			\textit{Correo:} nunez@nucleares.unam.mx\\
+			\textit{Institución de adscripción:} Instituto de Ciencias Nucleares, UNAM
+			\item[]\textbf{Vocal:}\\
+			Dr. Matos Chassin, Tonatiuh\\
+			\textit{Correo:} tmatos@fis.cinvestav.mx \\
+			\textit{Institución de adscripción:} Departamento de Física, CINVESTAV
+			\item[]\textbf{Secretario:}\\
+			Dr. Alcubierre Moya, Miguel\\
+			\textit{Correo:} malcubi@nucleares.unam.mx\\
+			\textit{Institución de adscripción:} Instituto de Ciencias Nucleares, UNAM
+			\item[]\textbf{1\textsuperscript{er} Suplente:}\\
+			Dr. Tejeda Rodríguez, Emilio\\
+			\textit{Correo:} etejeda@astro.unam.mx\\
+			\textit{Institución de adscripción:} Instituto de Astronomía, UNAM
+			\item[]\textbf{2\textsuperscript{do} Suplente:}\\
+			Dr. Degollado Daza, Juan Carlos\\
+			\textit{Correo:} jcdegollado@ciencias.unam.mx\\
+			\textit{Institución de adscripción:} Instituto de Ciencias Físicas, UNAM
+		\end{description}
+		\thispagestyle{empty}
+	\end{changemargin}
+	
+	
+	%\ChNameVar{\bfseries\Large\sf} \ChNumVar{\Huge} \ChTitleVar{\bfseries\Large\rm}
+	%\ChRuleWidth{1pt} \ChNameUpperCase \ChTitleUpperCase
+	\ChNumVar{\fontsize{50}{50}\usefont{T1}{ptm}{m}{sl}\selectfont}
+	\ChTitleVar{\raggedright\Large\sffamily\bfseries}
+	
+	\evensidemargin 0in 
+	\oddsidemargin 0.6in
+	
+	\newpage{\ } 
+	\thispagestyle{empty}
+	
+	\begin{dedication}
+		{\Large{\sffamily{El continuo esfuerzo, no la fortaleza o inteligencia, es la clave para desbloquear nuestro potencial.}}}\\
+		\begin{comment}
+		{\footnotesize{\dots black holes ain't as black as they are painted. They are not the eternal prisons they were once though\dots things can get out of a black hole both on the outside and possibly to another universe. So if you feel you are in a black hole, don’t give up, there’s a way out.}}\\
+		\end{comment}
+		\vspace{0.5cm}
+		{\normalsize{\bfseries{Winston S. Churchill}}}
+	\end{dedication}
+	
+	\newpage
+	$\ $
+	\thispagestyle{empty} % para que no se numere esta pagina
+	
+	\begin{acknowledgements}
+		\pagenumbering{Roman}
+		\doublespacing
+		A XXXXXXXXXXXXXXX.
+		\\
+		
+		\doublespacing
+		A XXXXXXXXXXX.
+		\\
+		
+		\doublespacing
+		A XXXXXXXXXXXXXXXXXXXXXX.
+		\\
+		
+		\doublespacing
+		AXXXXXXXXXXXXXXXXXXXXX.
+		\\
+		
+		\doublespacing
+		A XXXXXXXXXXXXXXXXXXXXXX.
+		\\
+		
+		\doublespacing
+		A XXXXXXXXxxXXXXXXXXXXx.
+		\\
+		
+		\doublespacing
+		A XXXXXXXxxxxxxxxxxxxx.   
+		\\
+		
+		\doublespacing
+		A XXXXXXxxxxxxxxXXXXXXXXXXXXXX
+		\\
+		
+		\doublespacing
+		A XXXXXXXXXXXXXXXXx
+		\\
+		
+		\doublespacing
+		A XXXXXXXXXXXXXXXXXXXXXXXXx
+		\\
+		
+		
+	\end{acknowledgements}
+	
+	
+	\tableofcontents
+	
+	
+	\addtolength{\headheight}{\baselineskip}
+	\fancyhead[LE]{\scshape\thepage\hspace{1cm}\footnotesize\nouppercase{Universidad Nacional Autónoma de México}}
+	\fancyhead[RO]{\scshape\footnotesize\nouppercase{Facultad de Ciencias}\hspace{1cm}\normalsize\thepage}
+	\pagestyle{fancy}
+	\cleardoublepage
+	
+		\begin{comment}
+	\begin{notation}
+		\addcontentsline{toc}{chapter}{\numberline{}Notación}
+		\pagenumbering{arabic}
+		\doublespacing
+		Que deberia incluir aqui?.
+	\end{notation}
+		\end{comment}
+		
+	\begin{preface}
+		\addcontentsline{toc}{chapter}{\numberline{}Prefacio}%	
+		
+		En este trabajo se tiene como objetivo abordar los componentes que conforman la valuación de la Reserva de Riesgos en Curso, la cual es la parte más esencial de la Reserva Técnica de una Compañía Aseguradora, así como mencionar las herramientas y metodología necesarias para el proceso y las leyes y organismos gubernamentales que dictan las condiciones bajo las cuales debe realizarse el cálculo.
+		
+	\end{preface}
+	
+	%--------------------------------------------------------------------------------------------------------------- %
+	
+	\fancypagestyle{plain}{
+		\fancyhead[L]{}
+		\fancyhead[C]{}
+		\fancyhead[R]{}
+		
+		\fancyfoot[L]{}
+		\fancyfoot[C]{\thepage}
+		\fancyfoot[R]{}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+	}
+	
+	\fancyhead[LE]{\scshape\thepage\hspace{1cm}\footnotesize\nouppercase{\leftmark}}
+	\fancyhead[RO]{\scshape\footnotesize\nouppercase{Sección \rightmark\hspace{1cm}}\normalsize\thepage}
+	\fancyhead[LO]{}
+	\fancyhead[RE]{}
+	\pagestyle{fancy}
+	\cleardoublepage
+	
+	\chapter{Introducción}\label{cap:Introducción}
+	\doublespacing
+	En este capítulo se introduce brevemente el concepto de lo que es una Compañía Aseguradora, la Reserva Técnica, y lo que son los Organismos Supervisores como son: la Comisión Nacional de Seguros y Fianzas y la Asociación Mexicana de Instituciones de Seguros.
+	
+	\section{Instituciones de Seguros}
+	\doublespacing
+	Una Institución de Seguros es una sociedad anónima autorizada para organizarse y operar conforme a la Ley de Instituciones de Seguros y de Fianzas (LISF), como institución de seguros. \footnote{Ver \citet{BAseguradora}, Artículo 2 Sección XVI}
+	El seguro es un medio para la protección individuos frente a las consecuencias de riesgos y se basa en transferir dichos riesgos a la institución de seguros, la cual se encargará de indemnizar todo o parte del perjuicio que se produzca por la ocurrencia de un evento previsto. \footnote{Ver \citet{ASeguro}, Fundación Mapfre, El Seguro}
+	
+	\section{Contrato de Seguro}
+	\doublespacing
+	El Contrato de Seguro es aquel con que la Empresa Aseguradora se obliga, mediante el pago de una prima, a resarcir un daño o a pagar una suma de dinero al verificarse la eventualidad prevista en el contrato.\footnote{Ver \citet{CContrato}, Artículo 1}
+	
+	\section{Reserva Técnica}
+	\doublespacing
+	Debe ser constituida por la Institución de Seguros para operar de acuerdo a la LISF. Las Reservas Técnicas detalladas en este trabajo son la Reserva de Riesgos en Curso (RRC) y la Reserva para Obligaciones Pendientes de Cumplir (ROPC). El propósito de la RRC es cubrir el valor esperado de las obligaciones futuras derivadas del pago de siniestros, beneficios, valores garantizados, dividendos, gastos de adquisición y administración, así como cualquier otra obligación futura derivada de los contratos del seguro. Por otro lado, la ROPC tiene como objetivo cubrir el valor esperado de siniestros, beneficios, valores garantizados o dividendos, una vez ocurrida la eventualidad prevista en el contrato de seguro. De acuerdo a la LISF, las reservas técnicas deberán constituirse y valuarse de forma prudente, confiable y objetiva, en relación con todas las obligaciones de seguro que las Instituciones de Seguros asuman frente a los asegurados y beneficiarios del contrato de seguro, los gastos de administración, si como los gastos de adquisición que, en su caso, asuman con relación a los mismos. Para la constitución se deben utilizar métodos actuariales con base en la aplicación de los estándares de práctica actuarial, considerando la información disponible en los mercados financieros, así como la que generalmente se encuentra disponible sobre riesgos técnicos de seguros. \footnote{Ver \citet{DReservasTec}, Artículo 217 y 218}
+	
+	\section{Comisión Nacional de Seguros y Fianzas}
+	\doublespacing
+	La Comisión Nacional de Seguros y Fianzas es un Órgano Desconcentrado de la Secretaría de Hacienda y Crédito Público, encargada de supervisar que la operación de los sectores asegurador y afianzador se apegue al marco normativo, preservando la solvencia y estabilidad financiera de las instituciones de Seguros y Fianzas, para garantizar los intereses del público usuario, así como promover el sano desarrollo de estos sectores con el propósito de extender la cobertura de sus servicios a la mayor parte posible de la población. \footnote{Ver \citet{EComision}}
+	
+	\section{Asociación Mexicana de Instituciones de Seguros}
+	\doublespacing
+	
+	Organismo gremial que representa al interés general de las compañías aseguradoras, promoviendo el desarrollo sano y sustentable del seguro a través de las mejores prácticas. Su principal objetivo es promover el desarrollo de la industria aseguradora, representar sus  intereses ante autoridades del sector público, privado y social, así como proporcionar apoyo técnico a sus asociados. \footnote{Ver \citet{FAmis}}
+	
+	
+	\chapter{Marco Regulatorio y Herramientas utilizadas}\label{tcyedb}
+	
+	\doublespacing
+	La Ley de Instituciones de Seguros y de Fianzas fue publicada en el Diario Oficial de la Federación del 4 de Abril de 2013, en la cual establece en el artículo 219 que las Instituciones de Seguros deberán registrar ante la Comisión Nacional de Seguros y Fianzas los métodos actuariales con base en sus estimaciones para la Reserva de Riesgos en Curso \footnote{Ver \citet{FAmis}, Artículo 219}, de conformidad con las disposiciones de carácter general que al efecto emita, mismas que se dieron a conocer a través de la Circular Única de Seguros y Fianzas publicada en el Diario Oficial de la Federación el 19 de diciembre de 2014.\footnote{Ver \citet{HCusf}}
+	
+	\section{Circular Única de Seguros y Fianzas}
+	\doublespacing
+	
+	Cuerpo normativo que contiene las disposiciones derivadas de la Ley de Instituciones de Seguros y de Fianzas, que dan operatividad a sus preceptos y sistematizan su integración, homologando la terminología utilizada, a fin de brindar con ello certeza jurídica en cuanto al marco normativo al que las instituciones y sociedades mutualistas de seguros, instituciones de fianzas y demás personas y entidades sujetas a la inspección y vigilancia de la Comisión Nacional de Seguros y Fianzas deberán sujetarse en el desarrollo de sus operaciones.\footnote{Ver \citet{IDefCusf}} El 19 de diciembre de 2014, se publicó en el Diario Oficial de la Federación la Circular Única de Seguros y Fianzas (CUSF). Esta circular instrumenta y da operatividad a la nueva Ley de Instituciones de Seguros y de Fianzas (LISF) promulgada el 4 de abril de 2013 y en vigor desde el 4 de abril de 2015. 
+	
+	\section{Ley de Instituciones de Seguros y de Fianzas}
+	\doublespacing
+	Ley que tiene por objeto la organización, operación y funcionamiento de las Instituciones de Seguros, Instituciones de Fianzas y Sociedades Mutualistas de Seguros; las actividades y operaciones que las mismas podrán realizar, así como las de los agentes de seguros y de fianzas, y demás participantes en las actividades aseguradora y afianzadora en protección de los intereses del público usuario de estos servicios financieros.\footnote{Ver \citet{GLisf}, Artículo 1} Esta ley está basada en el modelo europeo de Solvencia II.
+	
+    \section{Solvencia II}
+	\doublespacing
+	Esquema regulatorio que se distingue principalmente en que las compañías aseguradoras cuenten con las suficientes reservas para enfrentar cualquier riesgo y cumplir con sus clientes, teniendo como propósito establecer el conjunto revisado de requerimientos de capital, reservas técnicas, estándares de administración de riesgos y mecanismos de revisión. Este modelo tiene como objetivo ayudar a reducir las posibilidades de pérdidas para los consumidores, así como los trastornos en la operación del mercado de seguros.\footnote{Ver\citet{JSolvenciaII}} Contempla fundamentalmente 3 pilares:
+	Pilar 1: requerimientos de capital con un nivel de confianza del 99.5\% y que considere todos los riesgos, modelo interno y modelo estándar.
+	Pilar 2: establecimiento de un gobierno corporativo que rija: administración de riesgos; función actuarial; auditoría interna y control interno.
+	Pilar 3: disciplina de mercado. 
+	Esta nueva regulación se presenta dentro del proceso de reforma y modernización del sistema financiero mexicano y se busca ampliar el acceso de los mexicanos a los servicios de aseguramiento y afianzamiento bajo mejores condiciones. Asimismo le permite a los sectores asegurador y afianzador mejorar su gestión de riesgos obteniendo mejores beneficios en la determinación de su capital.\footnote{Ver \citet{KPilaresSolvenciaII}} 
+	
+	
+	\section{R}
+	\doublespacing
+R es una herramienta informática (específicamente, un lenguaje computacional) sumamente potente para realizar distintos cálculos científicos, numéricos y estadísticos, así como para crear gráficas y figuras de gran calidad. R es un programa gratuito, relativamente fácil de operar y cuenta con una gran comunidad de internet que contribuye a resolver dudas y problemas, sin costo alguno. \footnote{Ver \citet{KR}}
+	
+
+	\chapter{Metodología}\label{tcyedb}
+	
+	\doublespacing
+	
+	\section{Método Chain Ladder}
+	\doublespacing
+
+	Método que se utiliza comunmente en las reservas de no-vida. Útiliza un factor para "suavizar" los datos y con base en estos, realizar interpolaciones para estimar los siniestros agregados para cada año de ocurrencia y posteriormente la reserva correspondiente. El supuesto básico de este método es que las columnas en el triángulo de desarrollo son proporcionales, es decir que, independientemente del año de origen, cada periodo de desarrollo se reporta una proporción constante de siniestros con respecto al total. La sustentación del supuesto depende en buena medida, tanto del tipo de negocio que se trate, como de la homogeneidad y tamaño de la cartera. En particular, en negocios como vida individual, gastos médicos, responsabilidad civil, etc., la evolución del reporte de los siniestros es estacional. \footnote{Ver \citet{LChainLadder}, 1.2.1 Método Chain-Ladder} 
+		\doublespacing
+	La estimación de las obligaciones se hace con base en los siniestros observados y su desfase respecto a la entrada en vigor de cada obligación, usando el metodo bootstrap.
+	
+	\section{Bootstrapping}
+\doublespacing	
+	\doublespacing
+El método desarrollado por Bradley Efron. Es un método de muestreo computacionalmente intensivo con el que se busca aproximar la distribución muestral de alguna variable aleatoria que se basa en los datos observados.\footnote{Ver \citet{MBootstrap}, p.11}
+
+El método de Bootstrap es un método de muestreo con el que se busca aproximar la distribución muestral de alguna variable aleatoria que tiene como base los datos observados.
+
+\doublespacing
+
+Teniendo una muestra de datos $x_{1},x_{2},x_{3},...,x_{n}$, donde los $x_{i}$ son independientes y provienen de una distribución desconocida F, donde además se presume que dicha muestra es una representación significativa de la población de donde proviene. Se tiene además una variable aleatoria R(X,F) que depende de X y de la función desconocida F. Entonces se puede realizar una muestra aleatoria de tamaño $n$ con reemplazo de la muestra de datos, $x_{1}^{*},x_{2}^{*},x_{3}^{*},...,x_{n}^{*}$ y a partir de esa muestra se puede calcular una observación de la variable aleatoria R*(X*,P*), donde F* es la distribución de probabilidad de la muestra, que se construyó de tipo uniforme. Finalmente, se realizan más muestras y se calculan más valores de R* para poder estimar la distribución R(X,F).
+
+\doublespacing
+
+La utilidad técnica de bootstrapping es que permite aproximar la distribución de alguna estadística de los datos de una forma fácil y rápida. Adicionalmente, no es necesario hacer una estimación paramétrica ni supuestos acerca de la distribución de los datos.
+
+	\doublespacing
+
+
+	
+	\chapter{Cálculo de la Reserva de Riesgos en Curso}\label{metnum}
+	
+		La valuación y constitución de la reserva de riesgos en curso deberá calcularse para un grupo homogéneo definido, correspondiente a un cierto subramo y tipo de seguro que la Compañia en cuestión tenga en su cartera. El proceso aquí descrito fué aplicado en la practica para grupos homogéneos correspondientes a los ramos de Gastos Médicos Colectivo y Salud Colectivo.
+	
+	\doublespacing
+Para realizar los calculos es necesario identificar primero el número de asegurados en vigor al cierre del mes al momento de la valuación, el monto de prima correspondiente a los beneficios contratados, los gastos asociados y el periodo de cobertura de cada asegurado en vigor.
+	
+	\section{Cálculo del Bel de Riesgos en Curso}
+	\doublespacing
+	
+	\doublespacing
+	El cálculo del Bel de Riesgo implica un análisis de las obligaciones futuras para los riesgos en curso con base en los siniestros que actualmente han sido reportados. Para ello se necesita la construcción de una matriz de desarrollo de siniestros  de dimensiones (k x s), en la cual los siniestros se distribuyen por el trimestre en que se reporto cada uno de los procedimientos ocurridos respecto al inicio de vigencia de la póliza y consideramos montos netos de siniestralidad, es decir, no tomamos en cuenta el monto de deducible y copago a cargo del asegurado. La matriz queda de la siguiente manera:
+	
+
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	${X}_{i,j}=$ Monto de siniestros de las pólizas con inicio de vigencia en el trimestre i que fue reportado j trimestres posteriores al inicio de vigencia.
+	\noindent
+	
+	${k}_{}=$Numero de trimestres máximo observado en la experiencia de siniestros.
+	\noindent
+	
+	${s}_{}=$Número de trimestres de experiencia de inicio de vigencia.
+	\noindent
+	
+	$i=$trimestre de inicio de vigencia de la póliza, $i\in \left\{1,2,3,\dots ,12\right\}$
+	\noindent
+	
+	$j=$trimestre en que se reportó el siniestro,  $j\in \left\{1,2,3,\dots\right\}$
+	\noindent
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+%	\begin{table}
+%		\begin{tabular}{|c|L|L|}
+%			\hline
+%			Title 1 & Title 2 & Title 3 \\
+%			\hline 
+%			one-liner & multi-line and centered & \multicolumn{1}{m{3cm}|}{multi-line piece of text to show case a multi-line and justified cell}   \\
+%			\hline
+%			apple & orange & banana \\
+%			\hline
+%			apple & orange & banana \\
+%			\hline
+%		\end{tabular}
+%	\end{table}
+
+
+\begin{center}
+%\begin{document}
+	\begin{table}[H]
+	%	\centering
+	%	\caption{Countermeasure solutions for connected vehicle}
+	%	\label{Countermeasure solutions for connected vehicle}
+		\begin{tabular}{ L |cccccccccc}
+		%	\toprule
+		%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre de} 
+				{ inicio de vigencia de la póliza}
+			&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+			\midrule
+			1      &  $X_{1,0}^{}$ & $X_{1,1}^{}$ & $X_{1,2}^{}$ & $ \dots $ & $X_{1,j}^{}$ & $ \dots $ & $X_{1,k-2}^{}$ & $X_{1,k-1}^{}$ & $X_{1,k}^{}$ & \\
+			2      &  $X_{2,0}^{}$ & $X_{2,1}^{}$ & $X_{2,2}^{}$ & $ \dots $ & $X_{2,j}^{}$ & $ \dots $ & $X_{2,k-2}^{}$ & $X_{2,k-1}^{}$ & & \\
+			3      &  $X_{3,0}^{}$ & $X_{3,1}^{}$ & $X_{3,2}^{}$ & $ \dots $ & $X_{3,j}^{}$ & $ \dots $ & $X_{3,k-2}^{}$ & & & \\
+			4      &  $X_{4,0}^{}$ & $X_{4,1}^{}$ & $X_{4,2}^{}$ & $ \dots $ & $X_{4,j}^{}$ & $ \dots $ & & & & \\
+			:      & & & & & & & & & &\\
+			i      &  $X_{i,0}^{}$ & $X_{i,1}^{}$ & $X_{i,2}^{}$ & $ \dots $ & $X_{i,j}^{}$ & & & & &  \\
+			:      & & & & & & & & & &  \\
+			s-2      &  $X_{s-2,0}^{}$ & $X_{s-2,1}^{}$ & $X_{s-2,2}^{}$ & & & & & & &  \\
+			s-1      &  $X_{s-1,0}^{}$ & $X_{s-1,1}^{}$ & & & & & & & & \\
+			s      &  $X_{s,0}^{}$ & & & & & & & & & \\
+		%	\bottomrule
+		\end{tabular}
+	\end{table}
+%\end{document}
+\end{center}
+			
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+
+	
+	\doublespacing
+	Una vez que se obtiene la matriz de siniestros, la usamos para generar una matriz de siniestros acumulados en la cual definimos ${Y}_{i,j}$ como el monto de siniestros de la póliza con inicio de vigencia en el trimestre i reportados hasta el trimestre j:
+	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+
+	{\centering
+	${y}_{i,j}=\sum _{m=0}^{j}{X}_{i,m}$
+	
+}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		Donde:
+		
+	\doublespacing
+	
+	${X}_{i,m}=$ Monto de siniestros de las pólizas con inicio de vigencia en el trimestre i que fue reportado m trimestres posteriores al inicio de vigencia.
+	\noindent
+	
+	$i=$trimestre de inicio de vigencia de la póliza, $i\in \left\{1,2,3,\dots ,12\right\}$
+	\noindent
+	
+	$j=$trimestre en que se reportó el siniestro,  $j\in \left\{1,2,3,\dots\right\}$
+	\noindent
+	
+	$m=$trimestre de acumulación, $m\in \left\{0,1,2,\dots ,j\right\}$, $m\le j\le k$
+	\noindent
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+\begin{center}
+%\begin{document}
+\begin{table}[H]
+	%	\centering
+	%	\caption{Countermeasure solutions for connected vehicle}
+	%	\label{Countermeasure solutions for connected vehicle}
+	\begin{tabular}{ L |cccccccccc}
+		%	\toprule
+		%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+		\multirow{2}{*}{ Trimestre de} 
+		{ inicio de vigencia de la póliza}
+		&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+		& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+		\midrule
+		1      &  $Y_{1,0}^{}$ & $Y_{1,1}^{}$ & $Y_{1,2}^{}$ & $ \dots $ & $Y_{1,j}^{}$ & $ \dots $ & $Y_{1,k-2}^{}$ & $Y_{1,k-1}^{}$ & $Y_{1,k}^{}$ & \\
+		2      &  $Y_{2,0}^{}$ & $Y_{2,1}^{}$ & $Y_{2,2}^{}$ & $ \dots $ & $Y_{2,j}^{}$ & $ \dots $ & $Y_{2,k-2}^{}$ & $Y_{2,k-1}^{}$ & & \\
+		3      &  $Y_{3,0}^{}$ & $Y_{3,1}^{}$ & $Y_{3,2}^{}$ & $ \dots $ & $Y_{3,j}^{}$ & $ \dots $ & $Y_{3,k-2}^{}$ & & & \\
+		4      &  $Y_{4,0}^{}$ & $Y_{4,1}^{}$ & $Y_{4,2}^{}$ & $ \dots $ & $Y_{4,j}^{}$ & $ \dots $ & & & & \\
+		:      & & & & & & & & & &\\
+		i      &  $Y_{i,0}^{}$ & $Y_{i,1}^{}$ & $Y_{i,2}^{}$ & $ \dots $ & $Y_{i,j}^{}$ & & & & &  \\
+		:      & & & & & & & & & &  \\
+		s-2      &  $Y_{s-2,0}^{}$ & $Y_{s-2,1}^{}$ & $Y_{s-2,2}^{}$ & & & & & & &  \\
+		s-1      &  $Y_{s-1,0}^{}$ & $Y_{s-1,1}^{}$ & & & & & & & & \\
+		s      &  $Y_{s,0}^{}$ & & & & & & & & & \\
+		%	\bottomrule
+	\end{tabular}
+\end{table}
+%\end{document}
+\end{center}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Usando la matriz de siniestros acumulados obtenemos los factores de incremento ${f}_{j}$, los cuales indican el incremento dado de un trimestre a otro:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+	${f}_{j}=\frac{\sum _{i=1}^{s-j}{Y}_{i,j}}{\sum _{i=1}^{s-j}{Y}_{i,j-1}}$, con $0< j\le k$
+	\noindent
+	
+}	
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Donde:
+	
+	${Y}_{i,j}=$ Monto de siniestros de las pólizas con inicio de vigencia en el trimestre i reportados hasta el trimestre j.
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+Mediante estos factores de incremento, se definen los Siniestros Esperados para la vigencia i (${SE}_{i}$) como la estimación del monto de siniestros que serán reportados para las pólizas con inicio de vigencia en el trimestre i:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+		{\centering
+		${SE}_{i}={Y}_{s-i+1,i-1}\cdot\Pi_{j=i}^{k}{f}_{j}$, con $0< i\le k$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Donde:
+	
+		${Y}_{s-i+1,i-1}=$ Monto de siniestros de las pólizas con inicio de vigencia en el trimestre s-i+1 reportados hasta el trimestre i-1
+	
+	${f}_{i}=$ Factor de incremento del trimestre j
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Definimos las obligaciones futuras iniciales de riesgos en curso (${RRC}_{}^{0}$) como la diferencia entre los Siniestros Estimados y los Siniestros Acumulados observados:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		${RRC}_{}^{0}=\sum _{i=s-k}^{s}{SE}_{i}-{Y}_{i,s-i}$
+		
+	}
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Donde:
+	
+	\doublespacing
+	
+	${SE}_{i}=$ Siniestros Esperados para la vigencia i.
+	
+${Y}_{i,s-i}=$ Monto de siniestros de las pólizas con inicio de vigencia en el trimestre i reportados hasta el trimestre s-i
+	
+
+	\doublespacing
+
+$ $
+
+
+	\doublespacing
+	Definimos ${Y}_{i,j}^{*}$ como el monto ajustado de siniestros de las pólizas con inicio de vigencia en el trimestre i reportados hasta el trimestre j:
+	
+		\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	{\centering
+		${Y}_{i,j-1}^{*}=\frac{{Y}_{i,j}^{*}}{{f}_{j}}$
+		\noindent
+		
+	}	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Con:
+		\doublespacing
+		
+	{\centering
+	${Y}_{i,k-i+1}^{*}={Y}_{i,k-i+1}$
+	
+}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+
+	Donde:
+	
+	\doublespacing
+
+    ${Y}_{i,j}=$ Monto de siniestros de las pólizas con inicio de vigencia en el trimestre i reportados hasta el trimestre j.
+	
+	${f}_{j}=$ Factor de incremento del trimestre j.
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+\doublespacing
+
+Con estos montos obtenemos la matriz de siniestros acumulados ajustados partiendo del último dato observado:
+	
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+					\multirow{2}{*}{ Trimestre de} 
+				{ inicio de vigencia de la póliza}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $Y_{1,0}^{*}$ & $Y_{1,1}^{*}$ & $Y_{1,2}^{*}$ & $ \dots $ & $Y_{1,j}^{*}$ & $ \dots $ & $Y_{1,k-2}^{*}$ & $Y_{1,k-1}^{*}$ & $Y_{1,k}^{}$ & \\
+				2      &  $Y_{2,0}^{*}$ & $Y_{2,1}^{*}$ & $Y_{2,2}^{*}$ & $ \dots $ & $Y_{2,j}^{*}$ & $ \dots $ & $Y_{2,k-2}^{*}$ & $Y_{2,k-1}^{}$ & & \\
+				3      &  $Y_{3,0}^{*}$ & $Y_{3,1}^{*}$ & $Y_{3,2}^{*}$ & $ \dots $ & $Y_{3,j}^{*}$ & $ \dots $ & $Y_{3,k-2}^{}$ & & & \\
+				4      &  $Y_{4,0}^{*}$ & $Y_{4,1}^{*}$ & $Y_{4,2}^{*}$ & $ \dots $ & $Y_{4,j}^{*}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $Y_{i,0}^{*}$ & $Y_{i,1}^{*}$ & $Y_{i,2}^{*}$ & $ \dots $ & $Y_{i,j}^{}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $Y_{s-2,0}^{*}$ & $Y_{s-2,1}^{*}$ & $Y_{s-2,2}^{}$ & & & & & & &  \\
+				s-1      &  $Y_{s-1,0}^{*}$ & $Y_{s-1,1}^{}$ & & & & & & & & \\
+				s      &  $Y_{s,0}^{}$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Y a partir de esta matriz de siniestros acumulados ajustados se obtiene una nueva matriz de montos $X_{i,j}^{*}$, que son los siniestros ajustados de las pólizas con inicio de vigencia en el trimestre i que fueron reportados j trimestres posteriores al inicio de vigencia:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		${X}_{i,j}^{*}={Y}_{i,j}^{*}-\sum _{m=0}^{j-1}{X}_{i,m}^{*}$
+		\noindent
+		
+	}	
+	\doublespacing
+	
+	Con:
+	
+	\doublespacing
+		{\centering
+	${X}_{i,0}^{*}={Y}_{i,0}^{*}$
+	\noindent
+	
+}	
+
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde
+	
+	\doublespacing
+	
+		${Y}_{i,j}^{*}=$ Monto ajustado de siniestros de las pólizas con inicio de vigencia en el trimestre i reportados hasta el trimestre j.
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\begin{center}
+	%\begin{document}
+	\begin{table}[H]
+		%	\centering
+		%	\caption{Countermeasure solutions for connected vehicle}
+		%	\label{Countermeasure solutions for connected vehicle}
+		\begin{tabular}{ L |cccccccccc}
+			%	\toprule
+			%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+			\multirow{2}{*}{ Trimestre de} 
+		{ inicio de vigencia de la póliza}
+			&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+			& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+			\midrule
+			1      &  $X_{1,0}^{*}$ & $X_{1,1}^{*}$ & $X_{1,2}^{*}$ & $ \dots $ & $X_{1,j}^{*}$ & $ \dots $ & $X_{1,k-2}^{*}$ & $X_{1,k-1}^{*}$ & $X_{1,k}^{*}$ & \\
+			2      &  $X_{2,0}^{*}$ & $X_{2,1}^{*}$ & $X_{2,2}^{*}$ & $ \dots $ & $X_{2,j}^{*}$ & $ \dots $ & $X_{2,k-2}^{*}$ & $X_{2,k-1}^{*}$ & & \\
+			3      &  $X_{3,0}^{*}$ & $X_{3,1}^{*}$ & $X_{3,2}^{*}$ & $ \dots $ & $X_{3,j}^{*}$ & $ \dots $ & $X_{3,k-2}^{*}$ & & & \\
+			4      &  $X_{4,0}^{*}$ & $X_{4,1}^{*}$ & $X_{4,2}^{*}$ & $ \dots $ & $X_{4,j}^{*}$ & $ \dots $ & & & & \\
+			:      & & & & & & & & & &\\
+			i      &  $X_{i,0}^{*}$ & $X_{i,1}^{*}$ & $X_{i,2}^{*}$ & $ \dots $ & $X_{i,j}^{*}$ & & & & &  \\
+			:      & & & & & & & & & &  \\
+			s-2      &  $X_{s-2,0}^{*}$ & $X_{s-2,1}^{*}$ & $X_{s-2,2}^{*}$ & & & & & & &  \\
+			s-1      &  $X_{s-1,0}^{*}$ & $X_{s-1,1}^{*}$ & & & & & & & & \\
+			s      &  $X_{s,0}^{*}$ & & & & & & & & & \\
+			%	\bottomrule
+		\end{tabular}
+	\end{table}
+	%\end{document}
+\end{center}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	La diferencia del monto de siniestros observados (el monto original) y el monto de siniestros ajustado son los residuales brutos $R_{i,j}^{}$:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+	 $R_{i,j}^{}= X_{i,j}^{} -$  $X_{i,j}^{*} $ 
+		\noindent
+	
+}	
+
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde
+	
+	\doublespacing
+	
+ ${X}_{i,j}^{*}=$ Monto de siniestros ajustados de las pólizas con inicio de vigencia en el trimestre i que fueron reportados j trimestres posteriores al inicio de vigencia.	
+
+ ${X}_{i,j}=$ Monto de siniestros de las pólizas con inicio de vigencia en el trimestre i que fueron reportados j trimestres posteriores al inicio de vigencia.	
+	
+	\doublespacing
+
+$ $
+
+Generamos la matriz de Residuales de la siguiente manera:
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre de} 
+				{ inicio de vigencia de la póliza}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $R_{1,0}^{ }$ & $R_{1,1}^{ }$ & $R_{1,2}^{ }$ & $ \dots $ & $R_{1,j}^{ }$ & $ \dots $ & $R_{1,k-2}^{ }$ & $R_{1,k-1}^{ }$ & $R_{1,k}^{ }$ & \\
+				2      &  $R_{2,0}^{ }$ & $R_{2,1}^{ }$ & $R_{2,2}^{ }$ & $ \dots $ & $R_{2,j}^{ }$ & $ \dots $ & $R_{2,k-2}^{ }$ & $R_{2,k-1}^{ }$ & & \\
+				3      &  $R_{3,0}^{ }$ & $R_{3,1}^{ }$ & $R_{3,2}^{ }$ & $ \dots $ & $R_{3,j}^{ }$ & $ \dots $ & $R_{3,k-2}^{ }$ & & & \\
+				4      &  $R_{4,0}^{ }$ & $R_{4,1}^{ }$ & $R_{4,2}^{ }$ & $ \dots $ & $R_{4,j}^{ }$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $R_{i,0}^{ }$ & $R_{i,1}^{ }$ & $R_{i,2}^{ }$ & $ \dots $ & $R_{i,j}^{ }$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $R_{s-2,0}^{ }$ & $R_{s-2,1}^{ }$ & $R_{s-2,2}^{ }$ & & & & & & &  \\
+				s-1      &  $R_{s-1,0}^{ }$ & $R_{s-1,1}^{ }$ & & & & & & & & \\
+				s      &  $R_{s,0}^{ }$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+
+	\doublespacing
+
+$ $
+
+	
+	\doublespacing
+	
+	
+	\doublespacing
+	Utilizamos el método de bootstrap, bajo el supuesto de que los residuales brutos $R_{i,j}$ de la matriz provienen de la misma distribución y son independientes. Obtenemos el valor mínimo y máximo observado de cada columna j como el intervalo de residuales observado.
+	
+	\doublespacing
+	Entonces definimos a $R_{j}^{min}$ como el valor mínimo de los residuales observados en el trimestre reportado j y $R_{j}^{max}$ como el valor máximo de los residuales observados en el trimestre reportado j:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+			\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ } 
+				{ }
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				Mínimo      &  $R_{0}^{min}$ & $R_{1}^{min}$ & $R_{2}^{min}$ & $ \dots $ & $R_{j}^{min}$ & $ \dots $ & $R_{k-2}^{min}$ & $R_{k-1}^{min}$ & $R_{k}^{min}$ & \\
+				Máximo      &  $R_{0}^{max}$ & $R_{1}^{max}$ & $R_{2}^{max}$ & $ \dots $ & $R_{j}^{max}$ & $ \dots $ & $R_{k-2}^{max}$ & $R_{k-1}^{max}$ & $R_{k}^{max}$ & \\
+			
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Con:
+	
+	\doublespacing
+	
+	
+	{\centering
+		$R_{j}^{min}= min_{ i\in \left\{1,2,\dots ,S\right\}}  $ $\left[R_{i,j}^{}\right]$
+		\noindent
+		
+	}	
+
+		\doublespacing
+			\noindent
+			
+		{\centering
+		$R_{j}^{max}= max_{ i\in \left\{1,2,\dots ,S\right\}}  $ $\left[R_{i,j}^{}\right]$
+			\noindent
+			
+		}	
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Donde
+	\doublespacing
+	
+	$R_{i,j}=$ Residual bruto del trimestre de inicio de vigencia i reportado en el trimestre j
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Realizamos un muestreo con reemplazo de residuales tomando n muestras, de forma uniforme dentro del intervalo $\left[R_{j}^{min},R_{j}^{max}\right]$ de cada una de las columnas de reportado j.
+	
+	\doublespacing
+	
+	Definimos $R_{i,j}^{*}$ como el residual de la muestra de pólizas con inicio de vigencia en el trimestre i con trimestre de reporte j. 
+	
+	Generamos la matriz de residuales de la siguiente forma:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+			\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre de} 
+				{ inicio de vigencia de la póliza}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $R_{1,0}^{*}$ & $R_{1,1}^{*}$ & $R_{1,2}^{*}$ & $ \dots $ & $R_{1,j}^{*}$ & $ \dots $ & $R_{1,k-2}^{*}$ & $R_{1,k-1}^{*}$ & $R_{1,k}^{*}$ & \\
+				2      &  $R_{2,0}^{*}$ & $R_{2,1}^{*}$ & $R_{2,2}^{*}$ & $ \dots $ & $R_{2,j}^{*}$ & $ \dots $ & $R_{2,k-2}^{*}$ & $R_{2,k-1}^{*}$ & & \\
+				3      &  $R_{3,0}^{*}$ & $R_{3,1}^{*}$ & $R_{3,2}^{*}$ & $ \dots $ & $R_{3,j}^{*}$ & $ \dots $ & $R_{3,k-2}^{*}$ & & & \\
+				4      &  $R_{4,0}^{*}$ & $R_{4,1}^{*}$ & $R_{4,2}^{*}$ & $ \dots $ & $R_{4,j}^{*}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $R_{i,0}^{*}$ & $R_{i,1}^{*}$ & $R_{i,2}^{*}$ & $ \dots $ & $R_{i,j}^{*}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $R_{s-2,0}^{*}$ & $R_{s-2,1}^{*}$ & $R_{s-2,2}^{*}$ & & & & & & &  \\
+				s-1      &  $R_{s-1,0}^{*}$ & $R_{s-1,1}^{*}$ & & & & & & & & \\
+				s      &  $R_{s,0}^{*}$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Obtenemos así una matriz de siniestros simulada al agregar el residual obtenido a cada monto de siniestros ajustados.
+	
+	\doublespacing
+	
+	Para esto definimos $X_{i,j}^{sim}$ como el monto de siniestros simulado de las pólizas con inicio de vigencia en el trimestre i que fueron reportados j trimestres posteriores al inicio de vigencia:
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+	$X_{i,j}^{sim}=R_{i,j}^{*}+$  $X_{i,j}^{*}$
+	\noindent
+	
+}
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	$R_{i,j}^{*}=$ Residual seleccionado en la muestra que corresponde a las pólizas con inicio de vigencia en el trimestre i con trimestre de reporte j
+	
+	$X_{i,j}^{*}=$ Monto de siniestros ajustados de las pólizas con inicio de vigencia en el trimestre i que fueron reportados j trimestres posteriores al inicio de vigencia
+
+
+	\doublespacing
+
+$ $
+
+La matriz queda de la siguiente manera:
+	\doublespacing
+
+$ $
+
+
+\doublespacing
+	
+				\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre de} 
+				{ inicio de vigencia de la póliza}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $X_{1,0}^{sim}$ & $X_{1,1}^{sim}$ & $X_{1,2}^{sim}$ & $ \dots $ & $X_{1,j}^{sim}$ & $ \dots $ & $X_{1,k-2}^{sim}$ & $X_{1,k-1}^{sim}$ & $X_{1,k}^{sim}$ & \\
+				2      &  $X_{2,0}^{sim}$ & $X_{2,1}^{sim}$ & $X_{2,2}^{sim}$ & $ \dots $ & $X_{2,j}^{sim}$ & $ \dots $ & $X_{2,k-2}^{sim}$ & $X_{2,k-1}^{sim}$ & & \\
+				3      &  $X_{3,0}^{sim}$ & $X_{3,1}^{sim}$ & $X_{3,2}^{sim}$ & $ \dots $ & $X_{3,j}^{sim}$ & $ \dots $ & $X_{3,k-2}^{sim}$ & & & \\
+				4      &  $X_{4,0}^{sim}$ & $X_{4,1}^{sim}$ & $X_{4,2}^{sim}$ & $ \dots $ & $X_{4,j}^{sim}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $X_{i,0}^{sim}$ & $X_{i,1}^{sim}$ & $X_{i,2}^{sim}$ & $ \dots $ & $X_{i,j}^{sim}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $X_{s-2,0}^{sim}$ & $X_{s-2,1}^{sim}$ & $X_{s-2,2}^{sim}$ & & & & & & &  \\
+				s-1      &  $X_{s-1,0}^{sim}$ & $X_{s-1,1}^{sim}$ & & & & & & & & \\
+				s      &  $X_{s,0}^{sim}$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+Ya que obtenemos esta matriz de siniestros simulada, generamos la matriz de siniestros acumulados simulados, obtenemos los factores de incremento simulados, estimamos los siniestros esperados simulados y calculamos los flujos de obligaciones futuras simuladas de riesgos en curso de la muestra i ($RRC_{i}^{sim}$) mediante el proceso usado para la matriz original de siniestros.
+	
+	\doublespacing
+	
+	Consideramos el mejor estimador de riesgos en curso ($BELR_{RRC}$), como el valor medio de las n muestras de los flujos de obligaciones futuras simuladas de riesgos en curso.
+
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		$BELR_{RRC}^{}=\frac{\sum _{i=1}^{n}RRC_{i}^{sim}}{n}$
+		\noindent
+			
+	}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	$RRC_{i}^{sim}=$ i-ésima simulación de los flujos de obligaciones futuras de riesgos en curso.
+	
+	$n=$ número de simulaciones realizadas.
+\begin{comment}	
+	\doublespacing
+	Para Salud Individual Dental, el $BELR_{RRC}$ se calculará como el producto de la prima de tarifa no devengada y el factor de siniestralidad última de mercado proporcionado por la Comisión Nacional de Seguros y Fianzas:
+
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		$BELR_{RRC}^{}=PTND_{} \cdot FS_{BEL}^{RRC}$
+		\noindent
+		
+	}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	$PTND_{}=$ Prima de tarifa no devengada.
+\begin{comment}	
+	$FS_{BEL}^{RRC}=$ Factor de Siniestralidad última con información de mercado.
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	El cálculo del $BELR_{RRC}$, se realizará de forma trimestral y se prorrateara con el vigor de la valuación del cierre de mes a fin de obtener la reserva de riesgos en curso.
+
+\end{comment}
+	
+	\doublespacing
+	\section{Cálculo del Bel de Gastos de Administración}
+	\doublespacing
+	El mejor estimador de la reserva de Gastos de Administración ($BELG_{ADM}$) es el monto integrado por la suma de los Gastos de Administración no devengados de cada uno de los asegurados en vigor.
+	
+	\doublespacing
+	
+	Se determinará como la porción correspondiente a los Gastos de Administración de la Prima de Tarifa de los asegurados de que se trate multiplicada por el Factor de No Devengamiento ($F_{ND}$). 
+\begin{comment}
+Para Salud Individual Dental, se tomara el porcentaje de gasto de administración del mercado proporcionado por la Comisión Nacional de Seguros y Fianzas.
+\end{comment}	
+	\doublespacing
+	
+	Sea $GELG_{ADM,ind}$, el monto de los gastos de administración no devengado de cada asegurado:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	{\centering	
+
+\begin{comment}	
+$
+BELG_{ADM,ind}=\begin{cases}
+PT \cdot G_{ADM} \cdot F_{ND}, & \text{$g \neq Salud  Dental  Individual$}.\\
+PT \cdot \alpha_{i} \cdot F_{ND}, & \text{$g = Salud  Dental  Individual$}.
+\end{cases}
+$
+\end{comment}
+
+
+$BELG_{ADM,ind}=	PT \cdot G_{ADM} \cdot F_{ND}$
+
+
+
+
+		\noindent
+	
+}
+	
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Donde:
+	\doublespacing
+	
+    $PT=$ Prima de tarifa
+    
+    $G_{ADM}^{}=$ Gasto de Administración
+	
+	$F_{ND}^{}=$ Factor de no devengamiento
+\begin{comment}	
+	$\alpha_{i}^{}=$ Porcentaje de gasto de administración con información de Mercado
+\end{comment}	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Entonces el BEL para Gastos de Administración ($BELG_{ADM}$) es:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	{\centering
+	$BELG_{ADM}=\sum _{}^{}BEL_{ADM,ind}^{}$
+	\noindent
+	
+}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\section{Cálculo de la Prima de Riesgo No Devengada}
+	\doublespacing
+	
+	La Prima de Riesgo No Devengada corresponderá al valor de la prima de riesgo multiplicada por el factor de no devengamiento correspondiente a la porción de tiempo de vigencia no transcurrido.
+	
+	\doublespacing
+	
+	Para el cálculo de la Prima de Riesgo No Devengada, se determinará para cada uno de los asegurados en vigor, la Prima de Riesgo, que corresponde al costo esperado de la siniestralidad y es la porción de la prima de tarifa que debe destinarse para el pago de las reclamaciones por concepto de siniestros.
+	
+	\doublespacing
+	
+	Sea la Prima de Tarifa (PT):
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		${PT}_{}^{}=\frac{{PR}_{}^{}}{{1}_{}-{}G_{ADM}-{C}_{ADQ}-{U}_{}}$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	 $PR=$ Prima de Riesgo
+	
+	$G_{ADM}^{}=$ Gasto de Administración
+	
+	$C_{ADQ}^{}=$ Costo de Adquisición
+	
+	$U_{}^{}=$ Margen de Utilidad
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Entonces:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		${PR}_{}^{}={{PT}_{}\cdot(1-G_{ADM}-C_{ADQ}-U)}$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Una vez determinada la Prima de Riesgo, se calculará la Prima de Riesgo no Devengada de cada uno de los asegurados como la Prima de Riesgo multiplicada por el Factor de No Devengamiento.
+	
+	\doublespacing
+	
+	El Factor de No Devengamiento $F_{ND}$ es el factor que se utiliza para calcular la porción de tiempo de vigencia no transcurrido por cada asegurado en vigor.
+	
+	\doublespacing
+	
+	Sea FND el Factor de No Devengamiento, entonces:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering	
+		
+		$
+		F_{ND}=\begin{cases}
+		0, & \text{$si FVal \geqslant FFin$}.\\
+		\frac{{FFin}^{}-{FVal}^{}}{{FFin}^{}-{FIni}^{}}, & \text{$si FIni \leqslant FVal \leqslant FFin$}.\\
+		1, & \text{$si FIni \geqslant FVal$}.
+		\end{cases}
+		$
+		
+		\noindent
+		
+	}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	 $FIni=$ Fecha de Inicio de cobertura para el asegurado
+	
+	$FFin=$ Fecha de Fin de cobertura para el asegurado
+	
+	$FVal=$ Fecha de Valuación
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Entonces la Prima de Riesgo No Devengada ($PRND_{ind}$) es:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		${PRND}_{ind}^{}={{PR}_{ind}\cdot F_{ND}}$
+		\noindent
+		
+	}	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde
+	
+	\doublespacing
+	
+	 $F_{ND}=$ Factor de No Devengamiento de cada asegurado
+	
+	$PR_{ind}=$ Prima de Riesgo de cada asegurado 
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Para las pólizas emitidas anticipadamente que, al momento de la valuación, no han iniciado vigencia, la prima de riesgo no devengada se calculará como:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		${PRND}_{ind}^{}={{PT}_{ind}-BELG_{ADM,ind}}$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde
+	
+	\doublespacing
+	
+	$PT_{ind}=$ Prima de Tarifa de cada asegurado
+	
+	$BELG_{ADM,ind}=$ Monto de los gastos de administración no devengado de cada asegurado
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Sea $PRND_{}$ la prima de riesgo no devengada, esta se calculará como:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+		{\centering
+	$PRND_{}={\sum _{}^{}PRND_{ind}^{}}$
+	
+		\noindent
+	
+}	
+
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	$PRND_{ind}=$ Prima de riesgo no devengada de cada asegurado
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\section{Cálculo del Factor de Distribución}
+	
+	\doublespacing
+	
+	El Factor de Distribución permite prorratear el mejor estimador de riesgos en curso ($BELR_{RRC}$) obtenido entre cada asegurado. El factor se obtiene comparando la Prima de Riesgo No Devengada de cada grupo homogéneo ($PRND_{}$) calculada con el $BELR_{RRC}$ del mismo.
+	
+	\doublespacing
+	
+	Sea $FD_{}$ el factor de distribución:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		${FD}_{}^{}=\frac{{BELR}_{RRC}^{}}{{PRND}_{}}$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde
+	
+	\doublespacing
+	
+		$BELR_{RRC}=$ Mejor Estimador de riesgos en curso
+		
+		$PRND_{}=$ Prima de Riesgo No Devengada
+		
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\section{Cálculo de la Reserva de Riesgos en Curso de cada Asegurado}
+	
+	\doublespacing
+	
+	La Reserva de Riesgos en Curso de cada uno de los asegurados en vigor se calculará como la Prima de Riesgo No Devengada de cada asegurado multiplicada por el Factor de Distribución \begin{comment} y sumando el $BELG_{ADM,ind}$ así como el Margen de Riesgo prorrateado.
+	\end{comment}
+	\doublespacing
+	
+	Sea $BELR_{RRC,ind}$ el mejor estimador de riesgos en curso individual:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering	
+	\begin{comment}	
+		$
+		BELR_{RRC,ind}=\begin{cases}
+		PRND_{ind}\cdot FD_{}, & \text{$g \neq Salud Dental Individual$}\\
+	
+		PTND_{ind}\cdot FS_{BEL}^{RRC}, & \text{$g = Salud Dental Individual$}
+		\end{cases}
+		$
+\end{comment}	
+
+	$BELR_{RRC,ind}=PRND_{ind}\cdot FD_{}$	
+		\noindent
+		
+	}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+		
+	
+	$PRND_{ind}=$ Prima de Riesgo no Devengada de cada asegurado
+	
+	$FD_{}^{}=$ Factor de Distribución
+	
+		\begin{comment}
+	$PTND_{ind}=$ Prima de Tarifa no Devengada de cada asegurado
+	
+
+	$FS_{BEL}^{RRC}=$ Factor de Siniestralidad última con información de mercado
+	\end{comment}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Entonces la Reserva de Riesgos en Curso de cada asegurado ($RRC_{ind}$) es:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${RRC}_{ind}^{}={{BELR}_{RRC,ind}+BELG_{ADM,ind} \begin{comment} +MR_{RRC,ind}\end{comment}
+		}$
+			
+			
+			
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde
+	
+	\doublespacing
+	
+	$BELR_{RRC,ind}=$ Mejor estimador de riesgos en curso individual
+	
+	$BELG_{ADM,ind}^{}=$ Monto no devengado de Gastos de Administración de cada asegurado
+	
+	\begin{comment}
+	$MR_{RRC,ind}^{}=$ Margen de Riesgo de la reserva de riesgos en curso calculado anteriormente
+	\end{comment}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Por lo tanto, la Reserva de Riesgos en Curso ($RRC_{}$) se calculará como:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		$RRC_{}={\sum _{}^{}RRC_{ind}^{}}$
+		
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde
+	
+	\doublespacing
+	
+		
+	
+	$RRC_{ind}^{}=$ Reserva de Riesgos en Curso de cada asegurado
+	
+	\chapter{Aplicación Práctica del Método}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+%------------------------------------------------------------------------------------------ %
+\clearpage
+\appendix 
+
+\fancyhead[LE]{\scshape\thepage\hspace{1cm}\footnotesize\nouppercase{Apéndices}}
+\fancyhead[RO]{\scshape\footnotesize\nouppercase{Apéndice \thechapter}\hspace{1cm}\normalsize\thepage}
+\fancyhead[LO]{}
+\fancyhead[RE]{}
+\pagestyle{fancy}
+
+\chapter{Constricciones en simetría esférica}\label{desarrolloconstadm}
+
+hola mundo
+
+
+	\begin{comment}
+	\chapter{Metodología para el Cálculo del Margen de Riesgo}
+	
+	\doublespacing
+	
+	\doublespacing
+	
+	Se calculará la base de capital para determinar el margen de riesgo de la reserva de riesgos en Curso para el ramo o tipo de seguro i de que se trate ($BC_{RRC}$) , como la cantidad que resulte de prorratear el RCS en congruencia con el riesgo subyacente por riesgos en curso, del ramo o tipo de seguros de que se trate, la base de capital se determina como:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${BC}_{RRC}^{}=\frac{{D}_{RRC}^{}}{\sum _{i}^{}D_{RRC}^{}+\sum _{i}^{}D_{SONR}^{}}\cdot RCS$
+		\noindent
+		
+	}	
+	
+		
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	Donde:
+	
+	\doublespacing
+	
+		$D_{RRC}=$ Valor estimado de la desviación de las obligaciones futuras asociadas a la reserva de Riesgos en curso
+	
+	$D_{SONR}^{}=$ Valor estimado de la desviación de las obligaciones futuras asociadas a la reserva de obligaciones pendientes de cumplir por siniestros ocurridos pero no reportados.
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Sea $D_{RRC}$ el monto correspondiente a la desviación de las obligaciones futuras, éste se obtendrá como la diferencia entre el percentil $99.5\% $ de las simulaciones y la prima de riesgo no devengada de cada grupo homogéneo multiplicada por el factor de distribución de éste.
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${D}_{RRC}^{}={{BEL}_{RRC}^{99.5}-PRND_{}\cdot FD_{}}$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$BEL_{RRC}^{99.5}=$ Percentil $99.5\%$ de las muestras de los flujos de obligaciones futuras simuladas de riesgos en curso
+	
+	$PRND_{}^{}=$ Prima de Riesgo no Devengada
+	
+	$FD_{}^{}=$ Factor de Distribución
+	
+	$n =$ número de simulaciones realizadas
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Es decir,
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${D}_{RRC}^{}={{BEL}_{RRC}^{99.5}-BEL_{RRC}}$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+\begin{comment}	
+	Para Salud Individual Dental, la desviación de las obligaciones futuras por riesgos en curso se obtendrá el producto de la prima de riesgo no devengada y el factor de desviación del mercado proporcionado por la Comisión Nacional de Seguros y Fianzas:
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${D}_{RRC}^{}=\sum_{k=1}^{n}PTND_{k}^{}\cdot(FD_{99.5}^{RRC}-FS_{BEL}^{RRC})\cdot FR_{k}$
+		\noindent
+		
+	}	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$PTND_{k}=$ Prima de tarifa no devengada de la póliza k
+	
+	\begin{comment}
+	$FD_{99.5}^{RRC}=$ Percentil $99.5\%$ de la estadística de índices de siniestralidad ultima del mercado
+	
+	$FS_{BEL}^{RRC}=$ Índice de siniestralidad ultima del mercado
+
+	
+	$FR_{k}^{}=$ Factor de retención de la póliza k (bajo el supuesto de que no operamos reaseguro, se usa $FR_{k}=1$)
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Sea $DU_{RRC}$ la duración de las obligaciones futuras asociadas a la reserva de riesgos en curso de las pólizas en vigor, el valor de la duración se obtiene con el siguiente procedimiento:
+	
+	\doublespacing
+	
+	Por cada simulación realizada durante el procedimiento de cálculo de $BELR_{RRC}$ se tomarán los valores estimados simulados de las obligaciones futuras ${Y^{sim*}}_{i,j}$:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre de} 
+				{ inicio de vigencia de la póliza}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  ${Y^{sim}}_{1,0}$ &  ${Y^{sim}}_{1,1}$ &  ${Y^{sim}}_{1,2}$ & $ \dots $ &  ${Y^{sim}}_{1,j}$& $ \dots $  &  ${Y^{sim}}_{1,k-2}$ &  ${Y^{sim}}_{1,k-1}$ &  ${Y^{sim}}_{1,k}$ & \\
+				2      &   ${Y^{sim}}_{2,0}$ &  ${Y^{sim}}_{2,1}$ &  ${Y^{sim}}_{2,2}$ & $ \dots $&  ${Y^{sim}}_{2,j}$ & $ \dots $  &  ${Y^{sim}}_{2,k-2}$ &  ${Y^{sim}}_{2,k-1}$ & & \\
+				3      &   ${Y^{sim}}_{3,0}$ &  ${Y^{sim}}_{3,1}$ &  ${Y^{sim}}_{3,2}$ & $ \dots $ &  ${Y^{sim}}_{3,j}$ & $ \dots $ &  ${Y^{sim}}_{3,k-2}$ & & & \\
+				4      &   ${Y^{sim}}_{4,0}$ &  ${Y^{sim}}_{4,1}$ &  ${Y^{sim}}_{4,2}$ & $ \dots $ &  ${Y^{sim}}_{4,j}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &   ${Y^{sim}}_{i,0}$ &  ${Y^{sim}}_{i,1}$ &  ${Y^{sim}}_{i,2}$ & $ \dots $ &  ${Y^{sim}}_{i,j}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &   ${Y^{sim}}_{s-2,0}$ &  ${Y^{sim}}_{s-2,1}$ &  ${Y^{sim}}_{s-2,2}$ & & & & & & &  \\
+				s-1      &   ${Y^{sim}}_{s-1,0}$ &  ${Y^{sim}}_{s-1,1}$ & & & & & & & & \\
+				s     &  ${Y^{sim}}_{s,0}$ &  ${Y^{sim*}}_{s,1}$ &  ${Y^{sim*}}_{s,2}$ & $ \dots $ &  ${Y^{sim*}}_{s,j}$& $ \dots $  &  ${Y^{sim*}}_{s,k-2}$ &  ${Y^{sim*}}_{s,k-1}$ &  ${Y^{sim*}}_{s,k}$ & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Con:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		$Y_{i,j}^{sim}={\sum _{m=0}^{j}X_{i,m}^{sim}}$
+		
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${f}_{j}^{sim}=\frac{ \sum_{i=1}^{s-j} {Y}_{i,j}^{sim}}{\sum_{i=1}^{s-j}{Y}_{i,j-1}^{sim}},$ con  $0<j\leq k$ 
+		\noindent
+		
+	}	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${Y}_{s,j}^{sim*}=  {Y}_{s,j-1}^{sim*}\cdot f_{j}^{sim}$, considerando que: $ {Y}_{s,1}^{sim*}=Y_{s,0}^{sim}\cdot f_{1}^{sim}$ 
+		\noindent
+		
+	}	
+	
+
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	$i=$trimestre de inicio de vigencia, $i\in \left\{1,2,3,\dots ,12\right\}$
+	
+	$j=$trimestre en que se reportó el siniestro, $j\in \left\{0,1,2,\dots\right\}$
+	
+	$m=$trimestre de acumulación, $m\in \left\{0,1,2,\dots ,j\right\}$ , $m\leq j\leq k$ 
+	
+	${X^{sim}}_{i,m}=$ Monto de siniestros simulado de las pólizas con inicio de vigencia en el trimestre i que fue reportados m trimestres posteriores al inicio de vigencia
+	
+	${Y^{sim}}_{i,j}=$ Monto de siniestros simulado de las pólizas con inicio de vigencia en el trimestre i reportados hasta el trimestre j; se refiere al último monto conocido del año i (montos representados por la diagonal del triángulo)
+	
+	${F^{sim}}_{j}=$ factor de incremento simulado del trimestre j
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Una vez obtenidos los montos estimados simulados de las obligaciones futuras ${Y^{sim*}}_{i,j}$:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+		
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Simulación} 
+				{ }
+				&	&  \multicolumn{9}{l}{ Trimestre de estimación} \\ %\cline{2-5}
+				&  1 & 2 & 3  & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $_{1}{Y^{sim*}}_{1}$ &  $_{1}{Y^{sim*}}_{2}$ &  $_{1}{Y^{sim*}}_{3}$ & $ \dots $ & $_{1}{Y^{sim*}}_{j}$ & $ \dots $  &  $_{1}{Y^{sim*}}_{k-2}$ & $_{1}{Y^{sim*}}_{k-1}$ &  $_{1}{Y^{sim*}}_{k}$ & \\
+				2        &  $_{2}{Y^{sim*}}_{1}$ &  $_{2}{Y^{sim*}}_{2}$ &  $_{2}{Y^{sim*}}_{3}$ & $ \dots $ & $_{2}{Y^{sim*}}_{j}$ & $ \dots $  &  $_{2}{Y^{sim*}}_{k-2}$ & $_{2}{Y^{sim*}}_{k-1}$ &  $_{2}{Y^{sim*}}_{k}$ & \\
+				:      & & & & & & & & & &\\
+				i       &  $_{i}{Y^{sim*}}_{1}$ &  $_{i}{Y^{sim*}}_{2}$ &  $_{i}{Y^{sim*}}_{3}$ & $ \dots $ & $_{i}{Y^{sim*}}_{j}$ & $ \dots $  &  $_{i}{Y^{sim*}}_{k-2}$ & $_{i}{Y^{sim*}}_{k-1}$ &  $_{i}{Y^{sim*}}_{k}$ & \\
+				:      & & & & & & & & & &  \\
+				n-1       &  $_{n-1}{Y^{sim*}}_{1}$ &  $_{n-1}{Y^{sim*}}_{2}$ &  $_{n-1}{Y^{sim*}}_{3}$ & $ \dots $ & $_{n-1}{Y^{sim*}}_{j}$ & $ \dots $  &  $_{n-1}{Y^{sim*}}_{k-2}$ & $_{n-1}{Y^{sim*}}_{k-1}$ &  $_{n-1}{Y^{sim*}}_{k}$ & \\
+				n       &  $_{n}{Y^{sim*}}_{1}$ &  $_{n}{Y^{sim*}}_{2}$ &  $_{n}{Y^{sim*}}_{3}$ & $ \dots $ & $_{n}{Y^{sim*}}_{j}$ & $ \dots $  &  $_{n}{Y^{sim*}}_{k-2}$ & $_{n}{Y^{sim*}}_{k-1}$ &  $_{n}{Y^{sim*}}_{k}$ & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$n=$ número de simulaciones realizadas
+	
+	$_{i}{Y^{sim*}}_{j}=$ i-ésima simulación de las obligaciones futuras esperadas simuladas del trimestre j
+	
+	$F_{ND}^{}=$ Factor de no devengamiento
+	
+	
+	Sea ${f_{RRC}}(j)$ el flujo de las obligaciones estimadas en el trimestre j de la reserva de riesgos en curso:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${f}_{RRC}^{}(j)=\frac{\sum_{i=1}^{n} {}_{i}{Y}_{j}^{sim*}}{{n}_{}}$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	
+	Y sea ${F_{RRC}}(t)$ la proporción de obligaciones que se espera se mantenga en persistencia hasta el trimestre t, se estima como:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		${F}_{RRC}^{}(t)=\frac{\sum_{j=t}^{k} {f}_{RRC}^{}(j)}{\sum_{j=1}^{k}{f}_{RRC}(j)}$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	La duración de las obligaciones futuras asociadas a la reserva de riesgos en curso de las pólizas en vigor, definida como $DU_{RRRC}$ es:
+	
+		\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	{\centering
+		${DU}_{RRC}^{}={\sum _{t=1}^{k}v_{}^{t}\cdot F_{RRC}(t)}$
+		\noindent
+		
+	}	
+		
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	{\centering
+		${v}_{}^{t}=\frac{1}{(1+i)^{t}}$ , 	${v}_{}^{0}=1$
+		\noindent
+		
+	}
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	
+	Con i, la tasa libre de riesgo.
+	
+		\doublespacing
+\begin{comment}		
+	La duración $DU_{RRC}$ de Salud Individual Dental, será la duración calculada con información del mercado y proporcionada por la Comisión Nacional de Seguros y Fianzas.
+	
+		\doublespacing
+	
+	
+	El Margen de Riesgo de la reserva de riesgos en curso ($MR_{RRC}$) se calculará como:
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+{\centering
+	${MR}_{RRC}^{}=R\cdot BC_{RRC}\cdot DU_{RRC}$
+	\noindent
+	
+}
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$R=$ Tasa de costo neto de capital
+	
+	$BC_{RRC}=$ Base de capital de la reserva de riesgos en curso
+	
+	$DU_{RRC}^{}=$ Duración de las obligaciones futuras asociadas a la reserva de riesgos en curso
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	La tasa de costo neto de capital (R) que se empleará para el cálculo del margen de riesgo, será igual a la tasa de interés adicional, en relación con la tasa de interés libre de riesgo de mercado, que una Institución de Seguros requeriría para cubrir el costo de capital exigido para mantener el importe de Fondos Propios Admisibles que respalden el RCS respectivo.
+	
+	\doublespacing
+	
+La tasa de costo neto de capital que se empleó para el cálculo del margen de riesgo durante el desarrollo de este trabajo profesional, es de $10\% $. 
+	
+		\doublespacing
+	
+	El Margen de Riesgo de los negocios emitidos anticipadamente será igual a cero.
+	
+	\doublespacing
+	
+	El Margen de Riesgo obtenido por cada grupo homogéneo, se distribuirá a nivel asegurado en proporción a la desviación observada de cada asegurado. La desviación por asegurado se obtendrá distribuyendo el percentil $99.5\%$ de las muestras de los flujos de obligaciones simuladas por cada asegurado y calculando la diferencia de este con el mejor estimador de riesgos en curso individual.
+	
+		\doublespacing
+		
+    Sea $FD_{}^{99.5}$ el factor de distribución del percentil $99.5\%$ de las muestras de los flujos de obligaciones simuladas:
+    
+    
+   	\doublespacing
+   
+   $ $
+   
+   \doublespacing
+    
+    {\centering
+    	${FD}_{}^{99.5}=\frac{{BELR}_{RRC}^{99.5}}{{PRND}_{}}$
+    	\noindent
+    	
+    }	
+    
+    
+   	\doublespacing
+   
+   $ $
+   
+   \doublespacing
+    	
+    	Donde:
+    	
+    		\doublespacing
+    		
+    $BELR_{RRC}^{99.5}=$ Percentil $99.5\%$ de las muestras de los flujos de obligaciones futuras simuladas de riesgos en curso
+    
+    $PRND_{}^{}=$ Prima de Riesgo no Devengada
+    		
+	\doublespacing
+
+$ $
+
+\doublespacing
+    		
+   Sea $BELR_{RRC,ind}^{99.5}$ el percentil $99.5\%$ de las muestras de los flujos de obligaciones futuras simuladas de riesgos en curso individual:
+   
+   	\doublespacing
+   
+   $ $
+   
+   \doublespacing
+   	
+   	 {	\centering
+   	$BELR_{RRC,ind}^{99.5}=PRND_{ind}\cdot FD_{}^{99.5}$
+   	
+   }
+
+ 	\doublespacing
+ 
+ $ $
+ 
+ \doublespacing
+   	
+  Donde:
+  
+ \doublespacing 
+  
+  $PRND_{ind}=$ Prima de Riesgo no Devengada de cada asegurado
+  
+   $FD_{}^{99.5}=$ Factor de Distribución del percentil $99.5\%$ de las muestras de los flujos de obligaciones simuladas
+  
+	\doublespacing
+
+$ $
+
+\doublespacing
+  	
+  	Y sea $D_{RRC,ind}$ el monto de desviación de las obligaciones futuras individual:
+  	
+  		\doublespacing
+  	
+  	$ $
+  	
+  	\doublespacing
+  		
+  		{	\centering
+  			$D_{RRC,ind}^{}=BELR_{RRC,ind}^{99.5}-BELR_{RRC,ind}^{}$
+  			
+  		}
+  		
+  		\doublespacing
+  		
+  		$ $
+  		
+  		\doublespacing
+  		
+  		Donde:
+  		
+  		\doublespacing
+  		
+  		$BELR_{RRC,ind}^{99.5}=$ Percentil $99.5\%$ de las muestras de los flujos de obligaciones futuras simuladas de riesgos en curso individual
+  		
+  		$BELR_{RRC,ind}=$ Mejor estimador de riesgos en curso individual
+  			
+	\doublespacing
+
+$ $
+
+\doublespacing
+  			
+  Entonces sea $MR_{RRC,ind}$, la proporción del margen de riesgo que corresponde al asegurado:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${MR}_{RRC,ind}^{}=MR_{RRC}\cdot \frac{{D}_{RRC,ind}^{}}{{D}_{RRC}}$
+		\noindent
+		
+	}	
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$MR_{RRC}=$ Margen de Riesgo de la reserva de riesgos en curso
+	
+	$D_{RRC,ind}^{}=$ Desviación de las obligaciones futuras individual
+	
+	$D_{RRC}^{}=$ Desviación de las obligaciones futuras
+	
+	
+	\doublespacing
+	\end{comment}
+$ $
+
+\doublespacing
+	 \begin{comment}
+	\chapter{Cálculo de la Reserva para Obligaciones Pendientes de Cumplir}
+	
+	\doublespacing
+	
+		La valuación y constitución de la reserva de siniestros ocurridos no reportados deberá calcularse para un grupo homogéneo definido, correspondiente a un cierto subramo y tipo de seguro que la Compañia en cuestión tenga en su cartera. El proceso aquí descrito fué aplicado en la practica para grupos homogéneos correspondientes a los ramos de Gastos Médicos Colectivo y Salud Colectivo.
+	
+	\doublespacing
+	
+	\section{Cálculo del BEL de Obligaciones Pendientes de Cumplir}
+	
+	\doublespacing
+
+
+	El cálculo del Bel de SONR implica un análisis de las obligaciones pendientes de cumplir. Para ello se necesita la construcción de una matriz de desarrollo de siniestros  de dimensiones (k x s), en la cual los siniestros se distribuyen por el trimestre en que se reporto cada uno de los procedimientos ocurridos respecto al inicio de vigencia de la póliza y consideramos montos netos de siniestralidad, es decir, no tomamos en cuenta el monto de deducible y copago a cargo del asegurado. La matriz queda de la siguiente manera:
+
+	\doublespacing
+	
+	$X_{i,j} =$ Monto de procedimientos ocurridos en el trimestre i que fueron reportados j trimestres posteriores a su fecha de ocurrido.
+	
+	$K_{} =$ Número de trimestres máximo observado en la experiencia de siniestros.
+	
+	$S_{} =$ Número de trimestres de experiencia de fecha de ocurrido.
+	
+	$i_{} =$ Trimestre de ocurrencia del procedimiento, $i\in \left\{0,1,2,\dots ,12\right\}$
+
+	$j_{} =$ Trimestre en que se reportó el procedimiento,  $j\in \left\{0,1,2,\dots\right\}$
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre en que} 
+				{ ocurrió el procedimiento}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $X_{1,0}^{}$ & $X_{1,1}^{}$ & $X_{1,2}^{}$ & $ \dots $ & $X_{1,j}^{}$ & $ \dots $ & $X_{1,k-2}^{}$ & $X_{1,k-1}^{}$ & $X_{1,k}^{}$ & \\
+				2      &  $X_{2,0}^{}$ & $X_{2,1}^{}$ & $X_{2,2}^{}$ & $ \dots $ & $X_{2,j}^{}$ & $ \dots $ & $X_{2,k-2}^{}$ & $X_{2,k-1}^{}$ & & \\
+				3      &  $X_{3,0}^{}$ & $X_{3,1}^{}$ & $X_{3,2}^{}$ & $ \dots $ & $X_{3,j}^{}$ & $ \dots $ & $X_{3,k-2}^{}$ & & & \\
+				4      &  $X_{4,0}^{}$ & $X_{4,1}^{}$ & $X_{4,2}^{}$ & $ \dots $ & $X_{4,j}^{}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $X_{i,0}^{}$ & $X_{i,1}^{}$ & $X_{i,2}^{}$ & $ \dots $ & $X_{i,j}^{}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $X_{s-2,0}^{}$ & $X_{s-2,1}^{}$ & $X_{s-2,2}^{}$ & & & & & & &  \\
+				s-1      &  $X_{s-1,0}^{}$ & $X_{s-1,1}^{}$ & & & & & & & & \\
+				s      &  $X_{s,0}^{}$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+
+	
+	\doublespacing
+		Una vez que se obtiene la matriz de siniestros, la usamos para generar una matriz de siniestros acumulados en la cual definimos ${Y}_{i,j}$ como el monto de procedimientos ocurridos en el trimestre i reportados hasta el trimestre j:
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		$Y_{i,j}={\sum _{m=0}^{j}X_{i,m}^{}}$
+		
+		\noindent
+		
+	}	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+
+	Donde:
+	\doublespacing
+	
+		$X_{i,m} =$ Monto de procedimientos ocurridos en el trimestre i que fueron reportados m trimestres posteriores a su fecha de ocurrido.
+	
+	$i_{} =$ Trimestre de ocurrencia del procedimiento, $i\in \left\{0,1,2,\dots ,12\right\}$
+	
+	$j_{} =$ Trimestre en que se reportó el procedimiento,  $j\in \left\{0,1,2,\dots\right\}$
+	
+		$m=$trimestre de acumulación, $m\in \left\{0,1,2,\dots ,j\right\}$ , $m\leq j\leq k$ 
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre en que} 
+				{ ocurrió el procedimiento}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $Y_{1,0}^{}$ & $Y_{1,1}^{}$ & $Y_{1,2}^{}$ & $ \dots $ & $Y_{1,j}^{}$ & $ \dots $ & $Y_{1,k-2}^{}$ & $Y_{1,k-1}^{}$ & $Y_{1,k}^{}$ & \\
+				2      &  $Y_{2,0}^{}$ & $Y_{2,1}^{}$ & $Y_{2,2}^{}$ & $ \dots $ & $Y_{2,j}^{}$ & $ \dots $ & $Y_{2,k-2}^{}$ & $Y_{2,k-1}^{}$ & & \\
+				3      &  $Y_{3,0}^{}$ & $Y_{3,1}^{}$ & $Y_{3,2}^{}$ & $ \dots $ & $Y_{3,j}^{}$ & $ \dots $ & $Y_{3,k-2}^{}$ & & & \\
+				4      &  $Y_{4,0}^{}$ & $Y_{4,1}^{}$ & $Y_{4,2}^{}$ & $ \dots $ & $Y_{4,j}^{}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $Y_{i,0}^{}$ & $Y_{i,1}^{}$ & $Y_{i,2}^{}$ & $ \dots $ & $Y_{i,j}^{}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $Y_{s-2,0}^{}$ & $Y_{s-2,1}^{}$ & $Y_{s-2,2}^{}$ & & & & & & &  \\
+				s-1      &  $Y_{s-1,0}^{}$ & $Y_{s-1,1}^{}$ & & & & & & & & \\
+				s      &  $Y_{s,0}^{}$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	A partir de la matriz de siniestros acumulados obtenemos los factores de incremento $f_{j}$, que representan el incremento que existe de un trimestre a otro:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+
+	{\centering
+		${f}_{j}^{}=\frac{{\sum _{i=1}^{x-j}Y_{i,j}^{}}}{{\sum _{i=1}^{x-j}Y_{i,j-1}^{}}}$, con $0<j\leq k$ 
+		\noindent
+		
+	}	
+	
+
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	
+	$Y_{i,j}^{}=$ Monto de procedimientos ocurridos en el trimestre i reportados hasta el trimestre j.
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	Utilizando los factores de incremento, se definen los Siniestros Esperados para la vigencia i (${SE}_{i}$) como la estimación del monto de siniestros que habrán de ser reportados para las pólizas con inicio de vigencia en el trimestre i:
+	
+	Utilizando los factores de incremento, definimos los Siniestros Esperados para el trimestre i ($SE_{i}$) como la estimación del monto de procedimientos que habrán de ser reportados con fecha de ocurrido del trimestre i:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+	${SE}_{i}={Y}_{s-i+1,i-1}\cdot\Pi_{j=i}^{k}{f}_{j}$, con $0\le j\le k$
+	\noindent
+	
+}	
+
+	\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	
+	$Y_{s-i+1,i-1}^{}=$ Monto de procedimientos ocurridos en el trimestre i reportados hasta el trimestre s-i; se refiere al último monto conocido del trimestre i (montos representados por la diagonal del triángulo)
+	
+	$f_{j}=$ factor de incremento del trimestre j
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Con base en los Siniestros Estimados y los Siniestros Acumulados observados, estimamos los flujos de obligaciones futuras iniciales de siniestros ocurridos no reportados ($RSONR_{}^{0}$) como:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		$RSONR_{}^{0}={\sum _{i=s-k}^{s}SE_{i}^{}-Y_{i,s-i}^{}}$
+		
+		\noindent
+		
+	}	
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	$SE_{i}^{}=$ Siniestros Esperados ocurridos en el trimestre i
+	
+	$Y_{i,s-i}^{}=$ Monto de procedimientos ocurridos en el trimestre i reportados hasta el trimestre s-i; se refiere al último monto conocido del trimestre i (montos representados por la diagonal del triángulo)
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	El método de $Chain-Ladder$ puede ser visto como una regresión ponderada, por ello, es posible considerar los residuales obtenidos a partir del ajuste realizado por dicho método. Para esto, se calcula una matriz de siniestros acumulados ajustados partiendo del último dato observado y desplazándose hacia atrás con los factores de incremento $f_{j}$.
+	
+	\doublespacing
+	
+	Sea $Y_{i,j}^{*}$ el monto ajustado de procedimientos ocurridos en el trimestre i reportados hasta el trimestre j:
+	
+	\doublespacing
+
+	
+	{\centering
+		${Y}_{i,j-1}^{*}=\frac{{Y}_{i,j}^{*}}{{f}_{j}}$
+		\noindent
+		
+	}	
+	
+	
+\doublespacing
+
+
+	
+	
+	Con:
+	
+\doublespacing
+
+	
+		{\centering
+		${Y}_{i,k-i+1}^{*}={Y}_{i,k-i+1}^{}$
+		\noindent
+		
+	}
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$Y_{i,j}^{*}=$ Monto de procedimientos ocurridos en el trimestre i reportados hasta el trimestre j
+	
+	$f_{j}^{}=$ factor de incremento del trimestre j
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	La matriz de siniestros acumulados ajustados queda como sigue:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre en que} 
+				{ ocurrió el procedimiento}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $Y_{1,0}^{*}$ & $Y_{1,1}^{*}$ & $Y_{1,2}^{*}$ & $ \dots $ & $Y_{1,j}^{*}$ & $ \dots $ & $Y_{1,k-2}^{*}$ & $Y_{1,k-1}^{*}$ & $Y_{1,k}^{}$ & \\
+				2      &  $Y_{2,0}^{*}$ & $Y_{2,1}^{*}$ & $Y_{2,2}^{*}$ & $ \dots $ & $Y_{2,j}^{*}$ & $ \dots $ & $Y_{2,k-2}^{*}$ & $Y_{2,k-1}^{}$ & & \\
+				3      &  $Y_{3,0}^{*}$ & $Y_{3,1}^{*}$ & $Y_{3,2}^{*}$ & $ \dots $ & $Y_{3,j}^{*}$ & $ \dots $ & $Y_{3,k-2}^{}$ & & & \\
+				4      &  $Y_{4,0}^{*}$ & $Y_{4,1}^{*}$ & $Y_{4,2}^{*}$ & $ \dots $ & $Y_{4,j}^{*}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $Y_{i,0}^{*}$ & $Y_{i,1}^{*}$ & $Y_{i,2}^{*}$ & $ \dots $ & $Y_{i,j}^{}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $Y_{s-2,0}^{*}$ & $Y_{s-2,1}^{*}$ & $Y_{s-2,2}^{}$ & & & & & & &  \\
+				s-1      &  $Y_{s-1,0}^{*}$ & $Y_{s-1,1}^{}$ & & & & & & & & \\
+				s      &  $Y_{s,0}^{}$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	A partir de la matriz de siniestros acumulados ajustados, se obtiene la matriz de siniestros ajustados con $X_{i,j}^{*}$ el monto de procedimientos ajustados ocurridos en el trimestre i que fueron reportados j trimestres posteriores a su fecha de ocurrido como:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+		\doublespacing
+	
+	
+	{\centering
+		$X_{i,j}^{*}=Y_{i,j}^{*}-{\sum _{m=0}^{j-1}X_{i,m}^{*}}$
+		
+		\noindent
+		
+	}	
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+
+	
+	Con:
+	
+		\doublespacing
+		
+		{\centering
+		$X_{i,0}^{*}=Y_{i,0}^{*}$
+		
+		\noindent
+		
+	}	
+	\doublespacing
+	\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$Y_{i,j}^{*}=$ Monto ajustado de procedimientos ocurridos en el trimestre i reportados hasta el trimestre j
+	
+	$m=$trimestre de acumulación, $m\in \left\{0,1,2,\dots ,j\right\}$ , $m\leq j\leq k$ 
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre en que} 
+				{ ocurrió el procedimiento}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $X_{1,0}^{*}$ & $X_{1,1}^{*}$ & $X_{1,2}^{*}$ & $ \dots $ & $X_{1,j}^{*}$ & $ \dots $ & $X_{1,k-2}^{*}$ & $X_{1,k-1}^{*}$ & $X_{1,k}^{*}$ & \\
+				2      &  $X_{2,0}^{*}$ & $X_{2,1}^{*}$ & $X_{2,2}^{*}$ & $ \dots $ & $X_{2,j}^{*}$ & $ \dots $ & $X_{2,k-2}^{*}$ & $X_{2,k-1}^{*}$ & & \\
+				3      &  $X_{3,0}^{*}$ & $X_{3,1}^{*}$ & $X_{3,2}^{*}$ & $ \dots $ & $X_{3,j}^{*}$ & $ \dots $ & $X_{3,k-2}^{*}$ & & & \\
+				4      &  $X_{4,0}^{*}$ & $X_{4,1}^{*}$ & $X_{4,2}^{*}$ & $ \dots $ & $X_{4,j}^{*}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $X_{i,0}^{*}$ & $X_{i,1}^{*}$ & $X_{i,2}^{*}$ & $ \dots $ & $X_{i,j}^{*}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $X_{s-2,0}^{*}$ & $X_{s-2,1}^{*}$ & $X_{s-2,2}^{*}$ & & & & & & &  \\
+				s-1      &  $X_{s-1,0}^{*}$ & $X_{s-1,1}^{*}$ & & & & & & & & \\
+				s      &  $X_{s,0}^{*}$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Los residuales brutos $R_{i,j}$ se obtienen como la diferencia del monto de siniestros observados y el monto de siniestros ajustado:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		$R_{i,j}^{}=X_{i,j}^{}-X_{i,j}^{*}$
+		
+		\noindent
+		
+	}	
+	\doublespacing
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$X_{i,j}^{*}=$  Monto de procedimientos ajustados ocurridos en el trimestre i que fueron reportados j trimestres posteriores a su fecha de ocurrido
+		
+		$X_{i,j}^{}=$  Monto de procedimientos ocurridos en el trimestre i que fueron reportados j trimestres posteriores a su fecha de ocurrido
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre en que} 
+				{ ocurrió el procedimiento}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $R_{1,0}^{}$ & $R_{1,1}^{}$ & $R_{1,2}^{}$ & $ \dots $ & $R_{1,j}^{}$ & $ \dots $ & $R_{1,k-2}^{}$ & $R_{1,k-1}^{}$ & $R_{1,k}^{}$ & \\
+				2      &  $R_{2,0}^{}$ & $R_{2,1}^{}$ & $R_{2,2}^{}$ & $ \dots $ & $R_{2,j}^{}$ & $ \dots $ & $R_{2,k-2}^{}$ & $R_{2,k-1}^{}$ & & \\
+				3      &  $R_{3,0}^{}$ & $R_{3,1}^{}$ & $R_{3,2}^{}$ & $ \dots $ & $R_{3,j}^{}$ & $ \dots $ & $R_{3,k-2}^{}$ & & & \\
+				4      &  $R_{4,0}^{}$ & $R_{4,1}^{}$ & $R_{4,2}^{}$ & $ \dots $ & $R_{4,j}^{}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $R_{i,0}^{}$ & $R_{i,1}^{}$ & $R_{i,2}^{}$ & $ \dots $ & $R_{i,j}^{}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $R_{s-2,0}^{}$ & $R_{s-2,1}^{}$ & $R_{s-2,2}^{}$ & & & & & & &  \\
+				s-1      &  $R_{s-1,0}^{}$ & $R_{s-1,1}^{}$ & & & & & & & & \\
+				s      &  $R_{s,0}^{}$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+	\doublespacing
+	\doublespacing
+	
+	A fin de utilizar el método de $Bootstrap$, se realiza el supuesto de que los residuales obtenidos en la matriz anterior provienen de la misma distribución y son independientes.
+	
+	\doublespacing
+	
+	El método de $Bootstrap$ es un método de muestreo con el que se busca aproximar la distribución muestral de alguna variable aleatoria que se basa en los datos observados.
+	
+	\doublespacing
+	
+	Teniendo una muestra de datos $x_1, x_2, x_3, …, x_n$, donde los $x_i$ son independientes y provienen de una distribución desconocida F, donde además se presume que dicha muestra es una representación significativa de la población de donde proviene.
+	
+	\doublespacing
+	
+	Se tiene además una variable aleatoria $R(X,F)$ que depende de X y de la función desconocida F. Entonces se puede realizar una muestra aleatoria de tamaño n con reemplazo de la muestra de datos, $x_1^*, x_2^*, x_3^*, …, x_n^*$ y a partir de esa muestra se puede calcular una observación de la variable aleatoria $R^*(X^*,F^*)$, donde $F^*$ es la distribución de probabilidad de la muestra, que se construyó de tipo uniforme.
+	
+	\doublespacing
+	
+	Finalmente, se realizan más muestras y se calculan más valores de $R^*$ para estimar la distribución $R(X,F)$.
+	
+	\doublespacing
+	
+	La utilidad técnica de $bootstrapping$ es que permite aproximar la distribución de alguna estadística de los datos de una forma fácil y rápida.
+	
+	\doublespacing
+	
+	Adicionalmente, no es necesario hacer una estimación paramétrica ni supuestos acerca de la distribución de los datos.
+	
+	\doublespacing
+	
+	Una vez obtenida la matriz de residuales brutos $R_{i,j}$, se obtiene el valor mínimo y máximo observado de cada columna j como el intervalo de residuales observado.
+	
+	\doublespacing
+	
+	Sea $R_{j}^{min}$ el valor mínimo de los residuales observados en el trimestre reportado j y $R_{j}^{max}$ el valor máximo de los residuales observados del grupo homgéneo g en el trimestre reportado j:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ } 
+				{ }
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				&  0 & 1 & 2  & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				Mínimo      &  $R_{0}^{min}$ &  $R_{1}^{min}$ &  $R_{2}^{min}$ & $ \dots $ & $R_{j}^{min}$ & $ \dots $  &  $R_{k-2}^{min}$ & $R_{k-1}^{min}$ &  $R_{k}^{min}$ & \\
+				Máximo      &  $R_{0}^{max}$ &  $R_{1}^{max}$ &  $R_{2}^{max}$ & $ \dots $ & $R_{j}^{max}$ & $ \dots $  &  $R_{k-2}^{max}$ & $R_{k-1}^{max}$ &  $R_{k}^{max}$ & \\
+				
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Con:
+	
+	\doublespacing
+	
+	{\centering
+	$R_{j}^{min}=min_{i\in \left\{1,2,\dots ,s\right\} }[R_{i,j}]$
+	\noindent
+	
+}
+		{\centering
+		$R_{j}^{max}=max_{i\in \left\{1,2,\dots ,s\right\} }[R_{i,j}]$
+		\noindent
+		
+	}
+	
+
+	
+	Donde:
+	
+	\doublespacing
+	
+		$R_{i,j}=$ Residual bruto del trimestre de ocurrencia i reportado en el trimestre j
+	
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Se realiza un muestreo con remplazo de residuales tomando n muestras, con n = 100,000, de forma uniforme dentro del intervalo $[R_{j}^{min},R_{j}^{max}]$ de cada una de las columnas de reportado j, el tamaño de las muestras deben ser suficiente para contar con una matriz de igual tamaño a la matriz de siniestros ajustados.
+	
+	\doublespacing
+	
+	Sea $R_{i,j}^{*}$ el residual seleccionado en la muestra que corresponde a los procedimientos ocurridos en el trimestre i que fueron reportados en el trimestre j, la matriz de residuales de la muestra queda como sigue:
+	
+	\doublespacing
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Trimestre en que} 
+				{ ocurrió el procedimiento}
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $R_{1,0}^{*}$ & $R_{1,1}^{*}$ & $R_{1,2}^{*}$ & $ \dots $ & $R_{1,j}^{*}$ & $ \dots $ & $R_{1,k-2}^{*}$ & $R_{1,k-1}^{*}$ & $R_{1,k}^{*}$ & \\
+				2      &  $R_{2,0}^{*}$ & $R_{2,1}^{*}$ & $R_{2,2}^{*}$ & $ \dots $ & $R_{2,j}^{*}$ & $ \dots $ & $R_{2,k-2}^{*}$ & $R_{2,k-1}^{*}$ & & \\
+				3      &  $R_{3,0}^{*}$ & $R_{3,1}^{*}$ & $R_{3,2}^{*}$ & $ \dots $ & $R_{3,j}^{*}$ & $ \dots $ & $R_{3,k-2}^{*}$ & & & \\
+				4      &  $R_{4,0}^{*}$ & $R_{4,1}^{*}$ & $R_{4,2}^{*}$ & $ \dots $ & $R_{4,j}^{*}$ & $ \dots $ & & & & \\
+				:      & & & & & & & & & &\\
+				i      &  $R_{i,0}^{*}$ & $R_{i,1}^{*}$ & $R_{i,2}^{*}$ & $ \dots $ & $R_{i,j}^{*}$ & & & & &  \\
+				:      & & & & & & & & & &  \\
+				s-2      &  $R_{s-2,0}^{*}$ & $R_{s-2,1}^{*}$ & $R_{s-2,2}^{*}$ & & & & & & &  \\
+				s-1      &  $R_{s-1,0}^{*}$ & $R_{s-1,1}^{*}$ & & & & & & & & \\
+				s      &  $R_{s,0}^{*}$ & & & & & & & & & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	Por cada muestra obtenida se obtiene una matriz de siniestros simulada agregando el residual obtenido mediante la muestra a cada monto de siniestros ajustados.
+	
+	\doublespacing
+	
+	Sea $X_{i,j}^{sim}$ el monto de siniestros simulado de los procedimientos ocurridos en el trimestre i que fueron reportados j trimestres posteriores a su fecha de ocurrido, se calcula como sigue:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		${X}_{i,j}^{sim}=R_{i,j}^{*}+X_{i,j}^{*}$
+		\noindent
+		
+	}
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$R_{i,j}^{*}=$ Residual seleccionado en la muestra que corresponde a los procedimientos ocurridos en el trimestre i reportados en el trimestre j
+	
+	$X_{i,j}^{*}=$ Monto de siniestros ajustados de los procedimientos ocurridos en el trimestre i que fueron reportados j trimestre posteriores a su fecha de ocurrido
+	
+		\doublespacing
+	\doublespacing
+	
+	$ $
+	
+	\doublespacing
+		
+		\begin{center}
+			%\begin{document}
+			\begin{table}[H]
+				%	\centering
+				%	\caption{Countermeasure solutions for connected vehicle}
+				%	\label{Countermeasure solutions for connected vehicle}
+				\begin{tabular}{ L |cccccccccc}
+					%	\toprule
+					%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+					\multirow{2}{*}{ Trimestre en que} 
+					{ ocurrió el procedimiento}
+					&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+					& 0  & 1 & 2 & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+					\midrule
+					1      &  $X_{1,0}^{sim}$ & $X_{1,1}^{sim}$ & $X_{1,2}^{sim}$ & $ \dots $ & $X_{1,j}^{sim}$ & $ \dots $ & $X_{1,k-2}^{sim}$ & $X_{1,k-1}^{sim}$ & $X_{1,k}^{sim}$ & \\
+					2      &  $X_{2,0}^{sim}$ & $X_{2,1}^{sim}$ & $X_{2,2}^{sim}$ & $ \dots $ & $X_{2,j}^{sim}$ & $ \dots $ & $X_{2,k-2}^{sim}$ & $X_{2,k-1}^{sim}$ & & \\
+					3      &  $X_{3,0}^{sim}$ & $X_{3,1}^{sim}$ & $X_{3,2}^{sim}$ & $ \dots $ & $X_{3,j}^{sim}$ & $ \dots $ & $X_{3,k-2}^{sim}$ & & & \\
+					4      &  $X_{4,0}^{sim}$ & $X_{4,1}^{sim}$ & $X_{4,2}^{sim}$ & $ \dots $ & $X_{4,j}^{sim}$ & $ \dots $ & & & & \\
+					:      & & & & & & & & & &\\
+					i      &  $X_{i,0}^{sim}$ & $X_{i,1}^{sim}$ & $X_{i,2}^{sim}$ & $ \dots $ & $X_{i,j}^{sim}$ & & & & &  \\
+					:      & & & & & & & & & &  \\
+					s-2      &  $X_{s-2,0}^{sim}$ & $X_{s-2,1}^{sim}$ & $X_{s-2,2}^{sim}$ & & & & & & &  \\
+					s-1      &  $X_{s-1,0}^{sim}$ & $X_{s-1,1}^{sim}$ & & & & & & & & \\
+					s      &  $X_{s,0}^{sim}$ & & & & & & & & & \\
+					%	\bottomrule
+				\end{tabular}
+			\end{table}
+			%\end{document}
+		\end{center}
+		
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Una vez obtenida la matriz de siniestros simulada, se genera la matriz de siniestros acumulados simulados, se obtienen los factores de incremento simulados, se estiman los siniestros esperados simulados y se calculan los flujos de obligaciones futuras simuladas de siniestros ocurridos no reportados de la muestra i ($RSONR_{i}^{sim}$) siguiendo el proceso indicado con anterioridad para la matriz original de siniestros. 
+	
+	\doublespacing
+	
+	La compañía considera el mejor estimador de obligaciones pendientes por cumplir por siniestros ocurridos no reportados ($BEL_{SONR}$) como el valor medio de las 100,000 muestras de los flujos de obligaciones futuras simuladas de siniestros ocurridos no reportados.
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${BEL}_{SONR}^{}=\frac{\sum _{i=1}^{n}PSONR_{i}^{sim}}{{n}_{}}$
+		\noindent
+		
+	}	
+	
+
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$RSONR_{i}^{sim}=$ i-ésima simulación de la reserva de siniestros ocurridos no reportados
+	 
+	$n=$ 100,000 simulaciones realizadas
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	Para Salud Individual Dental, el $BEL_{SONR}$ se calculará como el producto de la prima de tarifa devengada en cada uno de los últimos cinco años de operación de la Institución, por el índice de siniestros ocurridos pero no reportados o que no hayan sido completamente reportados ($FS_{BEL}^{SONR}$), y por el factor de devengamiento correspondiente a cada año:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+		\doublespacing
+	
+	
+	{\centering
+		$BEL_{SONR}={\sum _{i=1}^{5}(PTD_{i}\cdot FS_{BEL}^{SONR})\cdot FD_{i}^{SONR}}$
+		
+		\noindent
+		
+	}	
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	El cálculo del $BEL_{SONR}$, se realizará de forma trimestral.
+	
+	\doublespacing
+	
+	\section{ Cálculo de la Reserva de Obligaciones Pendientes de Cumplir}
+	
+	\doublespacing
+	
+	La reserva de obligaciones pendientes de cumplir de cada subramo se calculará conforme al subramo que corresponde a cada registro de producto realizado ante la Comisión Nacional de Seguros y Fianzas.
+	
+	\doublespacing
+	
+	Sea $RSONR_{GMC}$ la reserva de obligaciones pendientes de cumplir del subramo de Gastos Médicos Colectivo, 
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+		
+		{\centering
+		$RSONR_{GMC}=(BEL_{SONR,GMD}+BEL_{SONR,V})+(MR_{SONR,GMD}+MR_{SONR,V})+tVD$
+		
+		\noindent
+		
+	}	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing	
+	
+	$BEL_{SONR,GMD}=$ Mejor estimador de la reserva de obligaciones pendientes de cumplir del grupo de Gastos Médicos Dental
+	
+	$BEL_{SONR,V}^{}=$ Mejor estimador de la reserva de obligaciones pendientes de cumplir del grupo de Visión
+	
+	$MR_{SONR,GMD}^{}=$ Margen de riesgo de la reserva de obligaciones pendientes de cumplir del grupo de Gastos Médicos Dental
+	
+	$MR_{SONR,V}^{}=$ Margen de riesgo de la reserva de obligaciones pendientes de cumplir del grupo de Visión
+	
+	$tVD=$ Reserva de dividendos al tiempo t
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	y:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+		
+	{\centering
+		$tVD= {x\% }(PRD_t -S_t)$
+		
+		\noindent
+		
+	}	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$x\%=$ porcentaje de dividendos pactado con el cliente, este puede variar entre clientes
+		
+		$t=$ Meses transcurridos para $t=1,2,3,4,….,12$
+		
+		$tVD=$ Reserva de dividendos al tiempo t
+		
+		$PRD=$ Prima de Riesgo Devengada al tiempo t
+		
+		$St=$ Siniestralidad ocurrida al tiempo t
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Al momento de que la siniestralidad del total de las pólizas rebase la Prima de Riesgo devengada al tiempo “t” ($PRDt$), la reserva de dividendos se liberará pues ya no es elegible para el otorgamiento de dividendos.
+	
+	\doublespacing
+	
+	El cliente podrá emitir diferentes pólizas para el mismo negocio, sin embargo para el cálculo de dividendos las pólizas que otorguen dividendos compartirán experiencia de Siniestralidad, de tal forma que se totalizará y/o agrupará el resultado a nivel Contratante/Cliente y no por Póliza individual para efectos del cálculo.
+	
+	\doublespacing
+	
+	El Dividendo se calculará conforme a la siguiente fórmula general para los negocios con dividendos propios:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+		
+	{\centering
+	
+		$tVD=p\%(PRD_t-S_t)$
+		
+		\noindent
+		
+	}	
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$p\%=$ porcentaje de dividendos pactado con el cliente, registrado en el producto de no adhesión
+	
+	$t=$ Meses transcurridos para $t=1,2,3,4,….,12$
+	
+	$tVD=$ Reserva de dividendos al tiempo t
+	
+	$PRD=$ Prima de Riesgo Devengada al tiempo t
+	
+	$St=$ Siniestralidad ocurrida al tiempo t
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	La reserva de dividendos al tiempo “t” (tVD), se constituirá mensualmente con la prima de riesgo devengada al tiempo “t” (PRDt), por la suma de todas las pólizas que tengan derecho a dividendo, conforme a la siguiente fórmula:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		$tVD_{}={\sum _{p\in D}^{}tVD_{p}^{}}$
+		
+		\noindent
+		
+	}	
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+
+	
+	Dónde:
+	
+	\doublespacing
+	
+		$tVD=$ Reserva de dividendo de la póliza p
+	
+	$D=$ conjunto de pólizas con Dividendo pactado
+	
+	
+	\doublespacing
+	
+	La reserva de las carteras de Salud Colectivo Dental y Salud Individual Dental se calculan de forma independiente conforme a la metodología que le corresponde:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		$RSONR_{}=BEL_{SONR}+MR_{SONR}+tVD$
+		
+		\noindent
+		
+	}
+
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$BEL_{SONR}=$ Mejor estimador de la reserva de obligaciones pendientes de cumplir
+	
+	$MR_{SONR}^{}=$ Margen de riesgo de la reserva de obligaciones pendientes de cumplir
+	
+	$tVD=$ Reserva de dividendos al tiempo t definida anteriormente
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\chapter{Metodología para el Cálculo del Margen de Riesgo}
+	
+	\doublespacing
+	
+	\doublespacing
+	
+	Se calculará la base de capital para determinar el margen de riesgo de la reserva de obligaciones pendientes de cumplir para el ramo o tipo de seguro i de que se trate ($BC_{SONR}$), como la cantidad que resulte de prorratear el RCS en congruencia con el riesgo subyacente por siniestros ocurridos no reportados, del ramo o tipo de seguros de que se trate, la base de capital se determina como:
+	
+	\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	{\centering
+		${BC}_{SONR}^{}=\frac{{D}_{SONR}^{}}{\sum _{i}^{}D_{RRC}^{}+\sum _{i}^{}D_{SONR}^{}}\cdot RCS$
+		\noindent
+		
+	}	
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$D_{RRC}=$ Valor estimado de la desviación de las obligaciones futuras asociadas a la reserva de riesgos en curso de cumplir del grupo g
+	
+	$D_{SONR}^{}=$ Valor estimado de la desviación de las obligaciones futuras asociadas a la reserva de obligaciones pendientes de cumplir por siniestros ocurridos no reportados del grupo g
+	
+
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Sea $D_{SONR}$ el monto correspondiente a la desviación de las obligaciones futuras por siniestros ocurridos no reportados, éste se obtendrá como la diferencia del percentil $99.5\%$ de las simulaciones y la media de éstas ($BEL_{SONR}$)
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	{\centering
+		${D}_{SONR}^{}=BEL_{SONR}^{99.5}-BEL_{SONR}$
+		\noindent
+		
+	}	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	$BEL_{SONR}^{99.5}=$ Percentil 99.5 de las simulaciones de obligaciones futuras esperadas por siniestros ocurridos no reportados
+	
+	$BEL_{SONR}^{}=$ Mejor Estimador de las obligaciones futuras por siniestros ocurridos no reportados
+	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Para Salud Individual, la desviación de las obligaciones futuras por siniestros ocurridos no reportados se obtendrá como la prima devengada en los últimos 5 años de la Institución multiplicada por la diferencia de índices del percentil $99.5\%$ y siniestralidad última, por el factor de devengamieno de cada año y el factor de retención que corresponda:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		$D_{SONR}=\sum_{i=1}^{5}(PTD_{k}^{}\cdot(FS_{99.5}^{SONR}-FS_{BEL}^{SONR})\cdot FD_k^{SONR}\cdot FR_k^{SONR})$
+		
+		\noindent
+		
+	}	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+		$PTD=$ Prima de tarifa devengada en el año k
+	
+	$FS_{99.5}^{SONR}=$ Percentil $99.5\%$ de la estadística de índices de siniestralidad última de siniestros ocurridos no reportados o que no hayan sido completamente reportados
+	
+	$FS_{BEL}^{SONR}=$ Índice de siniestros ocurridos pero no reportados o que no hayan sido completamente reportados
+	
+	$FD_k^{SONR}=$ Factor de devengamiento correspondiente al año k
+	
+	$FR_k^{SONR}=$ Factor de retención de las obligaciones provenientes del año k (al no operar reaseguro, se usará $FR_k^{SONR}=$ 1)
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Sea $DU_{SONR}$ la duración de las obligaciones futuras asociadas a la reserva de obligaciones pendientes de cumplir, el valor de la duración se obtiene con el siguiente procedimiento:
+	
+	\doublespacing
+	
+	Por cada simulación realizada durante el procedimiento de cálculo de $BEL_SONR$ se tomará los valores estimados simulados de las obligaciones futuras $Y_{i,j}^{sim*}$:
+	
+		\doublespacing
+	
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				
+				\multirow{2}{*}{ Trimestre que}
+				{ ocurrió el procedimiento} 
+				{ }
+				&	&  \multicolumn{9}{l}{ Trimestre en que se reportó el procedimiento} \\ %\cline{2-5}
+				&  0 & 1 & 2  & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $Y_{1,0}^{sim}$ &  $Y_{1,1}^{sim}$ &  $Y_{1,2}^{sim}$ & $ \dots $ & $Y_{1,j}^{sim}$ & $ \dots $  &  $Y_{1,k-2}^{sim}$ & $Y_{1,k-1}^{sim}$ &  $Y_{1,k}^{sim}$ & \\
+				2      &  $Y_{2,0}^{sim}$ &  $Y_{2,1}^{sim}$ &  $Y_{2,2}^{sim}$ & $ \dots $ & $Y_{2,j}^{sim}$ & $ \dots $  &  $Y_{2,k-2}^{sim}$ & $Y_{2,k-1}^{sim}$ &  $Y_{2,k}^{sim}$ & \\
+				3      &  $Y_{3,0}^{sim}$ &  $Y_{3,1}^{sim}$ &  $Y_{3,2}^{sim}$ & $ \dots $ & $Y_{3,j}^{sim}$ & $ \dots $  &  $Y_{3,k-2}^{sim}$ & $Y_{3,k-1}^{sim}$ &  $Y_{3,k}^{sim}$ & \\
+				4      &  $Y_{4,0}^{sim}$ &  $Y_{4,1}^{sim}$ &  $Y_{4,2}^{sim}$ & $ \dots $ & $Y_{4,j}^{sim}$ & $ \dots $  &  $Y_{4,k-2}^{sim}$ & $Y_{4,k-1}^{sim}$ &  $Y_{4,k}^{sim}$ & \\
+			:      & & & & & & & & & &\\
+				i      &  $Y_{i,0}^{sim}$ &  $Y_{i,1}^{sim}$ &  $Y_{i,2}^{sim}$ & $ \dots $ & $Y_{i,j}^{sim}$ & $ \dots $  &  $Y_{i,k-2}^{sim}$ & $Y_{i,k-1}^{sim}$ &  $Y_{i,k}^{sim}$ & \\
+			:      & & & & & & & & & &  \\
+				s-2      &  $Y_{s-2,0}^{sim}$ &  $Y_{s-2,1}^{sim}$ &  $Y_{s-2,2}^{sim}$ & $ \dots $ & $Y_{s-2,j}^{sim}$ & $ \dots $  &  $Y_{s-2,k-2}^{sim}$ & $Y_{s-2,k-1}^{sim}$ &  $Y_{s-2,k}^{sim}$ & \\
+				s-1      &  $Y_{s-1,0}^{sim}$ &  $Y_{s-1,1}^{sim}$ &  $Y_{s-1,2}^{sim}$ & $ \dots $ & $Y_{s-1,j}^{sim}$ & $ \dots $  &  $Y_{s-1,k-2}^{sim}$ & $Y_{s-1,k-1}^{sim}$ &  $Y_{s-1,k}^{sim}$ & \\
+				s      &  $Y_{s,0}^{sim}$ &   &   &  &  &   &   &  &   & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Con:
+	
+	
+	\doublespacing
+	
+	
+	{\centering
+		$Y_{i,j}^{sim}={\sum _{m=0}^{j}X_{i,m}^{sim}}$
+		
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+	
+	$ $
+	
+		\doublespacing
+	
+	{\centering
+		${f}_{j}^{sim}=\frac{\sum _{i=1}^{s-j}Y_{i,j}^{sim}}{\sum _{i=1}^{s-j}Y_{i,j-1}^{sim}}$, con $0<j\le k$
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+	
+	$ $
+	
+	\doublespacing
+
+	{\centering
+	$Y_{s,j}^{sim*}=Y_{s,j-1}^{sim*}\cdot f_{j}^{sim}$, considerando que: $Y_{s,1}^{sim*}=Y_{s,0}^{sim}\cdot f_{1}^{sim}$
+	\noindent
+	
+}	
+
+\doublespacing
+
+$ $
+
+\doublespacing
+
+	Donde:
+	
+	\doublespacing
+	
+	
+	$i=$ trimestre de ocurrencia del procedimiento, $i\in \left\{1,2,3,\dots ,12\right\}$
+	 
+	$j=$ trimestre en que se reportó el procedimiento, $j\in \left\{0,1,2,\dots \right\}$ 
+
+	$m=$ trimestre de acumulación, $m\in \left\{0,1,2,\dots ,j\right\}$,  $m\le j\le k$
+	
+	$X_{i,m}^{sim}=$ Monto de procedimientos simulados ocurridos en el trimestre i que fue reportados m trimestres posteriores a su fecha de ocurrido.
+	
+	$Y_{i,j}^{sim}=$ Monto de procedimientos simulados ocurridos en el trimestre i reportados hasta el trimestre j; se refiere al último monto conocido del trimestre i (montos representados por la diagonal del triángulo)
+	
+	$f_{j}^{sim}=$ factor de incremento simulado del trimestre j
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Una vez obtenidos los montos estimados simulados de las obligaciones futuras $Y_{i,j}^{sim*}$, se obtiene:
+	
+	\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	
+	\begin{center}
+		%\begin{document}
+		\begin{table}[H]
+			%	\centering
+			%	\caption{Countermeasure solutions for connected vehicle}
+			%	\label{Countermeasure solutions for connected vehicle}
+			\begin{tabular}{ L |cccccccccc}
+				%	\toprule
+				%	\multirow{2}{*}{\multicolumn{1}{m{3cm}}{\centering Trimestre de Inicio de Vigencia} }
+				\multirow{2}{*}{ Simulación} 
+				{ }
+				&	&  \multicolumn{9}{l}{ Trimestre de estimación} \\ %\cline{2-5}
+				&  1 & 2 & 3  & $ \dots $ & j & $\dots $ & k-2 & k-1 &  k & \\
+				\midrule
+				1      &  $_{1}{Z^{sim*}}_{1}$ &  $_{1}{Z^{sim*}}_{2}$ &  $_{1}{Z^{sim*}}_{3}$ & $ \dots $ & $_{1}{Z^{sim*}}_{j}$ & $ \dots $  &  $_{1}{Z^{sim*}}_{k-2}$ & $_{1}{Z^{sim*}}_{k-1}$ &  $_{1}{Z^{sim*}}_{k}$ & \\
+				2        &  $_{2}{Z^{sim*}}_{1}$ &  $_{2}{Z^{sim*}}_{2}$ &  $_{2}{Z^{sim*}}_{3}$ & $ \dots $ & $_{2}{Z^{sim*}}_{j}$ & $ \dots $  &  $_{2}{Z^{sim*}}_{k-2}$ & $_{2}{Z^{sim*}}_{k-1}$ &  $_{2}{Z^{sim*}}_{k}$ & \\
+				:      & & & & & & & & & &\\
+				i       &  $_{i}{Z^{sim*}}_{1}$ &  $_{i}{Z^{sim*}}_{2}$ &  $_{i}{Z^{sim*}}_{3}$ & $ \dots $ & $_{i}{Z^{sim*}}_{j}$ & $ \dots $  &  $_{i}{Z^{sim*}}_{k-2}$ & $_{i}{Z^{sim*}}_{k-1}$ &  $_{i}{Z^{sim*}}_{k}$ & \\
+				:      & & & & & & & & & &  \\
+				n-1       &  $_{n-1}{Z^{sim*}}_{1}$ &  $_{n-1}{Z^{sim*}}_{2}$ &  $_{n-1}{Z^{sim*}}_{3}$ & $ \dots $ & $_{n-1}{Z^{sim*}}_{j}$ & $ \dots $  &  $_{n-1}{Z^{sim*}}_{k-2}$ & $_{n-1}{Z^{sim*}}_{k-1}$ &  $_{n-1}{Z^{sim*}}_{k}$ & \\
+				n       &  $_{n}{Z^{sim*}}_{1}$ &  $_{n}{Z^{sim*}}_{2}$ &  $_{n}{Z^{sim*}}_{3}$ & $ \dots $ & $_{n}{Z^{sim*}}_{j}$ & $ \dots $  &  $_{n}{Z^{sim*}}_{k-2}$ & $_{n}{Z^{sim*}}_{k-1}$ &  $_{n}{Z^{sim*}}_{k}$ & \\
+				%	\bottomrule
+			\end{tabular}
+		\end{table}
+		%\end{document}
+	\end{center}
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Con:
+	
+		\doublespacing
+	
+	
+	{\centering
+		$Z_{j}^{sim*}={\sum _{i=0}^{s-1}Y_{i+2,k-i}^{sim*}}$
+		
+		\noindent
+		
+	}	
+	
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Es decir, $_{i}{Z^{sim*}}_{j}$ representa la suma j-ésima diagonal del i-ésimo triángulo simulado.
+	
+	\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	$n=$ 100,000
+	
+	$Y_{i,j}^{sim*}=$ Valores estimados simulados de las obligaciones futuras de procedimientos ocurridos en el trimestre i que serán reportados en el trimestre j
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Se obtiene el flujo de las obligaciones estimadas en el trimestre j de la reserva de obligaciones pendientes de cumplir $f_{SONR}(j)$:
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	
+	{\centering
+		$f_{SONR}(j)=\frac{\sum _{i=1}^{n}{}_i Z_{j}^{sim*}}{n}$
+		
+		\noindent
+		
+	}	
+	
+		
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	\doublespacing
+	
+	Y la estimación de la proporción de obligaciones que se espera se mantenga en persistencia hasta el trimestre t:
+	
+	\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	
+	{\centering
+		$F_{SONR}(t)=\frac{\sum _{j=t}^{k}{f}_{SONR}(j)}{\sum _{j=1}^{k}{f}_{SONR}(j)}$
+		
+		\noindent
+		
+	}	
+	
+	
+	\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	La duración de las obligaciones futuras asociadas a la reserva de obligaciones pendientes de cumplir de las pólizas en vigor, $DU_{SONR}$ es:
+	
+		\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	
+	
+	{\centering
+		$DU_{SONR}={\sum _{t=1}^{k}v^t \cdot F_{SONR}^{}(t)}$
+		
+		\noindent
+		
+	}	
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+
+	
+	Donde:
+	
+	\doublespacing
+	
+	{\centering
+		
+	$v^t= \frac{1}{(1+i)^t}$ , $v^0=1$
+		\noindent
+	
+}
+	
+	\doublespacing
+	
+	$ $
+	
+	\doublespacing
+	
+	
+	Con i, la tasa libre de riesgo.
+	
+	\doublespacing
+	
+	La duración $DU_{SONR}$ de Salud Dental Individual, será la duración calculada con información del mercado y proporcionada por la Comisión Nacional de Seguros y Fianzas.
+	
+	\doublespacing
+	
+	El Margen de Riesgo de la reserva de obligaciones pendientes por cumplir de siniestros ocurridos no reportados ($MR_{SONR}$) se calculará como: 
+	
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+		{\centering
+		
+		$MR_{SONR}= R \cdot BC_{SONR}\cdot DU_{SONR}$
+		\noindent
+		
+	}
+
+\doublespacing
+
+$ $
+
+\doublespacing
+	
+	Donde:
+	
+	\doublespacing
+	
+	$R=$ Tasa de costo neto de capital
+	
+	$BC_{SONR}=$ Base de capital de la reserva de obligaciones pendientes por cumplir de siniestros ocurridos no reportados
+	
+	$DU_{SONR}=$ Duración de las obligaciones futuras asociadas a la reserva de obligaciones pendientes por cumplir de siniestros ocurridos no reportados
+	
+	\doublespacing
+
+$ $
+
+\doublespacing
+	
+La tasa de costo neto de capital (R) que se empleará para el cálculo del margen de riesgo, será igual a la tasa de interés adicional, en relación con la tasa de interés libre de riesgo de mercado, que una Institución de Seguros requeriría para cubrir el costo de capital exigido para mantener el importe de Fondos Propios Admisibles que respalden el RCS respectivo.  %\cite{tonteria}
+
+\doublespacing
+La tasa de costo neto de capital que se empleo para el cálculo del margen de riesgo durante el desarrollo de este trabajo profesional, es de $10\% $.
+	
+	\doublespacing
+\end{comment}
+	
+	\pagestyle{empty}
+\bibliography{library}
+	
+\end{document}
