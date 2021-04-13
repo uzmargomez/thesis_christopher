@@ -102,10 +102,10 @@ title = {{An Introduction to Differentiable Manifolds and Riemannian Geometry}},
 year = {1986}
 }
 
-@Article{NSHCP,
+@Article{ASeguro,
   author   = {{}},
-  journal  = {SHCP},
-  title    = {{SHCP}},
+  journal  = {¿Qu{\'{e}} es el Seguro?},
+  title    = {{El Seguro}},
   year     = {2020},
   issn     = {1477-9226},
   note     = {Obtenido de https://segurosypensionesparatodos.fundacionmapfre.org/syp/es/seguros/definicion-seguro-asegurar/el-seguro/},
@@ -977,22 +977,6 @@ year = {2011}
   file     = {:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics.pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(2).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(3).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(4).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(5).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(6).pdf:pdf},
   isbn     = {0912918136},
   pmid     = {18414758},
-}
-
-@Article{ASeguro,
-  author   = {{}},
-  journal  = {¿Qu{\'{e}} es el Seguro?},
-  title    = {{El Seguro}},
-  year     = {2020},
-  issn     = {1477-9226},
-  note     = {Obtenido de https://www.datos.gob.mx/busca/organization/about/shcp},
-  abstract = {Obtenido de https://www.datos.gob.mx/busca/organization/about/shcp},
-  comment  = {Obtenido de https://www.datos.gob.mx/busca/organization/about/shcp},
-  doi      = {10.1039/b718322d},
-  file     = {:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics.pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(2).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(3).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(4).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(5).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(6).pdf:pdf},
-  isbn     = {0912918136},
-  pmid     = {18414758},
-  url      = {https://www.datos.gob.mx/busca/organization/about/shcp},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
