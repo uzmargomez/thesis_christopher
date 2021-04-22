@@ -538,9 +538,10 @@ El Actuario debe constantemente crear y/o actualizar manuales que detallen sus f
 
 	El cálculo del Bel de Riesgo implica un análisis de las obligaciones futuras para los riesgos en curso con base en los siniestros que actualmente han sido reportados. Para ello se necesita la construcción de una matriz de desarrollo de siniestros  de dimensiones $(k$ x $s)$, en la cual los siniestros se distribuyen por el trimestre en que se reporto cada uno de los procedimientos ocurridos respecto al inicio de vigencia de la póliza y consideramos montos netos de siniestralidad, es decir, no tomamos en cuenta el monto de deducible y copago a cargo del asegurado. La matriz queda de la siguiente manera:
 
-	\vspace{1cm}
+	\vspace{0.1cm}
 	
 	\begin{itemize}
+		\setlength\itemsep{-0.5em}
 		\item ${X}_{i,j}$ es el monto de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ que fue reportado $j$ trimestres posteriores al inicio de vigencia.
 		\item ${k}_{}$ es el número de trimestres máximo observado en la experiencia de siniestros.
 		\item ${s}_{}$ es el número de trimestres de experiencia de inicio de vigencia.
@@ -574,11 +575,15 @@ El Actuario debe constantemente crear y/o actualizar manuales que detallen sus f
 
 	Una vez que se obtiene la matriz de siniestros, la usamos para generar una matriz de siniestros acumulados en la cual definimos ${Y}_{i,j}$ como el monto de siniestros de la póliza con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $j$:
 	
-	$${y}_{i,j}=\sum _{m=0}^{j}{X}_{i,m}$$
-	
-	Donde:
+	\begin{equation}
+	{y}_{i,j}=\sum _{m=0}^{j}{X}_{i,m}
+		\label{eq1}
+	\end{equation}
+
+	Donde
 	
 	\begin{itemize}
+	\setlength\itemsep{-0.5em}
 		\item ${X}_{i,m}$ es el monto de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ que fue reportado $m$ trimestres posteriores al inicio de vigencia.
 		\item $i$ es el trimestre de inicio de vigencia de la póliza, $i\in \left\{1,2,3,\dots ,12\right\}$
 		\item $j$ es el trimestre en que se reportó el siniestro,  $j\in \left\{1,2,3,\dots\right\}$
@@ -609,27 +614,35 @@ El Actuario debe constantemente crear y/o actualizar manuales que detallen sus f
 
 	\begin{equation}
 	{f}_{j}=\frac{\sum _{i=1}^{s-j}{Y}_{i,j}}{\sum _{i=1}^{s-j}{Y}_{i,j-1}}, \hspace{0.5cm}\text{con}\hspace{0.5cm} 0< j\le k
-	\label{eq1}
+	\label{eq2}
 	\end{equation}
 
-	Donde ${Y}_{i,j}$ representa el monto de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $j$, como se ve en \eqref{eq1}
+	Donde ${Y}_{i,j}$ representa el monto de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $j$, como se ve en \eqref{eq2}
 
 	Mediante estos factores de incremento, se definen los Siniestros Esperados para la vigencia $i$ (${SE}_{i}$) como la estimación del monto de siniestros que serán reportados para las pólizas con inicio de vigencia en el trimestre $i$:
 	
-	$${SE}_{i}={Y}_{s-i+1,i-1}\cdot\Pi_{j=i}^{k}{f}_{j},\hspace{0.5cm}\text{con}\hspace{0.5cm}0< i\le k$$
-	
+	\begin{equation}
+	{SE}_{i}={Y}_{s-i+1,i-1}\cdot\Pi_{j=i}^{k}{f}_{j},\hspace{0.5cm}\text{con}\hspace{0.5cm}0< i\le k
+		\label{eq3}
+	\end{equation}
 
 	Donde ${Y}_{s-i+1,i-1}$ representa el monto de siniestros de las pólizas con inicio de vigencia en el trimestre $s-i+1$ reportados hasta el trimestre $i-1$, y ${f}_{i}$ es el factor de incremento del trimestre $j$. 
 
 	Definimos las obligaciones futuras iniciales de riesgos en curso (${RRC}^{0}$) como la diferencia entre los Siniestros Estimados y los Siniestros Acumulados observados:
 	
-	$${RRC}^{0}=\sum _{i=s-k}^{s}{SE}_{i}-{Y}_{i,s-i}$$ 
+	\begin{equation}
+	{RRC}^{0}=\sum _{i=s-k}^{s}{SE}_{i}-{Y}_{i,s-i}
+	\label{eq4}
+	\end{equation}
 
 	Donde ${SE}_{i}$ son los siniestros esperados para la vigencia $i$, y ${Y}_{i,s-i}$ es el monto de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $s-i$
 		 
 	Definimos ${Y}_{i,j}^{*}$ como el monto ajustado de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $j$:
 	
-	$${Y}_{i,j-1}^{*}=\frac{{Y}_{i,j}^{*}}{{f}_{j}}$$
+		\begin{equation}
+	{Y}_{i,j-1}^{*}=\frac{{Y}_{i,j}^{*}}{{f}_{j}}
+	\label{eq5}
+	\end{equation}
 
 	Con:
 
@@ -662,7 +675,10 @@ El Actuario debe constantemente crear y/o actualizar manuales que detallen sus f
 	
 	Y a partir de esta matriz de siniestros acumulados ajustados se obtiene una nueva matriz de montos $X_{i,j}^{*}$, que son los siniestros ajustados de las pólizas con inicio de vigencia en el trimestre $i$ que fueron reportados $j$ trimestres posteriores al inicio de vigencia:
 	
-	$${X}_{i,j}^{*}={Y}_{i,j}^{*}-\sum _{m=0}^{j-1}{X}_{i,m}^{*}$$	
+	\begin{equation}
+	{X}_{i,j}^{*}={Y}_{i,j}^{*}-\sum _{m=0}^{j-1}{X}_{i,m}^{*}
+	\label{eq6}
+	\end{equation}	
 	 
 	Con:
 	
@@ -692,13 +708,15 @@ El Actuario debe constantemente crear y/o actualizar manuales que detallen sus f
 		
 	La diferencia del monto de siniestros observados (el monto original) y el monto de siniestros ajustado son los residuales brutos $R_{i,j}^{}$:
 		
-	$$R_{i,j}^{}= X_{i,j}^{} - X_{i,j}^{*} $$ 
+	\begin{equation}
+	R_{i,j}^{}= X_{i,j}^{} - X_{i,j}^{*} 
+	\label{eq7}
+	\end{equation}
 	
 	Donde ${X}_{i,j}^{*}$ es el monto de siniestros ajustados de las pólizas con inicio de vigencia en el trimestre $i$ que fueron reportados $j$ trimestres posteriores al inicio de vigencia, y ${X}_{i,j}$ es el monto de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ que fueron reportados $j$ trimestres posteriores al inicio de vigencia.	
 	
 	Generamos la matriz de Residuales de la siguiente manera:
 	
-	$ $
 
 	\begin{table}[ht]
 		\centering
@@ -721,7 +739,7 @@ El Actuario debe constantemente crear y/o actualizar manuales que detallen sus f
 		\end{tabularx}
 	\end{table}
  
- $ $
+
  
 	Utilizamos el método de bootstrap, bajo el supuesto de que los residuales brutos $R_{i,j}$ de la matriz provienen de la misma distribución y son independientes. Obtenemos el valor mínimo y máximo observado de cada columna $j$ como el intervalo de residuales observado.
 	 
@@ -777,7 +795,10 @@ El Actuario debe constantemente crear y/o actualizar manuales que detallen sus f
 	
 	Para esto definimos $X_{i,j}^{sim}$ como el monto de siniestros simulado de las pólizas con inicio de vigencia en el trimestre $i$ que fueron reportados $j$ trimestres posteriores al inicio de vigencia:
 	
-	$$X_{i,j}^{sim}=R_{i,j}^{*}+X_{i,j}^{*}$$ 
+	\begin{equation}
+    X_{i,j}^{sim}=R_{i,j}^{*}+X_{i,j}^{*} 
+\label{eq8}    
+\end{equation}
 	
 	Donde $R_{i,j}^{*}$ es el residual seleccionado en la muestra que corresponde a las pólizas con inicio de vigencia en el trimestre $i$ con trimestre de reporte $j$, y $X_{i,j}^{*}$ es el monto de siniestros ajustados de las pólizas con inicio de vigencia en el trimestre $i$ que fueron reportados $j$ trimestres posteriores al inicio de vigencia.
 	
@@ -812,29 +833,26 @@ Ya que obtenemos esta matriz de siniestros simulada, generamos la matriz de sini
 
 	 
 
-$ $
-
- 
 	
-		{\centering
-		$BELR_{RRC}^{}=\frac{\sum _{i=1}^{n}RRC_{i}^{sim}}{n}$
-		\noindent
+	\begin{equation}
+		BELR_{RRC}^{}=\frac{\sum _{i=1}^{n}RRC_{i}^{sim}}{n}
+		\label{eq9}
+		\end{equation}
 			
-	}
-	
-	 
 
-$ $
 
  
 	
-	Donde:
+	Donde
 	
 	 
+		\begin{itemize}
+		\setlength\itemsep{-0.5em}
+	\item $RRC_{i}^{sim}=$ i-ésima simulación de los flujos de obligaciones futuras de riesgos en curso.
 	
-	$RRC_{i}^{sim}=$ i-ésima simulación de los flujos de obligaciones futuras de riesgos en curso.
+	\item $n=$ número de simulaciones realizadas.
+	\end{itemize}
 	
-	$n=$ número de simulaciones realizadas.
 \begin{comment}	
 	 
 	Para Salud Individual Dental, el $BELR_{RRC}$ se calculará como el producto de la prima de tarifa no devengada y el factor de siniestralidad última de mercado proporcionado por la Comisión Nacional de Seguros y Fianzas:
@@ -859,7 +877,7 @@ $ $
 
  
 	
-	Donde:
+	Donde
 	
 	 
 	
@@ -894,12 +912,6 @@ Para Salud Individual Dental, se tomara el porcentaje de gasto de administració
 	
 	 
 
-$ $
-
- 
-
-	{\centering	
-
 \begin{comment}	
 $
 BELG_{ADM,ind}=\begin{cases}
@@ -909,57 +921,38 @@ PT \cdot \alpha_{i} \cdot F_{ND}, & \text{$g = Salud  Dental  Individual$}.
 $
 \end{comment}
 
+\begin{equation}
+BELG_{ADM,ind}=	PT \cdot G_{ADM} \cdot F_{ND}
+\label{eq10}
+\end{equation}
 
-$BELG_{ADM,ind}=	PT \cdot G_{ADM} \cdot F_{ND}$
 
 
-
-
-		\noindent
-	
-}
-	
-
+	Donde
 	 
-
-$ $
-
- 
-
-	Donde:
-	 
-	
-    $PT=$ Prima de tarifa
+		\begin{itemize}
+		\setlength\itemsep{-0.5em}
+    \item $PT=$ Prima de tarifa
     
-    $G_{ADM}^{}=$ Gasto de Administración
+    \item $G_{ADM}^{}=$ Gasto de Administración
 	
-	$F_{ND}^{}=$ Factor de no devengamiento
+	\item $F_{ND}^{}=$ Factor de no devengamiento
+	\end{itemize}
+	
 \begin{comment}	
 	$\alpha_{i}^{}=$ Porcentaje de gasto de administración con información de Mercado
 \end{comment}	
 	 
 
-$ $
-
- 
 
 	Entonces el BEL para Gastos de Administración ($BELG_{ADM}$) es:
 	
-	 
 
-$ $
+\begin{equation}
+	BELG_{ADM}=\sum _{}^{}BEL_{ADM,ind}^{}
+	\label{eq11}
+	\end{equation}
 
- 
-
-	{\centering
-	$BELG_{ADM}=\sum _{}^{}BEL_{ADM,ind}^{}$
-	\noindent
-	
-}
-	
-	 
-
-$ $
 
  
 	
@@ -977,131 +970,89 @@ $ $
 	Sea la Prima de Tarifa (PT):
 	
 	 
-
-$ $
-
- 
-	
-		{\centering
-		${PT}_{}^{}=\frac{{PR}_{}^{}}{{1}_{}-{}G_{ADM}-{C}_{ADQ}-{U}_{}}$
-		\noindent
-		
-	}	
-	
-	
-	 
-
-$ $
-
- 
-	
-	Donde:
-	
-	 
-	
-	 $PR=$ Prima de Riesgo
-	
-	$G_{ADM}^{}=$ Gasto de Administración
-	
-	$C_{ADQ}^{}=$ Costo de Adquisición
-	
-	$U_{}^{}=$ Margen de Utilidad
-	
-	 
-
-$ $
-
- 
-	
-	Entonces:
-	
-	 
-
-$ $
-
- 
-	
-		{\centering
-		${PR}_{}^{}={{PT}_{}\cdot(1-G_{ADM}-C_{ADQ}-U)}$
-		\noindent
-		
-	}	
-	
-	
-	 
-
-$ $
-
- 
-	
-	Una vez determinada la Prima de Riesgo, se calculará la Prima de Riesgo no Devengada de cada uno de los asegurados como la Prima de Riesgo multiplicada por el Factor de No Devengamiento.
-	
-	 
-	
-	El Factor de No Devengamiento $F_{ND}$ es el factor que se utiliza para calcular la porción de tiempo de vigencia no transcurrido por cada asegurado en vigor.
-	
-	 
-	
-	Se define FND como el Factor de No Devengamiento, de tal forma que:
-		
-		$$
-		F_{ND}=\begin{cases}
-		0, & \text{si } FVal \geqslant FFin.\\
-		\frac{FFin-FVal}{FFin-FIni}, & \text{si } FIni \leqslant FVal \leqslant FFin\\
-		1, & \text{si } FIni \geqslant FVal
-		\end{cases}
-		$$
-
- 
-	
-	Donde:
-	
-	 
-	
-	 $FIni=$ Fecha de Inicio de cobertura para el asegurado
-	
-	$FFin=$ Fecha de Fin de cobertura para el asegurado
-	
-	$FVal=$ Fecha de Valuación
-	
-	
-	 
-
-$ $
-
- 
-	
-	Entonces la Prima de Riesgo No Devengada ($PRND_{ind}$) es:
-	
-	 
-
-$ $
-
- 
-	
-		{\centering
-		${PRND}_{ind}^{}={{PR}_{ind}\cdot F_{ND}}$
-		\noindent
-		
-	}	
-	
-	 
-
-$ $
-
+\begin{equation}
+		{PT}_{}^{}=\frac{{PR}_{}^{}}{{1}_{}-{}G_{ADM}-{C}_{ADQ}-{U}_{}}
+		\label{eq12}
+\end{equation}
  
 	
 	Donde
 	
 	 
+		\begin{itemize}
+		\setlength\itemsep{-0.5em}
+	\item $PR=$ Prima de Riesgo
 	
-	 $F_{ND}=$ Factor de No Devengamiento de cada asegurado
+	\item $G_{ADM}^{}=$ Gasto de Administración
 	
-	$PR_{ind}=$ Prima de Riesgo de cada asegurado 
+	\item $C_{ADQ}^{}=$ Costo de Adquisición
+	
+	\item $U_{}^{}=$ Margen de Utilidad
+	\end{itemize}
+	 
+ 
+	
+	Entonces:
+	
+\begin{equation}
+		{PR}_{}^{}={{PT}_{}\cdot(1-G_{ADM}-C_{ADQ}-U)}
+		\label{eq13}
+		\end{equation}
+
+
+	Una vez determinada la Prima de Riesgo, se calculará la Prima de Riesgo no Devengada de cada uno de los asegurados como la Prima de Riesgo multiplicada por el Factor de No Devengamiento.
+		
+	El Factor de No Devengamiento $F_{ND}$ es el factor que se utiliza para calcular la porción de tiempo de vigencia no transcurrido por cada asegurado en vigor.
+	
+	Se define FND como el Factor de No Devengamiento, de tal forma que:
+		
+	\begin{equation}	
+		F_{ND}=\begin{cases}
+		0, & \text{si } FVal \geqslant FFin.\\
+		\frac{FFin-FVal}{FFin-FIni}, & \text{si } FIni \leqslant FVal \leqslant FFin\\
+		1, & \text{si } FIni \geqslant FVal
+		\end{cases}
+	\label{eq14}
+		\end{equation}
+
+ 
+	$ $
+	
+	Donde
 	
 	 
+		\begin{itemize}
+		\setlength\itemsep{-0.5em}
+	\item $FIni=$ Fecha de Inicio de cobertura para el asegurado
+	
+	\item $FFin=$ Fecha de Fin de cobertura para el asegurado
+	
+	\item $FVal=$ Fecha de Valuación
 
-$ $
+\end{itemize}
+ 
+	
+	Entonces la Prima de Riesgo No Devengada ($PRND_{ind}$) es:
+	
+
+	
+\begin{equation}
+		{PRND}_{ind}^{}={{PR}_{ind}\cdot F_{ND}}
+		\label{eq15}
+\end{equation}
+
+ 
+	
+	Donde
+	
+	\begin{itemize}
+	\setlength\itemsep{-0.5em}	 
+	
+	\item $F_{ND}=$ Factor de No Devengamiento de cada asegurado
+	
+	\item $PR_{ind}=$ Prima de Riesgo de cada asegurado 
+	\end{itemize}
+	 
 
  
 	
@@ -1109,71 +1060,34 @@ $ $
 	
 	 
 
-$ $
-
- 
-	
-		{\centering
-		${PRND}_{ind}^{}={{PT}_{ind}-BELG_{ADM,ind}}$
-		\noindent
-		
-	}	
-	
-	
-	 
-
-$ $
-
+\begin{equation}
+		{PRND}_{ind}^{}={{PT}_{ind}-BELG_{ADM,ind}}
+\label{eq16}
+\end{equation}
  
 	
 	Donde
 	
 	 
+	\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item $PT_{ind}=$ Prima de Tarifa de cada asegurado
 	
-	$PT_{ind}=$ Prima de Tarifa de cada asegurado
-	
-	$BELG_{ADM,ind}=$ Monto de los gastos de administración no devengado de cada asegurado
-	
-	 
+	\item $BELG_{ADM,ind}=$ Monto de los gastos de administración no devengado de cada asegurado
+	\end{itemize}
 
-$ $
-
- 
 	
 	Sea $PRND_{}$ la prima de riesgo no devengada, esta se calculará como:
 	
-	 
-
-$ $
-
- 
-	
-	
-		{\centering
-	$PRND_{}={\sum _{}^{}PRND_{ind}^{}}$
-	
-		\noindent
-	
-}	
-
-	
-	 
-
-$ $
+\begin{equation}
+	PRND_{}={\sum _{}^{}PRND_{ind}^{}}
+	\label{eq17}
+\end{equation}
 
  
+	Donde $PRND_{ind}=$ Prima de riesgo no devengada de cada asegurado
 	
-	Donde:
 	
-	 
-	
-	$PRND_{ind}=$ Prima de riesgo no devengada de cada asegurado
-	
-	 
-
-$ $
-
- 
 	
 	\section{Cálculo del Factor de Distribución}
 	
@@ -1186,33 +1100,22 @@ $ $
 	Sea $FD_{}$ el factor de distribución:
 	
 	 
-
-$ $
-
- 
-	
-		{\centering
-		${FD}_{}^{}=\frac{{BELR}_{RRC}^{}}{{PRND}_{}}$
-		\noindent
-		
-	}	
-	
-	
-	 
-
-$ $
-
+\begin{equation}
+		{FD}_{}^{}=\frac{{BELR}_{RRC}^{}}{{PRND}_{}}
+		\label{eq18}
+\end{equation}
  
 	
 	Donde
 	
 	 
-	
-		$BELR_{RRC}=$ Mejor Estimador de riesgos en curso
+		\begin{itemize}
+		\setlength\itemsep{-0.5em}
+		\item $BELR_{RRC}=$ Mejor Estimador de riesgos en curso
 		
-		$PRND_{}=$ Prima de Riesgo No Devengada
+		\item $PRND_{}=$ Prima de Riesgo No Devengada
 		
-	 
+	 	\end{itemize}
 
 $ $
 
@@ -1228,13 +1131,8 @@ $ $
 	
 	Sea $BELR_{RRC,ind}$ el mejor estimador de riesgos en curso individual:
 	
-	 
 
-$ $
 
- 
-	
-	{\centering	
 	\begin{comment}	
 		$
 		BELR_{RRC,ind}=\begin{cases}
@@ -1245,25 +1143,22 @@ $ $
 		$
 \end{comment}	
 
-	$BELR_{RRC,ind}=PRND_{ind}\cdot FD_{}$	
-		\noindent
-		
-	}
-	
-	 
-
-$ $
+\begin{equation}
+	BELR_{RRC,ind}=PRND_{ind}\cdot FD_{}
+	\label{eq19}
+\end{equation}
 
  
 	
-	Donde:
+	Donde
 	
-	 
 		
+	\begin{itemize}
+	\setlength\itemsep{-0.5em}	
+	\item $PRND_{ind}=$ Prima de Riesgo no Devengada de cada asegurado
 	
-	$PRND_{ind}=$ Prima de Riesgo no Devengada de cada asegurado
-	
-	$FD_{}^{}=$ Factor de Distribución
+	\item $FD_{}^{}=$ Factor de Distribución
+	\end{itemize}
 	
 		\begin{comment}
 	$PTND_{ind}=$ Prima de Tarifa no Devengada de cada asegurado
@@ -1273,84 +1168,36 @@ $ $
 	\end{comment}
 	
 	 
-
-$ $
-
- 
-	
 	Entonces la Reserva de Riesgos en Curso de cada asegurado ($RRC_{ind}$) es:
 	
-	 
-
-$ $
-
- 
-	
-	{\centering
-		${RRC}_{ind}^{}={{BELR}_{RRC,ind}+BELG_{ADM,ind} \begin{comment} +MR_{RRC,ind}\end{comment}
-		}$
+\begin{equation}
+		{RRC}_{ind}^{}={{BELR}_{RRC,ind}+BELG_{ADM,ind} \begin{comment} +MR_{RRC,ind}\end{comment}
+		}
+	\label{eq20}
+		\end{equation}	
 			
-			
-			
-		\noindent
-		
-	}	
-	
-	
-	 
-
-$ $
-
- 
-	
 	Donde
-	
 	 
+		\begin{itemize}
+		\setlength\itemsep{-0.5em}
+	\item $BELR_{RRC,ind}=$ Mejor estimador de riesgos en curso individual
 	
-	$BELR_{RRC,ind}=$ Mejor estimador de riesgos en curso individual
-	
-	$BELG_{ADM,ind}^{}=$ Monto no devengado de Gastos de Administración de cada asegurado
+	\item $BELG_{ADM,ind}^{}=$ Monto no devengado de Gastos de Administración de cada asegurado
+	\end{itemize}
 	
 	\begin{comment}
 	$MR_{RRC,ind}^{}=$ Margen de Riesgo de la reserva de riesgos en curso calculado anteriormente
 	\end{comment}
-	
-	 
-
-$ $
-
- 
-	
+		
 	Por lo tanto, la Reserva de Riesgos en Curso ($RRC_{}$) se calculará como:
 	
-	 
-
-$ $
-
- 
-	
-	
-	{\centering
-		$RRC_{}={\sum _{}^{}RRC_{ind}^{}}$
-		
-		\noindent
-		
-	}	
-	
-	
-	 
-
-$ $
-
- 
-	
-	Donde
-	
-	 
-	
+\begin{equation}
+		RRC_{}={\sum _{}^{}RRC_{ind}^{}}
+		\label{eq21}
+	\end{equation}
 		
 	
-	$RRC_{ind}^{}=$ Reserva de Riesgos en Curso de cada asegurado
+	Donde $RRC_{ind}^{}=$ Reserva de Riesgos en Curso de cada asegurado
 	
 
 
