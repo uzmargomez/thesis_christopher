@@ -1169,7 +1169,7 @@ BELG_{ADM,ind}=	PT \cdot G_{ADM} \cdot F_{ND}
 	Entonces la Reserva de Riesgos en Curso de cada asegurado ($RRC_{ind}$) resulta de sumar el Mejor Estimador de Riesgos en Curso de cada asegurado con el Monto de Gastos de Administración de cada asegurado (ver eq. \ref{eq19}).
 	
 \begin{equation}
-		{RRC}_{ind}^{}={{BELR}_{RRC,ind}+BELG_{ADM,ind} \begin{comment} +MR_{RRC,ind}\end{comment}
+		{RRC}_{ind}^{}={{BELR}_{RRC,ind}+BELG_{ADM,ind} +MR_{RRC,ind}
 		}
 	\label{eq19}
 		\end{equation}	
@@ -1181,11 +1181,13 @@ BELG_{ADM,ind}=	PT \cdot G_{ADM} \cdot F_{ND}
 	\item $BELR_{RRC,ind}=$ Mejor estimador de riesgos en curso individual.
 	
 	\item $BELG_{ADM,ind}^{}=$ Monto no devengado de Gastos de Administración de cada asegurado.
+	
+		\item $MR_{RRC,ind}^{}=$ Margen de Riesgo de la reserva de riesgos en curso calculado usando el RCS del cierre del mes inmediato anterior a la fecha de valuación.
 	\end{itemize}
 	
-	\begin{comment}
-	$MR_{RRC,ind}^{}=$ Margen de Riesgo de la reserva de riesgos en curso calculado anteriormente
-	\end{comment}
+
+
+
 		
 	Por lo tanto, la Reserva de Riesgos en Curso Total ($RRC_{}$) se calculará como la suma del Monto de Reserva de Riesgos en Curso de cada asegurado (ver eq. \ref{eq20}).
 	
@@ -1217,43 +1219,36 @@ A continuación se presenta la Metodología descrita en este trabajo convertida 
 
 
 \begin{lstlisting}
-## Instalamos los paquetes necesarios de R si no los tenemos
+## Se instalan los paquetes necesarios de R si aún no se tienen instalados
 install.packages("ChainLadder")
 install.packages("psych")
 
-## Referenciamos los paquetes instalados mediante las bibliotecas
+## Se referencían los paquetes instalados mediante las bibliotecas
 library(ChainLadder)
 library(psych)
 
 ## Función Remover para limpiar la consola
 rm(list=ls())
 
-
-
-### Definimos una etiqueta para la funcion del Calculo de Reservas RRC
+## Se define la función con la cual se hara el Cálculo de Reservas RRC
 SIMULACION_RRC <- function (MATRIX_INICIAL, n, archivo){
 	
-	### Definimos la dimension de los triángulos de residuales iniciales
+	## Se define la dimensión (m) de los triángulos de residuales iniciales
 	library(ChainLadder)
 	m=dim(MATRIX_INICIAL)[1]
 	
 	
-	### Inicia el cálculo
+	## Inicia el cálculo
 	
-	## La siguiente sección corresponde a la plantilla de Excel
+	## La siguiente sección corresponde a los datos obtenidos mediante la plantilla de Excel
 	
-	## Nombramos la función cumulativa de triangulos incrementales
-	## Estos triangulos son nuestra matriz de siniestros
+	## Mediante la función "incr2cum", la cual transforma un triángulo incremental en triángulo acumulativo, donde MATRIX_INICIAL se refiere al triángulo inicial de siniestros como muestra la tabla 5.1, se genera MATRIX_SIN_ACUM, que es el triángulo de sinietros acumulados como muestra la tabla 5.2
 	MATRIX_SIN_ACUM <- incr2cum(MATRIX_INICIAL)
 	
-	## Definimos los factores como indica el escrito
-	# Usando la matriz de siniestros acumulados obtenemos los factores de incremento
-	# fj, los cuales indican el incremento dado de un trimestre a otro:
+	## Se obtienen los factores fj como indica la eq. 5.2, usando la matriz de siniestros acumulados
 	FACTORES_J <- sapply(1:(m-1), function(i){ sum(MATRIX_SIN_ACUM[c(1:(m-i)), i+1])/sum(MATRIX_SIN_ACUM[c(1:(m-i)), i]) } )
 	
-	## Mediante estos factores de incremento, se definen los Siniestros Esperados
-	## para la vigencia i SEi como la estimación del monto de siniestros serán 
-	## reportados para las pólizas con inicio de vigencia en el trimestre i:
+	## Mediante estos factores de incremento, se definen los Siniestros Esperados como indica la eq. 5.3
 	SIN_ESPERADOS <- cbind(MATRIX_SIN_ACUM, RVA = rep(0,m))
 	for (j in 1:m){
 		for(i in 1:m){
@@ -1263,16 +1258,12 @@ SIMULACION_RRC <- function (MATRIX_INICIAL, n, archivo){
 		}
 	}
 	
-	# Definimos las obligaciones futuras iniciales de riesgos en curso RRC0 como la 
-	# diferencia entre los Siniestros Estimados y los Siniestros Acumulados
-	# observados:
+	## Con los Siniestros Esperados, se definen las obligaciones futuras iniciales de riesgos en curso RRC0 como indica la eq. 5.4 
 	for (i in 1:m){
 		SIN_ESPERADOS[i,(m+1)] = SIN_ESPERADOS[i,m]-SIN_ESPERADOS[i,(m-i+1)]
 	}
 	
-	# Definimos Yi,j* como el monto ajustado de siniestros de las pólizas
-	# con inicio de vigencia en el trimestre i reportados hasta el trimestre j
-	# y con estos resultados obtenemos la matriz de siniestros acumulados ajustados
+	## Se obtiene el monto ajustado de siniestros de las pólizas como indica la eq. 5.5 y con ellos se genera el triángulo de siniestros acumulados ajustados como se observa en la tabla 5.3
 	MATRIX_ACUM_AJUST = MATRIX_SIN_ACUM
 	for (i in 1:(m-1)){
 		for(j in 1:(m-i)){
@@ -1280,55 +1271,37 @@ SIMULACION_RRC <- function (MATRIX_INICIAL, n, archivo){
 		}
 	}
 	
-	# Y a partir de esta matriz de siniestros acumulados ajustados se obtiene una
-	# nueva matriz de montos Xi,j*, que son los siniestros ajustados de las
-	# pólizas con inicio de vigencia en el trimestre i que fueron reportados j 
-	# trimestres posteriores al inicio de vigencia:
+	## A partir de este triángulo se obtiene el triengulo de siniestros ajustados como muestra la tabla 5.4 usando la función "cum2incr", la cual transforma un triángulo acumulativo en un triángulo incremental
 	MATRIX_SIN_AJ = cum2incr(MATRIX_ACUM_AJUST)
 	
-	# La diferencia del monto de siniestros observados (el monto original) y el 
-	# monto de siniestros ajustado son los residuales brutos Ri,j:
+	## Se obtienen los Residuales Brutos como indica la eq. 5.7
 	RESIDUAL = MATRIX_INICIAL - MATRIX_SIN_AJ
 	
-	## Definimos una nueva Matriz de n por m-1
+	## Se define una nueva Matriz de n x m-1 para las n simulaciones
 	SIMULACION_RESERVA=c()
 	
-	## INICIAMOS LAS n SIMULACIONES
+	## Inician las n simulaciones
 	for (k in 1:n){
-		# DEFINIMOS UNA MUESTRA DE RESIDUALES
+		# Se define la Muestra de Residuales con dimensiones n x m
 		MUESTRA_RESIDUALES = matrix(nrow=m, ncol=m)
 		
-		## Utilizamos el método de bootstrap, bajo el supuesto de que los residuales
-		## brutos $R_{i,j}$ de la matriz provienen de la misma distribución y son 
-		## independientes. Obtenemos el valor mínimo y máximo observado de cada columna
-		## j como el intervalo de residuales observado.
+		## Se definen el minimo y maximo de cada trimestre como se observa en la tabla 5.6 y se genera el triángulo de residuales como se observa en la tabla 5.7
 		for(j in 1:m){
-			# Definimos Ri,j* como el residual de la muestra de pólizas con 
-			# inicio de vigencia en el trimestre i con trimestre de reporte j. 
 			MUESTRA_RESIDUALES[,j] = t(runif(dim(RESIDUAL)[1],min=min(na.omit(RESIDUAL[,j])), max=max(na.omit(RESIDUAL[,j]))))
-			##se elimina el rango de 10% de escenarios no observados
 		}
 		
-		#	Obtenemos así una matriz de siniestros simulada al agregar el residual 
-		# obtenido a cada monto de siniestros ajustados.
-		#	Para esto definimos Xi,j{sim} como el monto de siniestros simulado de
-		# las pólizas con inicio de vigencia en el trimestre i que fueron reportados 
-		# j trimestres posteriores al inicio de vigencia:
+		## Se agregan el residual obtenido a cada monto de siniestros ajustados como indica la eq. 5.8 para obtener los siniestros simulados y con esto se obtiene el triángulo de Siniestros simulados como se ve en la tabla 5.8		
 		SINIESTRO_SIM = MUESTRA_RESIDUALES + MATRIX_SIN_AJ
 		
-		#generamos la matriz de siniestros simulada
+		## Inicia la repetición del proceso original
+		
+		## Aplicando la función "incr2cum" al triángulo obtenido se transforma el triángulo incremental a un triángulo de siniestros acumulados simulados como se genero originalmente la tabla 5.2
 		MATRIX_SIN_SIM <- incr2cum(SINIESTRO_SIM)
 		
-		## Repetimos el proceso original
-		
-		## Definimos los factores como indica el escrito
-		# Usando la matriz de siniestros acumulados obtenemos los factores de incremento
-		# fj, los cuales indican el incremento dado de un trimestre a otro:
+		## Se obtinenen nuevamente los factores de incremento como indica la eq. 5.2
 		FACTOR_N_SIM <- sapply(1:(m-1), function(i){ sum(MATRIX_SIN_SIM[c(1:(m-i)), i+1])/sum(MATRIX_SIN_SIM[c(1:(m-i)), i]) } )
 		
-		## Mediante estos factores de incremento, se definen los Siniestros Esperados
-		## para la vigencia i SEi como la estimación del monto de siniestros serán 
-		## reportados para las pólizas con inicio de vigencia en el trimestre i:
+		## Se estiman los siniestros esperados simulados como indica la eq. 5.3
 		SIN_ESP_N_SIM <- cbind(MATRIX_SIN_SIM, RVA = rep(0,m))
 		for (j in 1:m){
 			for(i in 1:m){
@@ -1338,45 +1311,44 @@ SIMULACION_RRC <- function (MATRIX_INICIAL, n, archivo){
 			}
 		}
 		
-		# Definimos las obligaciones futuras iniciales de riesgos en curso RRC0 como la 
-		# diferencia entre los Siniestros Estimados y los Siniestros Acumulados
-		# observados:
+		## Se calculan los flujos de obligaciones futuras simuladas de riesgos en curso como indica la eq. 5.4
 		for (i in 1:m){
 			SIN_ESP_N_SIM[i,(m+1)] = SIN_ESP_N_SIM[i,m]-SIN_ESP_N_SIM[i,(m-i+1)]
 		}
 		
-		## VALOR DE LA RESERVA
+		## La reserva calculada corresponde a la suma total de los resultados
 		SIMULACION_RESERVA[k]=sum(SIN_ESP_N_SIM[,m+1])
 		
 		
 	}
 	
-	# Obligaciones Futuras Iniciales de Riesgos en Curso inicial
+	## Se definen las Obligaciones Futuras Iniciales de Riesgos en Curso inicial como la primera iteracion del metodo
 	RRC_INICIAL=sum(SIN_ESPERADOS[,m+1])
 	
-	# Media de las n simulaciones de Obligaciones Futuras Iniciales de Riesgos en Curso
+	## Se define el Mejor Estimador de Riesgos en Curso como el valor medio de las n muestras de los flujos de obligaciones futuras sumuladas como indica la eq. 5.9
 	RRC_MEDIA=mean(SIMULACION_RESERVA)
 	
 	
-	## Resultados tex de la funcion
+	## Ya que se terminan las n simulaciones, para obtener los resultados en Excel se emplea la funcion "write.table" para que arroje las cifras de las n simuladciones en un archivo de texto
 	write.table (SIMULACION_RESERVA, file = paste("RRC_N_SIM_", archivo, ".txt", sep=""), quote = FALSE, sep = "\t", eol = "\n", dec = ".", row.names = FALSE, col.names = FALSE)
 	print(paste("RRC_N_SIM_", archivo, ".txt", sep=""))
 	
+	## Ya que se terminan las n simulaciones, para obtener los resultados del proceso en R se emplea la funcion "write.table" para que arroje el valor de la primera iteracion y la media de las n simulaciones
 	write.table (c(RRC_INICIAL=RRC_INICIAL, media=RRC_MEDIA), file = paste("RRC_INICIAL_MEDIA", archivo, ".txt", sep=""), quote = FALSE, sep = "\t", eol = "\n", dec = ".", row.names = FALSE, col.names = FALSE)
 	print(paste("RRC_INICIAL_MEDIA", archivo, ".txt", sep=""))
 	
 	
 	print("FIN DE LA FUNCION")
 	
+	## Repetir el proceso hasta que se terminen las n simulaciones
 	return(list(SIMULACION_RESERVA, c(RRC_INICIAL=RRC_INICIAL, media=RRC_MEDIA)))
 	
 }
 
 
-
-TRIANGULO_SINIESTROS_CSV<-read.csv("D:/RESPALDO/Tesis Chris/Triangulo Siniestros Prueba.csv")
-
-RESULTADO_RRC<-SIMULACION_RRC(TRIANGULO_SINIESTROS_CSV, 100000, "TRIANGULO_SINIESTROS_CSV")
+## Aplicar la metodologia en R al triángulo de siniestros guardado en formato .csv en la ruta correspondiente
+triangulo_SINIESTROS_CSV<-read.csv("D:/RESPALDO/Tesis Chris/triangulo Siniestros Prueba.csv")
+RESULTADO_RRC<-SIMULACION_RRC(triangulo_SINIESTROS_CSV, 100000, "triangulo_SINIESTROS_CSV")
 
 
 \end{lstlisting}
