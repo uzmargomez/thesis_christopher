@@ -225,7 +225,7 @@
 	
 	\graphicspath{{./Imagenes/}}
 	
-	\title{Reporte Experiencia Profesional: Metodología y Cálculo de la Reserva de Riesgos en Curso de una Compañía Aseguradora}
+	\title{Metodología y Cálculo del Bel de Riesgo para la Reserva de Riesgos en Curso de una Compañía Aseguradora}
 	\author{Christopher Gómez Yáñez}
 	\institute{Facultad de Ciencias}
 	\degree{Actuario}
@@ -352,7 +352,7 @@
 	\addcontentsline{toc}{chapter}{\numberline{}Prefacio}%	
 	\doublespacing
 	
-	En este trabajo se tiene como objetivo describir brevemente las labores de un Actuario dentro de una Compañía Aseguradora para posteriormente abordar una de las labores más escenciales del puesto, la cual es la valuación de la Reserva de Riesgos en Curso. Tambien se mencionaran las herramientas y metodología necesarias para el proceso y las leyes y organismos gubernamentales que dictan las condiciones bajo las cuales debe realizarse el cálculo.
+	En este trabajo se tiene como objetivo describir brevemente las labores de un Actuario de Reservas dentro de una Compañía Aseguradora, los cuales incluyen pasos escenciales para poder realizar la valuación de la Reserva de Riesgos en Curso, la cual es la función principal del Actuario. También se mencionaran los reportes que posteriormente harán uso de los resultados de dicha valuacion.
 		
 	\end{preface}
 	
@@ -380,6 +380,8 @@
 
 	\chapter{Conceptos Básicos}
 
+Antes que nada hay que familiarizarnos con ciertos conceptos, herramientas y metodologías necesarias para el proceso así como las leyes y organismos gubernamentales que dictan las condiciones bajo las cuales debe realizarse el cálculo.
+
 	\section{El Seguro}
 	El seguro es un medio para la protección individuos frente a las consecuencias de riesgos y se basa en transferir dichos riesgos a la institución de seguros, la cual se encargará de indemnizar todo o parte del perjuicio que se produzca por la ocurrencia de un evento previsto\footnote{Ver \citet{ASeguro}, Fundación Mapfre, El Seguro}.
 	
@@ -393,12 +395,8 @@
 	
 	El Contrato de Seguro es aquel con que la Empresa Aseguradora se obliga, mediante el pago de una prima, a resarcir un daño o a pagar una suma de dinero al verificarse la eventualidad prevista en el contrato\footnote{Ver \citet{CContrato}, Artículo 1}.
 	
-	\section{Reserva Técnica}
-
-	Debe ser constituida por la Institución de Seguros para operar de acuerdo a la LISF. Las Reservas Técnicas detalladas en este trabajo son la Reserva de Riesgos en Curso (RRC) y la Reserva para Obligaciones Pendientes de Cumplir (ROPC). El propósito de la RRC es cubrir el valor esperado de las obligaciones futuras derivadas del pago de siniestros, beneficios, valores garantizados, dividendos, gastos de adquisición y administración, así como cualquier otra obligación futura derivada de los contratos del seguro. Por otro lado, la ROPC tiene como objetivo cubrir el valor esperado de siniestros, beneficios, valores garantizados o dividendos, una vez ocurrida la eventualidad prevista en el contrato de seguro. De acuerdo a la LISF, las reservas técnicas deberán constituirse y valuarse de forma prudente, confiable y objetiva, en relación con todas las obligaciones de seguro que las Instituciones de Seguros asuman frente a los asegurados y beneficiarios del contrato de seguro, los gastos de administración, si como los gastos de adquisición que, en su caso, asuman con relación a los mismos. Para la constitución se deben utilizar métodos actuariales con base en la aplicación de los estándares de práctica actuarial, considerando la información disponible en los mercados financieros, así como la que generalmente se encuentra disponible sobre riesgos técnicos de seguros\footnote{Ver \citet{DReservasTec}, Artículo 217 y 218}. 
+		\section{Comisión Nacional de Seguros y Fianzas}
 	
-	\section{Comisión Nacional de Seguros y Fianzas}
-
 	La Comisión Nacional de Seguros y Fianzas es un Órgano Desconcentrado de la Secretaría de Hacienda y Crédito Público, encargada de supervisar que la operación de los sectores asegurador y afianzador se apegue al marco normativo, preservando la solvencia y estabilidad financiera de las instituciones de Seguros y Fianzas, para garantizar los intereses del público usuario, así como promover el sano desarrollo de estos sectores con el propósito de extender la cobertura de sus servicios a la mayor parte posible de la población\footnote{Ver \citet{EComision}}. 
 	
 	\section{Secretaría de Hacienda y Credito Publico}
@@ -410,7 +408,31 @@
 	
 	Organismo gremial que representa al interés general de las compañías aseguradoras, promoviendo el desarrollo sano y sustentable del seguro a través de las mejores prácticas. Su principal objetivo es promover el desarrollo de la industria aseguradora, representar sus  intereses ante autoridades del sector público, privado y social, así como proporcionar apoyo técnico a sus asociados\footnote{Ver \citet{FAmis}}. 
 	
-	\chapter{Marco Regulatorio y Herramientas utilizadas}\label{tcyedb}
+	\section{Reserva Técnica}
+Son las reservas ligadas directamente con los riesgos que se encuentran en curso, incluyendo obligaciones pendientes, provisiones para contingencias y fondos catastróficos\footnote{Ver \citet{RResAssal}}.
+De acuerdo a la LISF, las reservas técnicas deberán constituirse y valuarse de forma prudente, confiable y objetiva, en relación con todas las obligaciones de seguro que las Instituciones de Seguros asuman frente a los asegurados y beneficiarios del contrato de seguro, los gastos de administración, si como los gastos de adquisición que, en su caso, asuman con relación a los mismos. Para la constitución se deben utilizar métodos actuariales con base en la aplicación de los estándares de práctica actuarial, considerando la información disponible en los mercados financieros, así como la que generalmente se encuentra disponible sobre riesgos técnicos de seguros\footnote{Ver \citet{DReservasTec}, Artículo 217 y 218}. 
+
+
+	\section{Reserva de Riesgos en Curso (RRC)}
+Constituye una parte de la Reserva Técnica. La Reserva de Riesgos en Curso se puede definir técnicamente como la parte de la prima que debe ser utilizada para el cumplimiento de las obligaciones futuras por concepto de reclamaciones, a lo que también se le llama 
+“Prima no Devengada”. Esta definición se traduce a una serie de cálculos actuariales que pueden resultar de mayor o menor complejidad dependiendo del tipo de seguro, por lo que para hacer una mejor explicación es importante hacer la distinción de los diferentes tipos de seguros y referirnos a los métodos de constitución de reservas correspondientes a cada uno de ellos\footnote{Ver \citet{RResAssal}}. El propósito de la RRC es cubrir el valor esperado de las obligaciones futuras derivadas del pago de siniestros, beneficios, valores garantizados, dividendos, gastos de adquisición y administración, así como cualquier otra obligación futura derivada de los contratos del seguro.
+La constitución, incremento, valuación y registro de la reserva de riesgos en curso, deberá efectuarse mediante la estimación de obligaciones que se realice empleando los métodos actuariales que, según corresponda, las Instituciones de Seguros y Sociedades Mutualistas registren para tales efectos ante la Comisión y apegándose a los principios y lineamientos establecidos en las Disposiciones de la CUSF. Así mismo, el monto de la reserva de riesgos en curso será igual a la suma de la mejor estimación y de un margen de riesgo, los cuales deberán calcularse por separado y en términos de lo previsto en la CUSF\footnote{Ver \citet{HCusf}, Apartado 5.1.1. y 5.1.3}.
+ 
+	\section{Mejor Estimación de Riesgo (Best Estimate of Loss)}
+	
+	La mejor estimación será igual al valor esperado de los flujos futuros de obligaciones, entendido como la media ponderada por probabilidad de dichos flujos. Las hipótesis y procedimientos con que se determinen los flujos futuros de obligaciones, con base en los cuales se obtendrá la mejor estimación, deberán ser definidos por la Institución de Seguros en el método propio que registre para el cálculo de la mejor estimación. El cálculo de la mejor estimación se basará en información oportuna, confiable, homogénea y suficiente, así como en hipótesis realistas, y se efectuará empleando métodos actuariales y técnicas estadísticas basados en la aplicación de los estándares de práctica actuarial\footnote{Ver \citet{HCusf}, Apartado 5.1.3}.
+	
+	\section{Requerimiento de Capital de Solvencia (RCS)}
+	
+	El Requerimiento de Capital de Solvencia es el requerimiento de los recursos patrimoniales, adicional a la Base de Inversión, con los que la institución debe contar para hacer frente a las obligaciones con los asegurados, derivados de desviaciones no esperadas relacionadas con los riesgos técnicos, de reaseguro, financieros y operativos. Las inversiones que respaldan este requerimiento deben encontrarse en condiciones adecuadas de seguridad y liquidez conforme a la regulación aplicable\footnote{Ver \citet{NRCS}}.
+	
+	
+		\section{Lenguaje R}
+	R es un lenguaje y ambiente computacinal enfocado en estadistica y graficas. Se trata de una herramienta informática sumamente potente para realizar distintos cálculos científicos, numéricos y estadísticos, así como para crear gráficas y figuras de gran calidad. R es un programa gratuito, relativamente fácil de operar y cuenta con una gran comunidad de internet que contribuye a resolver dudas y problemas, sin costo alguno\footnote{Ver \citet{KR}}.
+	
+	\chapter{Marco Regulatorio}\label{tcyedb}
+	
+	Para calcular la Reserva de Riesgos en Curso deben de seguirse los lineamientos de los organismos reguladores del gobierno, los cuales incluyen Leyes, Circulares y Anexos que estan sujetos a cambios segun lo determinen dichos organizmos.
 	
 	\section{Circular Única de Seguros y Fianzas}
 
@@ -420,16 +442,12 @@
 	\section{Ley de Instituciones de Seguros y de Fianzas}
 
 	Ley que tiene por objeto la organización, operación y funcionamiento de las Instituciones de Seguros, Instituciones de Fianzas y Sociedades Mutualistas de Seguros; las actividades y operaciones que las mismas podrán realizar, así como las de los agentes de seguros y de fianzas, y demás participantes en las actividades aseguradora y afianzadora en protección de los intereses del público usuario de estos servicios financieros\footnote{Ver \citet{GLisf}, Artículo 1}. De acuerdo con La Ley de Instituciones de Seguros y de Fianzas se establece que las Instituciones de Seguros deberán registrar ante la Comisión Nacional de Seguros y Fianzas los métodos actuariales con base en sus estimaciones para la Reserva de Riesgos en Curso\footnote{Ver \citet{FAmis}, Artículo 219}, de conformidad con las disposiciones de carácter general que al efecto emita, mismas que se dieron a conocer a través de la Circular Única de Seguros y Fianzas publicada en el Diario Oficial de la Federación\footnote{Ver \citet{HCusf}}.
-	
-	
-	\section{R}
-
-	R es una herramienta informática (específicamente, un lenguaje computacional) sumamente potente para realizar distintos cálculos científicos, numéricos y estadísticos, así como para crear gráficas y figuras de gran calidad. R es un programa gratuito, relativamente fácil de operar y cuenta con una gran comunidad de internet que contribuye a resolver dudas y problemas, sin costo alguno\footnote{Ver \citet{KR}}. 
+	 
 	
 	
 \chapter{Funciones Generales}\label{cap:Introducción}
 
-Las funciones de un actuario se distinguen por tres actividades principales: validaciones de calidad de la información, uso de dicha información para el cálculo de cifras financieras y, finalmente, uso de dichas cifras para el llenado de reportes para el regulador. A continuación se mencionan brevemente el desarrollo de estas actividades.
+Las funciones de un Actuario de Reservas se distinguen por tres actividades principales: validaciones de calidad de la información, uso de dicha información para el cálculo de cifras financieras y, finalmente, uso de dichas cifras para el llenado de reportes para el regulador. A continuación se mencionan brevemente el desarrollo de estas actividades.
 
 \begin{singlespace}
 	\begin{enumerate}
@@ -441,7 +459,7 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 			\end{enumerate}
 			\item \textit{ Cálculo de Reserva Técnica}  	\begin{enumerate}
 				\item Verificar Factores de Mercado publicados en la CUSF para calculo de Reservas mediante Metodo Estatutario:\\ \-\hspace{0.5cm}
-				Para el Cálculo de Reservas de Subramos cuya información no es suficiente se debe emplear el metodo Estatutario aprovado por la CNSF, para el cual son necesarios Factores que se obtienen mediante el uso de la Información de Mercado de Seguros. Ya que el Mercado es cambiante es responsabilidad del Actuario asegurarse que se estan empleando los factores más actualizados al momento del cálculo.
+				Para el Cálculo de Reservas de grupos homogeneos cuya información no es suficiente se debe emplear el metodo Estatutario aprovado por la CNSF, para el cual son necesarios Factores que se obtienen mediante el uso de la Información de Mercado de Seguros. Ya que el Mercado es cambiante es responsabilidad del Actuario asegurarse que se estan empleando los factores más actualizados al momento del cálculo.
 				\item Extracción de información de las Bases de Datos validadas:\\ \-\hspace{0.5cm}
 				Para calcular la Reserva es necesario contar con las cifras correspondientes a Asegurados en Vigor y Siniestros Autorizados, para la obtención de la Reserva de Gastos de Administración y la Reserva de Riesgos en Curso, respectivamente.				
 				\item Simulación Estocástica en R:\\ \-\hspace{0.5cm}
@@ -482,7 +500,7 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 		\end{enumerate}
 		\item \textbf{Actividades Anuales}
 		\begin{enumerate}
-			\item \textit{Asistencia a los foros organizados por la AMIS para revisar nuevos reportes o modificaciones a reportes anuales que solicita la CNSF, aclarar dudas y acordar propuestas para presentar a la CNSF.} \\ \-\hspace{0.5cm}
+			\item \textit{Asistencia a los foros organizados por la AMIS para revisar nuevos reportes o modificaciones a reportes anuales que solicita la CNSF, aclarar dudas y acordar propuestas para presentar a la CNSF.} \\ 
 			\item \textit{Entrega de Reportes Trimestrales a la CNSF} \\ \-\hspace{0.5cm}
 			La CNSF hace del conocimiento de las Instituciones de Seguros y Fianzas la responsabilidad de entregar reportes anuales con información que sustente la correcta operación de dichas Compañías.
 			\begin{enumerate}
@@ -494,7 +512,10 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 				Siguiendo el Manual oficial de la CNSF debe ser llenado el reporte RR8 SESA para cada ramo que la Compañía maneje en su cartera, el cuál esta consituido por la información estadística de cada Asegurado en la cartera de la Compañía. Posteriormente, la información debe ser depositada en el Sistema de Entrega de Información Vía Electronica (SEIVE).
 				\item {Llenado y entrega del Reporte FORMAS ESTADÍSTICAS DE LOS SEGUROS (RR8 FES)} \\ \-\hspace{0.5cm}
 				Siguiendo el Manual oficial de la CNSF debe ser llenado el reporte RR8 FES para cada ramo que la Compañía maneje en su cartera, el cuál esta consituido por la información estadística por estado de cada Asegurado en la cartera de la Compañía. Posteriormente, la información debe ser depositada en el Sistema de Entrega de Información Vía Electronica (SEIVE).
+					\item {Llenado y entrega del Reporte Regulatorio sobre Reservas Técnicas (RR3 RRCBD)} \\ \-\hspace{0.5cm}
+				Siguiendo el Manual oficial de la CNSF debe ser llenado el reporte RR3 RRCBD. El Backtesting es un procedimiento técnico que consiste en validar la idoneidad, precisión y validez de un modelo diseñado para hacer estimaciones, con base en la comparación de las estimaciones hechas por el modelo actuarial respecto de los valores reales observados. Posteriormente, la información debe ser depositada en el Sistema de Entrega de Información Vía Electronica (SEIVE).
 			\end{enumerate}
+		
 			\item \textit{Entrega regulatoria de la carta de aceptación del Actuario Independiente firmada en conjunto del Contrato de Servicios del Actuario Independiente} \\ \-\hspace{0.5cm}
 			Como parte de la regulación, es necesario hacer el envío a la CNSF de la carta de aceptación del Actuario que fungira como Auditor Externo de la Compañía con las certificaciones correspondientes. De igual forma debe incluirse el contrato firmado en el que se define el periodo, terminos y condiciones para que el Actuario Independiente cumpla con sus funciones como Auditor Externo. La información debe ser depositada en el Sistema de Entrega de Información Vía Electronica (SEIVE).
 			\item \textit{Entrega regulatoria del Programa de Actividades del Actuario Independiente} \\ \-\hspace{0.5cm}
@@ -511,18 +532,22 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 \end{singlespace}
 
 
+
+
 	\chapter{Metodología empleada en el Cálculo de la Reserva de Riesgos en Curso}\label{tcyedb}
 	
-	\section{Método Chain Ladder}
+	La Metodología son los fundamentos y técnicas que se aplican durante el proceso del Cálculo de la Reserva de Riesgos en Curso para alcanzar un resultado válido. Funciona como el soporte conceptual ante el Regulador que justifica la manera en que aplicamos los procedimientos en el Cálculo.
+	
+	\section{Método Chain-Ladder}
 
 	Método que se utiliza comunmente en las reservas de no-vida. Útiliza un factor para "suavizar" los datos y con base en estos, realizar interpolaciones para estimar los siniestros agregados para cada año de ocurrencia y posteriormente la reserva correspondiente. El supuesto básico de este método es que las columnas en el triángulo de desarrollo son proporcionales, es decir que, independientemente del año de origen, cada periodo de desarrollo se reporta una proporción constante de siniestros con respecto al total. La sustentación del supuesto depende en buena medida, tanto del tipo de negocio que se trate, como de la homogeneidad y tamaño de la cartera. En particular, en negocios como vida individual, gastos médicos, responsabilidad civil, etc., la evolución del reporte de los siniestros es estacional\footnote{Ver \citet{LChainLadder}, 1.2.1 Método Chain-Ladder}.  
 
-	La estimación de las obligaciones se hace con base en los siniestros observados y su desfase respecto a la entrada en vigor de cada obligación, usando el metodo bootstrap.
+	La estimación de las obligaciones se hace con base en los siniestros observados y su desfase respecto a la entrada en vigor de cada obligación, usando el metodo $bootstrap$.
 	
 	\section{Bootstrapping}
-	El método desarrollado por Bradley Efron. Es un método de muestreo computacionalmente intensivo con el que se busca aproximar la distribución muestral de alguna variable aleatoria que se basa en los datos observados\footnote{Ver \citet{MBootstrap}, p.11}.
+	El método desarrollado por Bradley Efron\footnote{Ver \citet{OEfron}}. Es un método de muestreo computacionalmente intensivo con el que se busca aproximar la distribución muestral de alguna variable aleatoria que se basa en los datos observados\footnote{Ver \citet{MBootstrap}, p.11}.
 
-	El método de Bootstrap es un método de muestreo con el que se busca aproximar la distribución muestral de alguna variable aleatoria que tiene como base los datos observados.
+	El método de $Bootstrap$ es un método de muestreo con el que se busca aproximar la distribución muestral de alguna variable aleatoria que tiene como base los datos observados.
 
 	Teniendo una muestra de datos $x_{1},x_{2},x_{3},...,x_{n}$, donde los $x_{i}$ son independientes y provienen de una distribución desconocida $F$, donde además se presume que dicha muestra es una representación significativa de la población de donde proviene. Se tiene además una variable aleatoria $R(X,F)$ que depende de $X$ y de la función desconocida $F$. Entonces se puede realizar una muestra aleatoria de tamaño $n$ con reemplazo de la muestra de datos, $x_{1}^{*},x_{2}^{*},x_{3}^{*},...,x_{n}^{*}$ y a partir de esa muestra se puede calcular una observación de la variable aleatoria $R*(X*,P*)$, donde $F*$ es la distribución de probabilidad de la muestra, que se construyó de tipo uniforme. Finalmente, se realizan más muestras y se calculan más valores de $R*$ para poder estimar la distribución $R(X,F)$.
 
@@ -530,15 +555,17 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 	
 	
 
-	\chapter{Cálculo de la Reserva de Riesgos en Curso}\label{metnum}
-	
-	La valuación y constitución de la reserva de riesgos en curso deberá calcularse para un grupo homogéneo definido, correspondiente a un cierto subramo y tipo de seguro que la Compañia en cuestión tenga en su cartera. El proceso aquí descrito fué aplicado en la practica para grupos homogéneos correspondientes a los ramos de Gastos Médicos Colectivo y Salud Colectivo.
-	
-	Para realizar los calculos es necesario identificar primero el número de asegurados en vigor al cierre del mes al momento de la valuación, el monto de prima correspondiente a los beneficios contratados, los gastos asociados y el periodo de cobertura de cada asegurado en vigor.
-		
-	\section{Cálculo del Bel de Riesgos en Curso}
 
-	El cálculo del Bel de Riesgo implica un análisis de las obligaciones futuras para los riesgos en curso con base en los siniestros que actualmente han sido reportados. Para ello se necesita la construcción de una matriz de desarrollo de siniestros  de dimensiones $(k$ x $s)$, en la cual los siniestros se distribuyen por el trimestre en que se reporto cada uno de los procedimientos ocurridos respecto al inicio de vigencia de la póliza y consideramos montos netos de siniestralidad, es decir, no tomamos en cuenta el monto de deducible y copago a cargo del asegurado. La matriz queda como se muestra en la tabla ~\ref{matrix1}.
+		
+	\chapter{Cálculo del Bel de Riesgos en Curso}
+
+ La valuación y constitución de la reserva de riesgos en curso esta compuesta por el Mejor Estimador de Riesgo, la Reserva de Gasto y el Margen de Riesgo. El presente trabajo se enfóca en la obtención del Mejor Estimador, presentado a continuación.
+ 
+ El proceso descrito debe efectuarse para un grupo homogéneo definido, correspondiente a un cierto subramo y tipo de seguro que la Compañia en cuestión tenga en su cartera y puede aplicarse en la practica para grupos homogéneos correspondientes a los ramos de No Vida.
+
+	\section{Aplicación del Método Chain-Ladder}
+	
+	El cálculo del Bel de Riesgo, siguiendo el método $Chain-Ladder$, implica un análisis de las obligaciones futuras para los riesgos en curso con base en los siniestros que actualmente han sido reportados. Para ello se necesita la construcción de una matriz de desarrollo de siniestros  de dimensiones $(k$ x $s)$, en la cual los siniestros se distribuyen por el trimestre en que se reporto cada uno de los procedimientos ocurridos respecto al inicio de vigencia de la póliza. La matriz queda como se muestra en la tabla ~\ref{matrix1}.
 
 	\vspace{0.1cm}
 	
@@ -576,7 +603,7 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 
 	\vspace{1cm}
 
-	Una vez que se obtiene la matriz de siniestros, esta se usa para generar una matriz de siniestros acumulados (tabla \ref{matrix2}) en la cual se define ${Y}_{i,j}$ como el monto de siniestros de la póliza con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $j$ (ver eq. \ref{eq1}).
+	En este punto se puede usar la esta matriz de siniestros para generar una matriz de siniestros acumulados (tabla \ref{matrix2}) en la cual se define ${Y}_{i,j}$ como el monto de siniestros de la póliza con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $j$, como se ve en \citet{PAlvColl} (ver eq. \ref{eq1}).
 	
 	\begin{equation}
 	{y}_{i,j}=\sum _{m=0}^{j}{X}_{i,m}
@@ -616,7 +643,7 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 	\end{table} 
 	
 	
-	Usando la esta matriz de siniestros acumulados se obtienen los factores de incremento ${f}_{j}$, los cuales indican el incremento dado de un trimestre a otro (ver eq. \ref{eq2}).
+	Usando la esta matriz de siniestros acumulados se obtienen los factores de desarrollo ${f}_{j}$, los cuales indican el incremento dado de un trimestre a otro (ver eq. \ref{eq2}).
 
 	\begin{equation}
 	{f}_{j}=\frac{\sum _{i=1}^{s-j}{Y}_{i,j}}{\sum _{i=1}^{s-j}{Y}_{i,j-1}}, \hspace{0.5cm}\text{con}\hspace{0.5cm} 0< j\le k
@@ -625,7 +652,7 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 
 	Donde ${Y}_{i,j}$ representa el monto de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $j$.
 
-	Mediante estos factores de incremento, se definen los Siniestros Esperados para la vigencia $i$ (${SE}_{i}$) como la estimación del monto de siniestros que serán reportados para las pólizas con inicio de vigencia en el trimestre $i$ (ver eq. \ref{eq3}).
+	Mediante estos factores de desarrollo, se definen los Siniestros Esperados para la vigencia $i$ (${SE}_{i}$) como la estimación del monto de siniestros que serán reportados para las pólizas con inicio de vigencia en el trimestre $i$ (ver eq. \ref{eq3}).
 	
 	\begin{equation}
 	{SE}_{i}={Y}_{s-i+1,i-1}\cdot\Pi_{j=i}^{k}{f}_{j},\hspace{0.5cm}\text{con}\hspace{0.5cm}0< i\le k
@@ -643,7 +670,9 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 
 	Donde ${SE}_{i}$ son los siniestros esperados para la vigencia $i$, y ${Y}_{i,s-i}$ es el monto de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $s-i$.
 		 
-	Se define ${Y}_{i,j}^{*}$ como el monto ajustado de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $j$ (ver eq. \ref{eq5}).
+\section{Ajuste de los Triángulos de Siniestralidad}		 
+		 
+Ya que el método $Chain-Ladder$ puede ser considerado una regresión ponderada, se pueden obtener residuales a partir de un ajuste en los triangulos de siniestralidad usando el método como lo describe \citet{QLowe}, calculando un triángulo de desarrollo acumulado de datos ajustados, partiendo del último dato observado y desplazándose hacia atrás con los factores de desarrollo obtenidos previamente. Se define ${Y}_{i,j}^{*}$ como el monto ajustado de siniestros de las pólizas con inicio de vigencia en el trimestre $i$ reportados hasta el trimestre $j$ (ver eq. \ref{eq5}).
 	
 		\begin{equation}
 	{Y}_{i,j-1}^{*}=\frac{{Y}_{i,j}^{*}}{{f}_{j}}
@@ -753,9 +782,9 @@ Las funciones de un actuario se distinguen por tres actividades principales: val
 	\label{matrix5}
 	\end{table}
  
-
+\section{Aplicación del Método de Bootstrap}
  
-	Se emplea el método de bootstrap, bajo el supuesto de que los residuales brutos $R_{i,j}$ de la matriz ~\ref{matrix5} provienen de la misma distribución y son independientes, y se definen $R_{j}^{\text{min}}$ como el valor mínimo de los residuales observados en el trimestre reportado $j$ y $R_{j}^{\text{max}}$ como el valor máximo de los residuales observados en el trimestre reportado $j$, como se observa en la tabla ~\ref{matrix6}.
+	 \citet{QLowe} indica que es correcto realizar un muestreo con reemplazo de residuales n veces sobre el triangulo de siniestralidad ajustada mediante  la seleccion aleatoria de entre los residuales obtendidos. Sin embargo, con el fin de simular un comportamiento realista acorde a la información historica usada, se emplea el método de $Bootstrap$, bajo el supuesto de que los residuales brutos $R_{i,j}$ de la matriz ~\ref{matrix5} provienen de la misma distribución y son independientes, y se definen $R_{j}^{\text{min}}$ como el valor mínimo de los residuales observados en el trimestre reportado $j$ y $R_{j}^{\text{max}}$ como el valor máximo de los residuales observados en el trimestre reportado $j$, como se observa en la tabla ~\ref{matrix6}.
 	
 	\begin{table}[ht]
 		\centering
@@ -784,7 +813,7 @@ Donde
 		
 \end{itemize} 
 
-	Realizando un muestreo con reemplazo de residuales de $n$ muestras de forma uniforme dentro del intervalo $\left[R_{j}^{\text{min}},R_{j}^{\text{max}}\right]$ de cada uno de los trimestres de reporte $j$, se obtiene la matriz de residuales (tabla ~\ref{matrix7}) definiendo $R_{i,j}^{*}$ como el residual de la muestra de pólizas con inicio de vigencia en el trimestre $i$ con trimestre de reporte $j$. 
+	De este modo se seleccionan los valores de los residuales de entre estos mínimos y máximos, realizando un muestreo con reemplazo de residuales de $n$ muestras de forma uniforme dentro del intervalo $\left[R_{j}^{\text{min}},R_{j}^{\text{max}}\right]$ de cada uno de los trimestres de reporte $j$. Se obtiene la matriz de residuales (tabla ~\ref{matrix7}) definiendo $R_{i,j}^{*}$ como el residual de la muestra de pólizas con inicio de vigencia en el trimestre $i$ con trimestre de reporte $j$. 
 		
 	\begin{table}[H]
 		\centering
@@ -850,11 +879,11 @@ Donde
 	\label{matrix8}
 	\end{table}
 
-Usando esta matriz de siniestros simulada, se genera la matriz de siniestros acumulados simulados (como se generó la tabla ~\ref{matrix2}), se obtiene los factores de incremento simulados (como se obtuvieron en la eq. \ref{eq2}), se estiman los siniestros esperados simulados (como se estimaron en la eq. \ref{eq3}) y se calculan los flujos de obligaciones futuras simuladas de riesgos en curso de la muestra $i$ ($RRC_{i}^{sim}$) (como se calcularon en la eq. \ref{eq4}).
+Usando esta matriz de siniestros simulada, se genera la matriz de siniestros acumulados simulados (como se generó la tabla ~\ref{matrix2}), se obtiene los factores de incremento simulados (como se obtuvieron en la eq. \ref{eq2}), se estiman los siniestros esperados simulados (como se estimaron en la eq. \ref{eq3}) y se calculan los flujos de obligaciones futuras simuladas de riesgos en curso de la muestra $i$ ($RRC_{i}^{sim}$) (como se calcularon en la eq. \ref{eq4}), repitiendo el proceso $n$ veces.
 	
 	 
 	
-	Se considera el mejor estimador de riesgos en curso ($BELR_{RRC}$), como el valor medio de las $n$ muestras de los flujos de obligaciones futuras simuladas de riesgos en curso (ver eq \ref{eq9}).
+	Se puede considerar el mejor estimador de riesgos en curso ($BELR_{RRC}$), como el valor medio de las $n$ muestras de los flujos de obligaciones futuras simuladas de riesgos en curso (ver eq \ref{eq9}).
 
 
 	 
@@ -922,47 +951,58 @@ $ $
 \end{comment}
 	
 	 
-	\section{Cálculo del Bel de Gastos de Administración}
-	 
-	El mejor estimador de la reserva de Gastos de Administración ($BELG_{ADM}$) es el monto integrado por la suma de los Gastos de Administración no devengados de cada uno de los asegurados en vigor.
+\chapter{Reserva de Gastos de Administración}\label{metnum}
+
+Para el cálculo de los componentes faltantes de la Reserva de Riesgos en Curso, así como para el prorrateo del $BELR_{RRC}$ por asegurado, es necesario primero obtener un Factor de No Devengamiento, con el cual se podrá calcular la Reserva de Gastos y la Prima de Riesgos No Devengada.
+
+\section{Cálculo del Factor de No Devengamiento}
+
+	El Factor de No Devengamiento ($F_{ND}$) de cada asegurado en vigor equivale a la proporción de tiempo no transcurrido de la vigencia del asegurado (ver eq. \ref{eq13}).
+
+
+\begin{equation}	
+	F_{ND}=\begin{cases}
+		0, & \text{si } FVal \geqslant FFin.\\
+		\frac{FFin-FVal}{FFin-FIni}, & \text{si } FIni \leqslant FVal \leqslant FFin\\
+		1, & \text{si } FIni \geqslant FVal
+	\end{cases}
+	\label{eq13}
+\end{equation}
+
+
+$ $
+
+Donde
+
+
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item $FIni=$ Fecha de Inicio de cobertura para el asegurado.
 	
-	 Para calcularlo es necesario primero obtener el Factor de No Devengamiento ($F_{ND}$), definido como el factor utilizado para calcular la porción de tiempo de vigencia no transcurrido por cada asegurado en vigor (ver eq. \ref{eq13}).
-	 
-	 
-	 \begin{equation}	
-	 	F_{ND}=\begin{cases}
-	 		0, & \text{si } FVal \geqslant FFin.\\
-	 		\frac{FFin-FVal}{FFin-FIni}, & \text{si } FIni \leqslant FVal \leqslant FFin\\
-	 		1, & \text{si } FIni \geqslant FVal
-	 	\end{cases}
-	 	\label{eq13}
-	 \end{equation}
-	 
-	 
-	 $ $
-	 
-	 Donde
-	 
-	 
-	 \begin{itemize}
-	 	\setlength\itemsep{-0.5em}
-	 	\item $FIni=$ Fecha de Inicio de cobertura para el asegurado.
-	 	
-	 	\item $FFin=$ Fecha de Fin de cobertura para el asegurado.
-	 	
-	 	\item $FVal=$ Fecha de Valuación.
-	 	
-	 \end{itemize}
-	 
+	\item $FFin=$ Fecha de Fin de cobertura para el asegurado.
 	
-	El  Monto de los Gastos de Administración no devengado de cada asegurado ($BELG_{ADM,ind}$) se define entonces como la porción correspondiente a los Gastos de Administración de la Prima de Tarifa de los asegurados de que se trate multiplicada por el Factor de No Devengamiento (ver eq. \ref{eq10}). 
+	\item $FVal=$ Fecha de Valuación.
 	
-	
+\end{itemize}
+
+
+
+\section{Cálculo del Bel de Gastos de Administración}
+
+Se debe calcular ahora la reserva de gastos de administración no devengados. Esta es la parte no devengada correspondiente a la porción de prima de tarifa anual de cada una de las pólizas en vigor al momento de la valuación\footnote{Ver \citet{SAnexoCUSF}, Apartado A2.1.7.4}.
+
+Para realizar el cálculo es necesario identificar primero el número de asegurados en vigor al cierre del mes al momento de la valuación, el monto de prima correspondiente a los beneficios contratados, los gastos asociados y el periodo de cobertura de cada asegurado en vigor.
+
+
+
+El  Monto de los Gastos de Administración no devengado de cada asegurado ($BELG_{ADM,ind}$) se define entonces como la porción correspondiente a los Gastos de Administración de la Prima de Tarifa de los asegurados de que se trate multiplicada por el Factor de No Devengamiento (ver eq. \ref{eq10}). 
+
+
 \begin{comment}
 Para Salud Individual Dental, se tomara el porcentaje de gasto de administración del mercado proporcionado por la Comisión Nacional de Seguros y Fianzas.
 \end{comment}	
-	
-	 
+
+
 
 \begin{comment}	
 $
@@ -974,61 +1014,57 @@ $
 \end{comment}
 
 \begin{equation}
-BELG_{ADM,ind}=	PT \cdot G_{ADM} \cdot F_{ND}
-\label{eq10}
+	BELG_{ADM,ind}=	PT \cdot G_{ADM} \cdot F_{ND}
+	\label{eq10}
 \end{equation}
 
 
 
-	Donde
-	 
-		\begin{itemize}
-		\setlength\itemsep{-0.5em}
-    \item $PT=$ Prima de tarifa
-    
-    \item $G_{ADM}^{}=$ Gasto de Administración.
+Donde
+
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item $PT=$ Prima de tarifa
+	
+	\item $G_{ADM}^{}=$ Gasto de Administración.
 	
 	\item $F_{ND}^{}=$ Factor de No Devengamiento.
-	\end{itemize}
-	
+\end{itemize}
+
 \begin{comment}	
-	$\alpha_{i}^{}=$ Porcentaje de gasto de administración con información de Mercado
+$\alpha_{i}^{}=$ Porcentaje de gasto de administración con información de Mercado
 \end{comment}	
-	 
 
 
-	Entonces el BEL para Gastos de Administración total ($BELG_{ADM}$) es la suma del Monto de Gastos de Administración de cada asegurado (ver eq. \ref{eq11}).
-	
+Se define el mejor estimador de la reserva de Gastos de Administración ($BELG_{ADM}$) como el monto integrado por la suma de los Gastos de Administración no devengados de cada uno de los asegurados en vigor (ver eq. \ref{eq11}).
+
 
 \begin{equation}
 	BELG_{ADM}=\sum _{}^{}BEL_{ADM,ind}^{}
 	\label{eq11}
-	\end{equation}
+\end{equation}
 
 
- 
-	
+
 	\section{Cálculo de la Prima de Riesgo No Devengada}
-	 
-	
-	La Prima de Riesgo No Devengada corresponderá al valor de la prima de riesgo multiplicada por el factor de no devengamiento correspondiente a la porción de tiempo de vigencia no transcurrido.
-	
-	 
-	
-	Para el cálculo de la Prima de Riesgo No Devengada, se determinará para cada uno de los asegurados en vigor, la Prima de Riesgo, que corresponde al costo esperado de la siniestralidad y es la porción de la prima de tarifa que debe destinarse para el pago de las reclamaciones por concepto de siniestros (ver eq. \ref{eq12}).
-	
-	 
-	\begin{equation}
-		{PR}_{}^{}={{PT}_{}\cdot(1-G_{ADM}-C_{ADQ}-U)}
-		\label{eq12}
-	\end{equation}
-	
-	
-	Donde
-	
-	 
-		\begin{itemize}
-		\setlength\itemsep{-0.5em}
+
+
+La Prima de Riesgo No Devengada corresponderá al valor de la prima de riesgo multiplicada por el factor de No Devengamiento.
+
+Para realizar el cálculo se determinará para cada uno de los asegurados en vigor su Prima de Riesgo correspondiente. Ya que la Prima de Tarifa equivale a la Prima de Riesgo más gastos de adquisición, más gastos de administración, más un gasto de utilidad\footnote{Ver \citet{TZurich}, Prima de Tarifa}., es posible deducir el valor de la Prima de Riesgo con un cálculo sencillo (ver eq. \ref{eq12}).
+
+
+\begin{equation}
+	{PR}_{}^{}={{PT}_{}\cdot(1-G_{ADM}-C_{ADQ}-U)}
+	\label{eq12}
+\end{equation}
+
+
+Donde
+
+
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item $PT=$ Prima de Tarifa.
 	
 	\item $G_{ADM}^{}=$ Gasto de Administración.
@@ -1036,75 +1072,68 @@ BELG_{ADM,ind}=	PT \cdot G_{ADM} \cdot F_{ND}
 	\item $C_{ADQ}^{}=$ Costo de Adquisición.
 	
 	\item $U_{}^{}=$ Margen de Utilidad.
-	\end{itemize}
-	 
+\end{itemize}
 
-		Con la Prima de Riesgo se calculará la Prima de Riesgo no Devengada de cada uno de los asegurados ($PRND_{ind}$), dada como la Prima de Riesgo multiplicada por el Factor de No Devengamiento calculado en la eq. \ref{eq13} (ver eq. \ref{eq14}).	
 
-	
+Una vez que se tiene la Prima de Riesgo se puede calcular la Prima de Riesgo no Devengada de cada uno de los asegurados ($PRND_{ind}$), dada como la Prima de Riesgo multiplicada por el Factor de No Devengamiento calculado en la eq. \ref{eq13} (ver eq. \ref{eq14}).	
+
+
 \begin{equation}
-		{PRND}_{ind}^{}={{PR}_{ind}\cdot F_{ND}}
-		\label{eq14}
+	{PRND}_{ind}^{}={{PR}_{ind}\cdot F_{ND}}
+	\label{eq14}
 \end{equation}
 
- 
-	
-	Donde
-	
-	\begin{itemize}
+
+
+Donde
+
+\begin{itemize}
 	\setlength\itemsep{-0.5em}	 
 	
 	\item $F_{ND}=$ Factor de No Devengamiento de cada asegurado.
 	
 	\item $PR_{ind}=$ Prima de Riesgo de cada asegurado.
-	\end{itemize}
-	 
+\end{itemize}
 
- 
-	
-	Mientras que para las pólizas emitidas anticipadamente que, al momento de la valuación, no han iniciado vigencia, la prima de riesgo no devengada se calculará como la diferencia entre la Prima de Tarifa de cada asegurado y el Monto de Gastos de Administración no devengado de cada asegurado (ver eq. \ref{eq15}).
-	
-	 
+
+\begin{comment}
+
+Mientras que para las pólizas emitidas anticipadamente que, al momento de la valuación, no han iniciado vigencia, la prima de riesgo no devengada se calculará como la diferencia entre la Prima de Tarifa de cada asegurado y el Monto de Gastos de Administración no devengado de cada asegurado (ver eq. \ref{eq15}).
+
+
 
 \begin{equation}
-		{PRND}_{ind}^{}={{PT}_{ind}-BELG_{ADM,ind}}
-\label{eq15}
+	{PRND}_{ind}^{}={{PT}_{ind}-BELG_{ADM,ind}}
+	\label{eq15}
 \end{equation}
- 
-	
-	Donde
-	
-	 
-	\begin{itemize}
+
+
+Donde
+
+
+\begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item $PT_{ind}=$ Prima de Tarifa de cada asegurado.
 	
 	\item $BELG_{ADM,ind}=$ Monto de los gastos de administración no devengado de cada asegurado.
-	\end{itemize}
+\end{itemize}
+\end{comment}
 
-	
-	Así pues, la prima de riesgo no devengada ($PRND_{}$), esta se calculará como la suma de los montos de Prima de riesgo no devengada de cada asegurado (ver eq. \ref{eq16}).
-	
+Así pues, la prima de riesgo no devengada ($PRND_{}$) se calculará como la suma de los montos de Prima de riesgo no devengada de cada asegurado (ver eq. \ref{eq16}).
+
 \begin{equation}
 	PRND_{}={\sum _{}^{}PRND_{ind}^{}}
 	\label{eq16}
 \end{equation}
 
- 
-	Donde $PRND_{ind}=$ Prima de riesgo no devengada de cada asegurado.
-	
-	
-	
 
- 
-	
-	\section{Cálculo de la Reserva de Riesgos en Curso de cada Asegurado}
-	
+Donde $PRND_{ind}=$ Prima de riesgo no devengada de cada asegurado.
+
+
 	 
-	
-	La Reserva de Riesgos en Curso de cada uno de los asegurados en vigor se calculará como la Prima de Riesgo No Devengada de cada asegurado multiplicada por un Factor de Distribución.
-	
-		El Factor de Distribución ($FD_{}$) permite prorratear el mejor estimador de riesgos en curso ($BELR_{RRC}$) obtenido entre cada asegurado. El factor se obtiene comparando la Prima de Riesgo No Devengada de cada grupo homogéneo ($PRND_{}$) calculada con el $BELR_{RRC}$ del mismo (ver eq. \ref{eq17}).
+	 	\chapter{Cálculo de la Reserva de Riesgos en Curso}\label{metnum}
+	 
+	 Ya que previamente se calculó el Mejor Estimador de Riesgos en curso ($BELR_{RRC}$) del grupo homogéneo, este debe ser prorrateado para cada asegurado en vigor. Para esto es necesario obtener un Factor de Distribución ($FD_{}$) que usa la $PRND_{}$ para realizar el prorrateo de acuerdo a la proporsión de Prima de Riesgo No Devengada que corresponde a cada asegurado ($PRND_{ind}$) (ver eq. \ref{eq17}).
 	 
 	 
 	 \begin{equation}
@@ -1120,53 +1149,65 @@ BELG_{ADM,ind}=	PT \cdot G_{ADM} \cdot F_{ND}
 	 	\setlength\itemsep{-0.5em}
 	 	\item $BELR_{RRC}=$ Mejor Estimador de Riesgos en Curso.
 	 	
-	 	\item $PRND_{}=$ Prima de Riesgo No Devengada.
+	 	\item $PRND_{}=$ Prima de Riesgo No Devengada calculada previamente.
 	 	
 	 \end{itemize}
 	 
 	 $ $
 	 
-	
-	Así, el mejor estimador de riesgos en curso individual ($BELR_{RRC,ind}$) se obtiene multiplicando la Prima de Riesgo No Devengada de cada asegurado por el Factor de Distribución (ver eq. \ref{eq18}).
-	
-
-
-	\begin{comment}	
-		$
-		BELR_{RRC,ind}=\begin{cases}
-		PRND_{ind}\cdot FD_{}, & \text{$g \neq Salud Dental Individual$}\\
-	
-		PTND_{ind}\cdot FS_{BEL}^{RRC}, & \text{$g = Salud Dental Individual$}
-		\end{cases}
-		$
-\end{comment}	
-
-\begin{equation}
-	BELR_{RRC,ind}=PRND_{ind}\cdot FD_{}
-	\label{eq18}
-\end{equation}
+	 
+	 Así, el mejor estimador de riesgos en curso individual ($BELR_{RRC,ind}$) se obtiene multiplicando la Prima de Riesgo No Devengada de cada asegurado por el Factor de Distribución (ver eq. \ref{eq18}).
+	 
+	 
+	 
+	 \begin{comment}	
+	 $
+	 BELR_{RRC,ind}=\begin{cases}
+	 PRND_{ind}\cdot FD_{}, & \text{$g \neq Salud Dental Individual$}\\
+	 
+	 PTND_{ind}\cdot FS_{BEL}^{RRC}, & \text{$g = Salud Dental Individual$}
+	 \end{cases}
+	 $
+	 \end{comment}	
+	 
+	 \begin{equation}
+	 	BELR_{RRC,ind}=PRND_{ind}\cdot FD_{}
+	 	\label{eq18}
+	 \end{equation}
+	 
+	 
+	 
+	 Donde
+	 
+	 
+	 \begin{itemize}
+	 	\setlength\itemsep{-0.5em}	
+	 	\item $PRND_{ind}=$ Prima de Riesgo no Devengada de cada asegurado.
+	 	
+	 	\item $FD_{}^{}=$ Factor de Distribución.
+	 \end{itemize}
+	 
+	 \begin{comment}
+	 $PTND_{ind}=$ Prima de Tarifa no Devengada de cada asegurado
+	 
+	 
+	 $FS_{BEL}^{RRC}=$ Factor de Siniestralidad última con información de mercado
+	 \end{comment}
+	 
+	 
 
  
 	
-	Donde
+
 	
-		
-	\begin{itemize}
-	\setlength\itemsep{-0.5em}	
-	\item $PRND_{ind}=$ Prima de Riesgo no Devengada de cada asegurado.
-	
-	\item $FD_{}^{}=$ Factor de Distribución.
-	\end{itemize}
-	
-		\begin{comment}
-	$PTND_{ind}=$ Prima de Tarifa no Devengada de cada asegurado
 	
 
-	$FS_{BEL}^{RRC}=$ Factor de Siniestralidad última con información de mercado
-	\end{comment}
+ 
+	
+	\section{Cálculo de la Reserva de Riesgos en Curso de cada Asegurado}
 	
 	 
-	Entonces la Reserva de Riesgos en Curso de cada asegurado ($RRC_{ind}$) resulta de sumar el Mejor Estimador de Riesgos en Curso de cada asegurado con el Monto de Gastos de Administración de cada asegurado (ver eq. \ref{eq19}).
+	Ya que se tienen todos los componentes, la Reserva de Riesgos en Curso de cada asegurado ($RRC_{ind}$) resulta de sumar el Mejor Estimador de Riesgos en Curso de cada asegurado con el Monto de Gastos de Administración de cada asegurado (ver eq. \ref{eq19}).
 	
 \begin{equation}
 		{RRC}_{ind}^{}={{BELR}_{RRC,ind}+BELG_{ADM,ind} +MR_{RRC,ind}
