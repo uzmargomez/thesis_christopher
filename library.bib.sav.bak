@@ -286,13 +286,14 @@
 }
 
 @Article{USolvii,
-  author   = {{Fernando Herrera Contreras, Fernando Pérez Márquez}},
+  author   = {{Zurich}},
   journal  = {Modelo Mexicano de Supervisi\'{o}n Basado en Riesgos tipo Solvencia II},
-  title    = {{Reservas T\'{e}cnicas}},
+  title    = {{Definiciones}},
   year     = {2018},
   issn     = {1477-9226},
-  abstract = {Obtenido de https://www.gob.mx/cms/uploads/attachment/file/351012/171._Modelo_Mexicano_de_Supervisi_n_Basado_en_Riesgos_tipo_Solvencia_II_2018.pdf},
-  comment  = {Obtenido de https://www.gob.mx/cms/uploads/attachment/file/351012/171._Modelo_Mexicano_de_Supervisi_n_Basado_en_Riesgos_tipo_Solvencia_II_2018.pdf},
+  note     = {Obtenido de https://www.zurich.com.mx/-/media/project/zwp/mexico/docs/nuevos/cnsf-s0082-0113-2010-03-06-2010.pdf},
+  abstract = {Obtenido de https://www.zurich.com.mx/-/media/project/zwp/mexico/docs/nuevos/cnsf-s0082-0113-2010-03-06-2010.pdf},
+  comment  = {Obtenido de https://www.zurich.com.mx/-/media/project/zwp/mexico/docs/nuevos/cnsf-s0082-0113-2010-03-06-2010.pdf},
   doi      = {10.1039/b718322d},
   file     = {:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics.pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(2).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(3).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(4).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(5).pdf:pdf;:C$\backslash$:/Users/uzmar/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Collins - 2003 - The virial theorem in stellar astrophysics(6).pdf:pdf},
   isbn     = {0912918136},
